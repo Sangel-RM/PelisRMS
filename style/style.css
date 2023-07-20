@@ -1,0 +1,299 @@
+/* font-family: 'Roboto Condensed', sans-serif; */
+:root{
+    --primary-color: #0f0f0f;
+    --secondary-color: #191919;
+    --white: #fff;
+    --black: #000;
+    --whiteAndGray: rgba(141, 141, 141, 0.886);
+    --placehoulder: #7378c5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .3s linear;
+    color: var(--white);
+}
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--white);
+    border: 1px solid var(--secondary-color);
+    border-radius: 50px;
+}
+*::-webkit-scrollbar-track {
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+html,body{
+    height: 100vh;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    background-color: var(--primary-color);
+}
+.containerHeader{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--black);
+}
+.menu{
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid var(--whiteAndGray);
+}
+.logo{
+    width: 60%;
+    height: 100%;
+}
+.seacrhContainer{
+    width: 20%;
+    height: 100%;
+    border-left: 1px solid var(--whiteAndGray);
+}
+.menu ,.logo, .seacrhContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--white);
+}
+.logo a h1{
+    text-transform: uppercase;
+    color: var(--white);
+}
+.logo a h1 span{
+    color: red;
+}
+.fa-bars, .fa1 , .fa-xmark{
+    font-size: 18px;
+    cursor: pointer;
+}
+.fa-xmark{
+    color: red;
+}
+.form{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.ContainerInput{
+    width: 100%;
+    height: 100%;
+}
+.search{
+    position: absolute;
+    padding: 10px 10px 10px 40px;
+    height: 100%;
+    width: 100%;
+    color: var(--black);
+}
+.search::placeholder{
+    font-size: 15px;
+}
+.fa2{
+    position: relative;
+    color: var(--black);
+    font-size: 20px;
+    top: 10px;
+    left: 10px;
+}
+.none{
+    display: none;
+}
+.populares {
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+.populares h1{
+    font-size: 2rem;
+    color: var(--white);
+}
+.scroll {
+    display: flex;
+    gap: 10px;
+    margin: 0 10px 0;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+}
+.card{
+    display: flex;
+    scroll-snap-align: center;
+    flex-direction: column;
+    min-width: 290px;
+    height: 200px;
+    justify-content: space-between;
+    border-radius: 2px;
+    margin: 0 0 10px 0;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
+.card .poster {
+    width: 100%;
+    height: 80%;
+}
+.card .poster img{
+    width: 100%;
+    height: 100%;
+}
+.card .data{
+    display: grid;
+    gap: 3px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    font-size: 1.5rem;
+    color: var(--white);
+    background-color: var(--secondary-color);
+    padding: 0 0 0 5px;
+} 
+.card .data .Extreno{
+    grid-area: 2/1;
+}
+.card .data .stars{
+    grid-area: 2/2;
+    text-align: end;
+}
+.card .data .categoryContainer{
+    display: flex;
+    justify-content: end;
+}
+.card .data .categoryContainer .category{
+    background-color: red;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    width: 80px;
+}
+.bienvenidos {
+    padding: 20px;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.3rem;
+}
+.bienvenidos h1{
+    text-transform: uppercase;
+    text-align: center;
+}
+.bienvenidos h1 span{
+    color: red;
+}
+/* estrenos */
+.estrenosDestacados{
+    border-bottom: 1px solid var(--whiteAndGray);
+    padding: 0 0 20px 0;
+}
+/* section pelis Disponibles */
+.pelisDisponibles{
+    border-bottom: 1px solid var(--whiteAndGray);
+}
+.header-pelis{
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.header-pelis h1{
+    border-left: 3px solid red;
+    padding: 0 0 0 10px;
+    font-size: 2rem;
+}
+.header-pelis .buttonsleft-right{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.header-pelis .buttonsleft-right span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    border-radius: 3px;
+    gap: 20px;
+    background-color: var(--secondary-color);
+    width: 60px;
+    height: 20px;
+}
+.header-pelis .buttonsleft-right span .fa-chevron-right, .fa-chevron-left{
+    font-size: 15px;
+    cursor: pointer;
+}
+.header-pelis .totalPelis{
+    display: flex;
+    gap: 5px;
+    padding: 0 0 0 13px;
+    font-size: 1.5rem;
+}
+.pelisDisponiblesTotals{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 10px 10px 10px;
+}
+.cardDisponibles{
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+.cardDisponibles .poster{
+    width: 100%;
+    height: 126px;
+}
+.cardDisponibles .poster img{
+    width: 100%;
+    height: 100%;
+}
+/* series */
+.seriesDestacadas{
+    border-bottom: 1px solid var(--whiteAndGray);
+    padding: 0 0 20px 0;
+}
+.seriesDestacadas .header-pelis h1{
+    border-left: 3px solid blue;
+}
+.seriesDestacadas .categoryContainerSeries{
+    display: flex;
+    justify-content: end;
+}
+.seriesDestacadas .categoryContainerSeries .categorySeries{
+    background-color: blue;
+    width: 80px;
+    text-align: center;
+    border: 2px;
+}
+.seriesDisponibles .header-pelis h1{
+    border-left: 3px solid blue;
+}
+@media (min-width: 425px){
+    .pelisDisponiblesTotals{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 750px){
+    .form{
+        align-items: flex-end;
+    }
+    .pelisDisponiblesTotals{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 1024px){
+    #main{
+        width: 90%;
+        margin: 0 auto;
+    }
+}

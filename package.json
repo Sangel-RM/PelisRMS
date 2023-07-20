@@ -1,0 +1,24 @@
+{
+  "name": "pelisrm",
+  "version": "1.0.0",
+  "description": "PelisRM FULL PAGA",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sangel-RM/PelisRM.git"
+  },
+  "keywords": [
+    "Pelis",
+    "API",
+    "Clases"
+  ],
+  "author": "Sangel RM <sangelrm10@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sangel-RM/PelisRM/issues"
+  },
+  "homepage": "https://github.com/Sangel-RM/PelisRM#readme"
+}
