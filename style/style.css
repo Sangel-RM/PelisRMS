@@ -112,14 +112,11 @@ body{
     top: 10px;
     left: 10px;
 }
-.none{
-    display: none;
-}
-.populares {
+.tendencias {
     width: 100%;
     margin: 0 0 20px 0;
 }
-.populares h1{
+.tendencias h1{
     font-size: 2rem;
     color: var(--white);
 }
@@ -159,6 +156,7 @@ body{
     color: var(--white);
     background-color: var(--secondary-color);
     padding: 0 0 0 5px;
+    overflow: hidden;
 } 
 .card .data .Extreno{
     grid-area: 2/1;
@@ -178,6 +176,37 @@ body{
     font-size: 1.5rem;
     width: 80px;
 }
+.card .dataSeriesDispo,
+.card .dataEstrenos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    height: 20%;
+    padding: 0 0 0 5px;
+}
+.card .dataEstrenos .titlePeli{
+    font-size: 1.3rem;
+}
+.cardSeries .ContainerStar_Category,
+.card .dataEstrenos .ContainerStar_Category{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+}
+.card .dataEstrenos .ContainerStar_Category .categoryContainer{
+    background-color: red;
+    text-align: center;
+    border-radius: 2px;
+    width: 80px;
+}
+.cardSeries .ContainerStar_Category .categoryContainerSeriesNew,
+.card .dataEstrenos .ContainerStar_Category .categoryContainerSeriesNew{
+    background-color: blue;
+    text-align: center;
+    border-radius: 2px;
+    width: 80px;
+}
 .bienvenidos {
     padding: 20px;
     background-color: var(--secondary-color);
@@ -185,6 +214,7 @@ body{
     flex-direction: column;
     gap: 10px;
     font-size: 1.3rem;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
 }
 .bienvenidos h1{
     text-transform: uppercase;
@@ -192,6 +222,45 @@ body{
 }
 .bienvenidos h1 span{
     color: red;
+}
+/* Generos */ 
+.generosMovies{
+    margin: 20px 0 20px 0;
+    padding: 10px 0;
+    background-color: var(--secondary-color);
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
+.generosMovies .scrollGeneros{
+    display: flex;
+    padding: 0 0 5px 0;
+    gap: 2px;
+    margin: 0 10px 0;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+}
+.generosMovies h1{
+    text-align: center;
+    padding: 0 0 10px 0;
+    font-size: 2rem;
+}
+.generosMovies .categoriesMovies div{
+    border: 1px solid var(--white);
+    font-weight: bold;
+    scroll-snap-type: mandatory;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
+.generosMovies .categoriesMovies p{
+    width: 90px;
+    height: 30px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.generosMovies .categoriesMovies p:hover{
+    background-color: var(--white);
+    color: var(--secondary-color);
 }
 /* estrenos */
 .estrenosDestacados{
@@ -242,22 +311,36 @@ body{
 .pelisDisponiblesTotals{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
     padding: 0 10px 10px 10px;
 }
 .cardDisponibles{
     width: 100%;
-    height: 100%;
-    padding: 5px;
+    height: 150px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
+.cardDisponibles .data{
+    background-color: var(--secondary-color);
+    height: 25%;
+    padding: 2px 0 0 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .cardDisponibles .poster{
     width: 100%;
-    height: 126px;
+    height: 75%;
 }
 .cardDisponibles .poster img{
     width: 100%;
     height: 100%;
 }
 /* series */
+.cardSeries .data .titleSerie{
+    font-size: 1.3rem;
+}
 .seriesDestacadas{
     border-bottom: 1px solid var(--whiteAndGray);
     padding: 0 0 20px 0;
@@ -278,9 +361,14 @@ body{
 .seriesDisponibles .header-pelis h1{
     border-left: 3px solid blue;
 }
+@media (min-width: 320px){
+    .cardDisponibles .data{
+        font-size: .9rem;
+    }
+}
 @media (min-width: 425px){
     .pelisDisponiblesTotals{
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 @media (min-width: 750px){
@@ -288,7 +376,10 @@ body{
         align-items: flex-end;
     }
     .pelisDisponiblesTotals{
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .cardDisponibles .data{
+        font-size: 1.1rem;
     }
 }
 @media (min-width: 1024px){
@@ -296,4 +387,15 @@ body{
         width: 90%;
         margin: 0 auto;
     }
+}
+@media (min-width: 1440px){
+    .pelisDisponiblesTotals{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+.none {
+    display: none;
+}
+#main .none{
+    display: none;
 }
