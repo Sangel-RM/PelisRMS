@@ -15,7 +15,7 @@
     border: none;
     text-decoration: none;
     text-transform: capitalize;
-    transition: 1s linear;
+    transition: .2s linear;
     color: var(--white);
 }
 *::-webkit-scrollbar {
