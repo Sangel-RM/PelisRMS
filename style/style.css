@@ -6,6 +6,8 @@
     --black: #000;
     --whiteAndGray: rgba(141, 141, 141, 0.886);
     --placehoulder: #7378c5;
+    --color-red: rgb(247, 64, 64);
+    --borderColor: #242424;
 }
 *{
     margin: 0;
@@ -17,6 +19,8 @@
     text-transform: capitalize;
     transition: .2s linear;
     color: var(--white);
+    object-fit: cover;
+    list-style: none;
 }
 *::-webkit-scrollbar {
     width: 8px;
@@ -33,7 +37,7 @@
     border-radius: 5px;
 }
 html,body{
-    height: 100vh;
+    height: 100%;
 }
 html{
     font-size: 62.5%;
@@ -41,13 +45,20 @@ html{
 body{
     background-color: var(--primary-color);
 }
+.HeaderContainer{
+    height: 60px;
+}
+/* header Mobile */
+.headerMobile{
+    height: 100%;
+}
 .containerHeader{
     width: 100%;
-    height: 50px;
+    height: 100%;
     display: flex;
     align-items: center;
     background-color: var(--secondary-color);
-    border-bottom: 1px solid var(--black);
+    border-bottom: 2px solid var(--black);
 }
 .menu{
     width: 20%;
@@ -77,19 +88,101 @@ body{
 .logo a h1 span{
     color: red;
 }
-.fa-bars, .fa1 , .fa-xmark{
-    font-size: 18px;
+.close-menu,
+.fa-bars, .fa1,
+.fa-xmark{
+    font-size: 20px;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .fa-xmark{
     color: red;
+}
+.Menu{
+    background-color: var(--secondary-color);
+    border: 1px solid var(--black);
+    border-top: 0;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    position: absolute;
+    border-radius: 0 0 5px 0;
+}
+.Menu .Contact h1,
+.Menu .moviesAndSeries h1,
+.Menu .ContainerCategory h1{
+    padding: 10px 0;
+    font-size: 2rem;
+}
+.Menu .moviesAndSeries ul,
+.Menu .ContainerCategory ul{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+}
+.Menu .moviesAndSeries ul li,
+.Menu .ContainerCategory ul li{
+    width: 100%;
+    height: 30px;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+}
+.Menu .moviesAndSeries ul li a,
+.Menu .ContainerCategory .CategoryMenu li a{
+    font-size: 1.5rem;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Menu .moviesAndSeries ul li a:hover,
+.Menu .ContainerCategory .CategoryMenu li a:hover{
+    background-color: var(--white);
+    color: var(--black);
+}
+.Menu .Contact{
+    height: 100%;
+}
+.Menu .Contact .containerContact{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Menu .Contact .containerContact h1{
+    font-size: 1.5rem;
+}
+.Menu .Contact ul{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.Menu .Contact ul li a i{
+    font-size: 25px;
+}
+.Menu .Contact ul li a i:hover{
+    color: var(--color-red);
 }
 .form{
     width: 100%;
     height: 40px;
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
+}
+.form1{
+    display: none;
 }
 .ContainerInput{
     width: 100%;
@@ -101,6 +194,7 @@ body{
     height: 100%;
     width: 100%;
     color: var(--black);
+    border: 1px solid var(--black);
 }
 .search::placeholder{
     font-size: 15px;
@@ -120,20 +214,28 @@ body{
     font-size: 2rem;
     color: var(--white);
 }
+.ContainerTheScrollBG{
+    background-color: var(--secondary-color);
+}
 .scroll {
     display: flex;
     gap: 10px;
+    scroll-behavior: smooth;
     margin: 0 10px 0;
+    padding: 10px 10px 0 10px;
+    border-radius: 1px;
     overflow-x: scroll;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
+}
+.scroll::-webkit-scrollbar{
+    display: none;
 }
 .card{
     display: flex;
     scroll-snap-align: center;
     flex-direction: column;
     min-width: 290px;
-    height: 200px;
     justify-content: space-between;
     border-radius: 2px;
     margin: 0 0 10px 0;
@@ -141,7 +243,7 @@ body{
 }
 .card .poster {
     width: 100%;
-    height: 80%;
+    height: 90%;
 }
 .card .poster img{
     width: 100%;
@@ -180,11 +282,12 @@ body{
 .card .dataEstrenos{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     background-color: var(--secondary-color);
     height: 20%;
-    padding: 0 0 0 5px;
+    padding: 5px 0 0 5px;
 }
+.card .dataEstrenos .titleSerie,
 .card .dataEstrenos .titlePeli{
     font-size: 1.3rem;
 }
@@ -192,6 +295,7 @@ body{
 .card .dataEstrenos .ContainerStar_Category{
     display: flex;
     justify-content: space-between;
+    height: 20px;
     font-size: 1.3rem;
 }
 .card .dataEstrenos .ContainerStar_Category .categoryContainer{
@@ -203,7 +307,9 @@ body{
 .cardSeries .ContainerStar_Category .categoryContainerSeriesNew,
 .card .dataEstrenos .ContainerStar_Category .categoryContainerSeriesNew{
     background-color: blue;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 2px;
     width: 80px;
 }
@@ -225,19 +331,20 @@ body{
 }
 /* Generos */ 
 .generosMovies{
-    margin: 20px 0 20px 0;
+    margin: 40px 0 20px 0;
     padding: 10px 0;
     background-color: var(--secondary-color);
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .generosMovies .scrollGeneros{
-    display: flex;
-    padding: 0 0 5px 0;
-    gap: 2px;
-    margin: 0 10px 0;
-    overflow-x: scroll;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+    gap: 10px;
+    width: 90%;
 }
 .generosMovies h1{
     text-align: center;
@@ -246,14 +353,15 @@ body{
 }
 .generosMovies .categoriesMovies div{
     border: 1px solid var(--white);
+    border-radius: 5px;
     font-weight: bold;
     scroll-snap-type: mandatory;
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
 }
 .generosMovies .categoriesMovies p{
-    width: 90px;
+    width: 100%;
     height: 30px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -272,7 +380,7 @@ body{
     border-bottom: 1px solid var(--whiteAndGray);
 }
 .header-pelis{
-    padding: 10px 10px 10px 10px;
+    padding: 20px 10px 20px 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -291,23 +399,34 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
     border-radius: 3px;
     gap: 20px;
-    background-color: var(--secondary-color);
     width: 60px;
     height: 20px;
 }
-.header-pelis .buttonsleft-right span .fa-chevron-right, .fa-chevron-left{
+.header-pelis .buttonsleft-right span .fa-chevron-right, 
+.header-pelis .buttonsleft-right span .fa-chevron-left{
     font-size: 15px;
     cursor: pointer;
+    background-color: var(--secondary-color);
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.header-pelis .buttonsleft-right span .fa-chevron-right:active,
+.header-pelis .buttonsleft-right span .fa-chevron-left:active{
+    background-color: red;
+}
+
 .header-pelis .totalPelis{
     display: flex;
     gap: 5px;
     padding: 0 0 0 13px;
     font-size: 1.5rem;
 }
+.SeriesDisponiblesTotals,
 .pelisDisponiblesTotals{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -322,7 +441,7 @@ body{
 }
 .cardDisponibles .data{
     background-color: var(--secondary-color);
-    height: 25%;
+    height: 15%;
     padding: 2px 0 0 2px;
     display: flex;
     flex-direction: column;
@@ -331,7 +450,14 @@ body{
 }
 .cardDisponibles .poster{
     width: 100%;
-    height: 75%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardDisponibles .poster a {
+    width: 100%;
+    height: 100%;
 }
 .cardDisponibles .poster img{
     width: 100%;
@@ -341,6 +467,7 @@ body{
 .cardSeries .data .titleSerie{
     font-size: 1.3rem;
 }
+.seriesDisponibles,
 .seriesDestacadas{
     border-bottom: 1px solid var(--whiteAndGray);
     padding: 0 0 20px 0;
@@ -358,8 +485,46 @@ body{
     text-align: center;
     border: 2px;
 }
+.seriesTotal .header-pelis h1,
 .seriesDisponibles .header-pelis h1{
     border-left: 3px solid blue;
+}
+footer{
+    border-top: 2px solid var(--black);
+}
+.footerContainer{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: var(--secondary-color);
+    box-shadow: 0px -2px 10px 0px rgba(0,0,0,0.75);
+}
+.footerContainer .Creditos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerContainer .Creditos p{
+    font-size: 1.5rem;
+}
+.footerContainer .Creditos p span{
+    color: var(--color-red);
+}
+.footerContainer .RedesSociales{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerContainer .RedesSociales ul{
+    display: flex;
+    gap: 10px;
+}
+.footerContainer .RedesSociales ul li a i{
+    font-size: 20px;
+}
+.footerContainer .RedesSociales ul li a i:hover{
+    color: var(--color-red);
 }
 @media (min-width: 320px){
     .cardDisponibles .data{
@@ -367,14 +532,13 @@ body{
     }
 }
 @media (min-width: 425px){
+    SeriesDisponiblesTotals,
     .pelisDisponiblesTotals{
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 @media (min-width: 750px){
-    .form{
-        align-items: flex-end;
-    }
+    .SeriesDisponiblesTotals,
     .pelisDisponiblesTotals{
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -387,10 +551,32 @@ body{
         width: 90%;
         margin: 0 auto;
     }
+    .scroll::-webkit-scrollbar{
+        display: block;
+    }
+    .cardDisponibles{
+        height: 200px;
+    }
+    .form{
+        width: 20%;
+        height: 50px;
+        right: 0;
+    }
+    .form .fa2{
+        top: 15px;
+        cursor: pointer;
+    }
+    .generosMovies .scrollGeneros{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }
 @media (min-width: 1440px){
+    .SeriesDisponiblesTotals,
     .pelisDisponiblesTotals{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    .generosMovies .scrollGeneros{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
 .none {

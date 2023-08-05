@@ -4,15 +4,11 @@ function navigator() {
     console.log({location});
     if(location.hash.startsWith("#trends")){
         TrendsePage()
-    }else if (location.hash.startsWith("#search=")) {
-        SearchPage()
-    }else if (location.hash.startsWith("#movie=")) {
-        MoviesPage()
-    }else if (location.hash.startsWith("#category=")) {
-        Categories()
-    }else{
+    } else {
         HomePage();
     }
+
+
 }
 function HomePage() {
     console.log("home!!");
@@ -28,4 +24,7 @@ function SearchPage() {
 }
 function TrendsePage() {
     console.log("trendens!!");
+}
+function Action() {
+    console.log("!Actions");
 }

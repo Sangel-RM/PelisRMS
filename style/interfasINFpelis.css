@@ -1,0 +1,363 @@
+:root{
+    --primary-color: #0f0f0f;
+    --secondary-color: #191919;
+    --white: #fff;
+    --black: #000;
+    --whiteAndGray: rgba(141, 141, 141, 0.886);
+    --placehoulder: #7378c5;
+    --color-red: rgb(247, 64, 64);
+    --borderColor: #242424;
+}
+.ContainerPeliINFMovie{
+    display: flex;
+}
+.container{
+    width: 75%;
+    height: 100%;
+}
+.shaders{
+    background-color: var(--secondary-color);
+    display: flex;
+    padding: 20px;
+    border-bottom: 3px solid var(--borderColor);
+}
+.shaders figure{
+    width: 200px;
+    height: 250px;
+}
+.shaders figure img{
+    width: 100%;
+    height: 100%;
+}
+.shaders .INFpelis{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 20px;
+}
+.shaders .TitleMOVIE{
+    font-size: 2.5rem;
+}
+.shaders .extras,
+.shaders .subGeneros{
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.6rem;
+}
+.shaders .subGeneros a{
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    font-weight: bold;
+}
+.shaders .subGeneros a:hover{
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+.shaders .bienvenida{
+    padding: 10px 0 0 0;
+    font-size: 1.6rem;
+}
+.shaders .Lang{
+    padding: 7px 0;
+}
+.shaders .Lang .lang{
+    padding: 5px 3px;
+    font-size: 1.6rem;
+}
+.ContenedorVideoINF{
+    width: 100%;
+    background-color: var(--primary-color);
+    font-size: 1.3rem;
+}
+.ContenedorVideoINF ul li img{
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+}
+.ContenedorVideoINF ul li i{
+    margin: 0 5px 0 0;
+    font-size: 15px;
+}
+.ContenedorVideoINF ul{
+    display: flex; 
+    height: 40px;
+    gap: 20px;
+    align-items: center;
+    padding: 0 0 0 10px;
+}
+.ContenedorVideoINF ul li span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenedorVideo{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6d6e70;
+    border-bottom: 3px solid var(--borderColor);
+}
+.INF{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid var(--borderColor);
+    font-size: 1.3rem;
+    padding: 0 10px;
+}
+.informacion span{
+    width: 100px;
+    height: 30px;
+    display: flex;
+    gap: 10px;
+    background-color: var(--color-red);
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+}
+.repartoContainer span{
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.sinopsis{
+    font-size: 1.5rem;
+    padding: 10px 10px 0 10px;
+    border-bottom: 3px solid var(--borderColor);
+}
+.sinopsis h1{
+    padding: 0 0 10px 0;
+}
+.sinopsis .overview,
+.sinopsis .related{
+    padding: 0 0 10px 0;
+}
+.sinopsis .overview{
+    border-bottom: 1px solid var(--borderColor);
+}
+.VoteAverage,
+.titleOriginal{
+    padding: 10px;
+    border-bottom: 1px solid var(--borderColor);
+}
+.VoteAverageTotalTMDB{
+    border: none;
+}
+.VoteAverage .ContainerTitle-Vote,
+.titleOriginal .ContainerTitle-Vote{
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.VoteAverage .ContainerTitle-Vote div,
+.titleOriginal .ContainerTitle-Vote div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.VoteAverage .ContainerTitle-Vote div .totalCalidadStars{
+    width: 50px;
+    display: flex;
+    height: 25px;
+    background-color: var(--color-red);
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+.SocialWeb{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    border-bottom: 3px solid var(--borderColor);
+}
+.SocialWeb span:first-child{
+    padding: 0 10px 0 0;
+    border-right: 1px solid;
+}
+.SocialWeb .SocialInstagram,
+.SocialWeb .SocialTwitter,
+.SocialWeb .SocialFace{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    gap: 5px;
+    width: 70px;
+    height: 20px;
+}
+.SocialWeb .SocialFace{
+    background-image: linear-gradient(to right bottom, #0019bb, #0034c9, #004ad6, #005ee1, #1271eb);
+}
+.SocialWeb .SocialTwitter{
+    background-image: linear-gradient(to right bottom, #007abb, #006fcf, #0061df, #004ee9, #122feb);
+}
+.SocialWeb .SocialInstagram{
+    background-image: linear-gradient(to right bottom, #37052a, #58004e, #75007a, #8b00af, #9612eb);
+}
+.TitulosSimilares h1{
+    padding: 10px 0 0 10px;
+}
+.TitulosSimilares .scroll {
+    display: flex;
+    gap: 10px;
+    scroll-behavior: smooth;
+    margin: 0 10px 0;
+    padding: 10px 10px 0 10px;
+    border-radius: 1px;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+}
+.TitulosSimilares .scroll::-webkit-scrollbar {
+    display: none;
+}
+.TitulosSimilares .scroll .cardTitleSimilares{
+    display: flex;
+    scroll-snap-align: center;
+    flex-direction: column;
+    min-width: 150px;
+    justify-content: space-between;
+    border-radius: 2px;
+    margin: 0 0 10px 0;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
+.cardTitleSimilares .poster {
+    width: 100%;
+    height: 150px;
+}
+.cardTitleSimilares .poster img{
+    width: 100%;
+    height: 100%;
+}
+.cardTitleSimilares{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px 0 5px;
+}
+.cardTitleSimilares h3{
+    text-align: center;
+}
+.cardTitleSimilares .data{
+    padding: 5px;
+}
+.containerGenerosAniosMASpelis{
+    padding: 20px;
+    width: 25%;
+    background-color: var(--secondary-color);
+    font-size: 1.5rem;
+    border-left: 3px solid var(--borderColor);
+}
+.containerGenerosAniosMASpelis h1{
+    padding: 0 0 10px 0;
+}
+.cuadrilla{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+.cuadrilla div{
+    border-bottom: 2px solid var(--borderColor);
+    background-color: var(--primary-color);
+    font-weight: bold;
+}
+.cuadrilla div a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+.cuadrilla div a:hover{
+    color: black;
+    background-color: var(--white);
+}
+.titleAnios{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.Anios{
+    height: 276px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    overflow-y: scroll;
+}
+.Anios::-webkit-scrollbar{
+    width: 5px;
+}
+.Anios div{
+    background-color: var(--primary-color);
+    height: 35px;
+    border-radius: 2px;
+}
+.Anios div a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.Anios div a:hover{
+    background-color: var(--color-red);
+}
+.titleMasDestacadas{
+    margin: 20px 0 10px 0;
+}
+.pelisDisponiblesMasDestacadas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 0 10px 10px 10px;
+}
+.cardDisponibles{
+    width: 100%;
+    height: 130px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
+.cardDisponibles .data{
+    background-color: var(--secondary-color);
+    height: 15%;
+    padding: 2px 0 0 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+}
+.cardDisponibles .poster{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardDisponibles .poster a {
+    width: 100%;
+    height: 100%;
+}
+.cardDisponibles .poster img{
+    width: 100%;
+    height: 100%;
+}
+.ContainerPeliINFMovie .ContainerTheScrollBG{
+    background-color: transparent;
+}

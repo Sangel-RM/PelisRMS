@@ -1,0 +1,84 @@
+:root{
+    --primary-color: #0f0f0f;
+    --secondary-color: #191919;
+    --white: #fff;
+    --black: #000;
+    --whiteAndGray: rgba(141, 141, 141, 0.886);
+    --placehoulder: #7378c5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+    color: var(--white);
+    object-fit: cover;
+    list-style: none;
+}
+.Menu{
+    background-color: var(--secondary-color);
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+}
+.Menu .HomeContainer ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Menu .HomeContainer ul li{
+    font-size: 20px;
+}
+.Menu .HomeContainer ul li a:hover{
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--white);
+}
+.Menu .Contact h1,
+.Menu .moviesAndSeries h1,
+.Menu .ContainerCategory h1{
+    padding: 10px 0;
+}
+.Menu .moviesAndSeries ul,
+.Menu .ContainerCategory ul{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+}
+.Menu .moviesAndSeries ul li,
+.Menu .ContainerCategory ul li{
+    text-align: center;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+.Menu .Contact{
+    height: 100%;
+}
+.Menu .Contact .containerContact{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Menu .Contact .containerContact h1{
+    font-size: 1rem;
+}
+.Menu .Contact ul{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.Menu .Contact ul li a i{
+    font-size: 25px;
+}
+.Menu .Contact ul li a i:hover{
+    color: red;
+}
