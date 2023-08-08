@@ -4,7 +4,6 @@ const $Selector = (Class) => {
 const $SelectorAll = (Class) =>{
     return document.querySelectorAll(Class);
 }
-
 // Header 
 // Header Mobile
 const HeaderMobile = $Selector(".headerMobile");
@@ -15,7 +14,7 @@ const closedInputHeader = $Selector(".closed-search");
 const formInputSearchPelis = document.querySelector(".form");
 
 // header Section Menu 
-const categoryMenu = $Selector(".CategoryMenu");
+const categoryMenu = $SelectorAll(".insertCategory");
 const open_menu = $Selector(".open-menu");
 const close_menu = $Selector(".close-menu");
 const menu = $Selector(".Menu");
@@ -173,3 +172,28 @@ const nodo_scrollsButtons = $SelectorAll(".scrollersbuttons");
 if(screen.width >= 1024){
     buttons_left_right.forEach(item => item.classList.remove("none"));
 }
+
+// seleccionando la sección cuando uno valla abrir una pelicula
+const pelisINFMOVIE = $Selector(".ContainerPeliINFMovie");
+const leta = pelisINFMOVIE.classList;
+console.log(leta);
+
+// seleccionando las secciones
+
+const SeccionBienvenida = $Selector(".bienvenidos");
+const SeccionTendencias = $Selector(".tendencias");
+const SeccionEstrenosPelisDestacados = $Selector(".estrenosDestacados");
+const SeccionPelisDisponibles = $Selector(".pelisDisponibles");
+const SeccionSeriesDestacadas = $Selector(".seriesDestacadas");
+const SeccionSeriesDisponibles = $Selector(".seriesDisponibles");
+const SeccionSeriesTotal = $Selector(".seriesTotal");
+const SeccionContainerPeliINFMovie = $Selector(".ContainerPeliINFMovie");
+const PageGENEROS_PELIS_SERIES = $Selector(".totalPelis-Serie-generos-Search");
+
+// Las peliculas mas destacadas 
+const PeliculasMasDestacadas = $Selector(".pelisDisponiblesMasDestacadas");
+// page total Generos search
+// seccion Cuadrilla Pelis Genres
+const SeccionCuadrillaPelis_Series_GenerosFilter = $Selector(".cuadrillaPelis");
+// Title
+const titleGeneroInsert = $Selector(".title-GENEROS-PELI-SERIE");

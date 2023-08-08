@@ -1,0 +1,225 @@
+/* font-family: 'Roboto Condensed', sans-serif; */
+:root{
+    --primary-color: #0f0f0f;
+    --secondary-color: #191919;
+    --white: #fff;
+    --black: #000;
+    --whiteAndGray: rgba(141, 141, 141, 0.886);
+    --placehoulder: #7378c5;
+    --color-red: rgb(247, 64, 64);
+    --borderColor: #242424;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+    color: var(--white);
+    object-fit: cover;
+    list-style: none;
+}
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--white);
+    border: 1px solid var(--secondary-color);
+    border-radius: 50px;
+}
+*::-webkit-scrollbar-track {
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+html,body{
+    height: 100%;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    background-color: var(--primary-color);
+}
+.Page-PEliS-SERIES{
+    display: flex;
+}
+.ContenedorTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 10px 0;
+}
+.Page-PEliS-SERIES .title-GENEROS-PELI-SERIE{
+    text-align: center;
+    font-size: 3rem;
+    padding: 0 20px;
+}
+.ContenedorTitle .raya{
+    width: 100%;
+    height: 3px;
+    background-color: var(--whiteAndGray);
+}
+.Header-Recientemente{
+    margin: 0 0 10px 0;
+    padding: 0 0 0 10px;
+    font-size: 1.8rem;
+    border-left: 3px solid var(--color-red);
+}
+.totalPELIS-SERIES-GENEROS{
+    width: 100%;
+    padding: 20px;
+}
+.cuadrillaPelis{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.cardPELIS-SERIES-SEARCH{
+    height: 200px;
+}
+
+
+
+
+.TitulosSimilares h1{
+    padding: 10px 0 0 10px;
+}
+.TitulosSimilares .scroll {
+    display: flex;
+    gap: 10px;
+    scroll-behavior: smooth;
+    margin: 0 10px 0;
+    padding: 10px 10px 0 10px;
+    border-radius: 1px;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+}
+.TitulosSimilares .scroll::-webkit-scrollbar {
+    display: none;
+}
+.TitulosSimilares .scroll .cardTitleSimilares{
+    display: flex;
+    scroll-snap-align: center;
+    flex-direction: column;
+    min-width: 150px;
+    justify-content: space-between;
+    border-radius: 2px;
+    margin: 0 0 10px 0;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
+.cardTitleSimilares .poster {
+    width: 100%;
+    height: 150px;
+}
+.cardTitleSimilares .poster img{
+    width: 100%;
+    height: 100%;
+}
+.cardTitleSimilares{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px 0 5px;
+}
+.cardTitleSimilares h3{
+    text-align: center;
+}
+.cardTitleSimilares .data{
+    padding: 5px;
+}
+.containerGenerosAniosMASpelis{
+    padding: 20px;
+    width: 30%;
+    background-color: var(--secondary-color);
+    font-size: 1.5rem;
+    border-left: 3px solid var(--borderColor);
+}
+.containerGenerosAniosMASpelis h1{
+    padding: 0 0 10px 0;
+}
+.cuadrilla{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+.cuadrilla li{
+    border-bottom: 2px solid var(--borderColor);
+    background-color: var(--primary-color);
+    font-weight: bold;
+}
+.cuadrilla li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+.cuadrilla li a:hover{
+    color: black;
+    background-color: var(--white);
+}
+.titleAnios{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.Anios{
+    height: 276px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    overflow-y: scroll;
+}
+.Anios::-webkit-scrollbar{
+    width: 5px;
+}
+.Anios div{
+    background-color: var(--primary-color);
+    height: 35px;
+    border-radius: 2px;
+}
+.Anios div a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.Anios div a:hover{
+    background-color: var(--color-red);
+}
+.titleMasDestacadas{
+    margin: 20px 0 10px 0;
+}
+.pelisDisponiblesMasDestacadas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 0 10px 10px 10px;
+}
+
+@media(min-width: 320px){
+    .containerGenerosAniosMASpelis{
+        display: none;
+    }
+}
+@media(min-width: 700px){
+    .cuadrillaPelis{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+@media(min-width: 1000px){
+    .containerGenerosAniosMASpelis{
+        display: block;
+    }
+    .cuadrillaPelis{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
