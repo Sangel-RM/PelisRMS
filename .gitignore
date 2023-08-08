@@ -131,7 +131,6 @@ dist
 
 
 # secrets.js (API-KEY)
-src/secrets.js
 bower_components
 node_modules
 # images 
