@@ -36,14 +36,16 @@
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
 }
-html,body{
-    height: 100vh;
-}
 html{
     font-size: 62.5%;
 }
+html, body{
+    min-height: 100vh;
+}
 body{
     background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
 }
 .HeaderContainer{
     height: 60px;
@@ -499,6 +501,7 @@ body{
 }
 footer{
     border-top: 2px solid var(--black);
+    margin-top: auto;
 }
 .footerContainer{
     height: 50px;

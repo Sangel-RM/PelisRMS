@@ -30,7 +30,7 @@ getPopularMovies();
 async function getNowMovies(){
     const {data} = await api(`${nowPlayingMovies}`);
     const pelisDispo = data.results;
-    console.log("pelisDispo", pelisDispo);
+    // console.log("pelisDispo", pelisDispo);
     CreateMoviesNormal(pelisDispo, pelisDisponiblesTotals);
 }
 getNowMovies();
@@ -51,7 +51,7 @@ getTvSeriesDisponibles();
 async function getTvSeriesDisponiblesTotals(){
     const {data} = await api(tvSeriesTotals);
     const Series_data = data.results;
-    console.log("Series Data ", Series_data);
+    // console.log("Series Data ", Series_data);
     CreateSeriesNormal(Series_data, seriesDisponiblestotals)
 }
 getTvSeriesDisponiblesTotals();
@@ -63,8 +63,18 @@ async function getTrendingMoviesFilter(id){
         }
     })
     const pelisTendencias = data.results;
-    console.log("pelisTendenciasfilter", pelisTendencias);
+    // console.log("pelisTendenciasfilter", pelisTendencias);
     CreateMoviesNormal(pelisTendencias,SeccionCuadrillaPelis_Series_GenerosFilter)
+}
+async function getMovieBySearch(query){
+    const {data} = await api(`${SearchMovieQuery}`,{
+        params: {
+            query,
+        }
+    })
+    const Movies = data.results;
+    console.log("getMovieBySearch", Movies);
+    CreateMoviesNormal(Movies, SeccionCuadrillaPelis_Series_GenerosFilter)
 }
 
 // Utils

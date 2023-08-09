@@ -11,7 +11,11 @@ const HeaderMobile = $Selector(".headerMobile");
 const HeaderContainer = $Selector(".HeaderContainer");
 const openInputHeader = $Selector(".open-search");
 const closedInputHeader = $Selector(".closed-search");
-const formInputSearchPelis = document.querySelector(".form");
+
+// Buscador pelis Lupa
+const formInputSearchPelis = $Selector(".form");
+const searchInput = $Selector(".search");
+const SearchMOVIELUPA = $Selector(".SearchMovie");
 
 // header Section Menu 
 const categoryMenu = $SelectorAll(".insertCategory");
@@ -20,7 +24,6 @@ const close_menu = $Selector(".close-menu");
 const menu = $Selector(".Menu");
 
 openInputHeader.addEventListener("click", () => {
-    console.log("1");
     // cerrando la lupa y abriendo la X
     if(openInputHeader){
         openInputHeader.classList.add("none");
@@ -195,5 +198,8 @@ const PeliculasMasDestacadas = $Selector(".pelisDisponiblesMasDestacadas");
 // page total Generos search
 // seccion Cuadrilla Pelis Genres
 const SeccionCuadrillaPelis_Series_GenerosFilter = $Selector(".cuadrillaPelis");
+
 // Title
 const titleGeneroInsert = $Selector(".title-GENEROS-PELI-SERIE");
+const HeaderRecientementeTitle = $Selector(".Header-Recientemente");
+
