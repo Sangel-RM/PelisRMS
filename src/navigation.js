@@ -47,6 +47,12 @@ function MoviesPage() {
         PageGENEROS_PELIS_SERIES.classList.add("none");
         SeccionContainerPeliINFMovie.classList.remove("none");
         window.scroll(0,0);
+
+        const [_, name_id_data] = location.hash.split("=");
+        const [id_name, movie_id] = name_id_data.split("-");
+
+        getMovieByID(movie_id);
+        // getPopularMoviesDestacadas()
 }
 function CategoryPage() {
     console.log("Categorias!!");

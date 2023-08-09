@@ -51,7 +51,6 @@ getTvSeriesDisponibles();
 async function getTvSeriesDisponiblesTotals(){
     const {data} = await api(tvSeriesTotals);
     const Series_data = data.results;
-    // console.log("Series Data ", Series_data);
     CreateSeriesNormal(Series_data, seriesDisponiblestotals)
 }
 getTvSeriesDisponiblesTotals();
@@ -73,17 +72,27 @@ async function getMovieBySearch(query){
         }
     })
     const Movies = data.results;
-    console.log("getMovieBySearch", Movies);
     CreateMoviesNormal(Movies, SeccionCuadrillaPelis_Series_GenerosFilter)
 }
-
+async function getMovieByID(id){
+    const { data: Movie} = await api(`${SearchMoviID}${id}`,{
+    })
+    console.log(Movie);
+    CargarPeliAndSerieINF(Movie);
+}
+async function getPopularMoviesDestacadas(){
+    const {data} = await api(`${popularMovies}`);
+    // console.log("popular" ,data);
+    const pelisDestacadas = data.results;
+    CreateMoviesNormal(pelisDestacadas, PeliculasMasDestacadas)
+}
 // Utils
 function CreateMoviesWhitPrint(Movies,Container){
     Container.innerHTML = "";
     let view = `${Movies.map(item => `
                     <article class="card">
                             <figure class="poster">
-                                <a href="#Movie=${item.title}">
+                                <a href="#Movie=${item.title}-${item.id}">
                                     <img id="${item.title}" src="${PhotosMovies}${item.poster_path}" alt="a">
                                 </a>
                             </figure>
@@ -100,7 +109,7 @@ function CreateSeriesWhitPrint(Movies,Container){
     let view = `${Movies.map(item => `
                     <article class="card">
                             <figure class="poster">
-                                <a href="#Movie=${item.name}">
+                                <a href="#Movie=${item.name}-${item.id}">
                                     <img src="${PhotosMovies}${item.poster_path}" alt="a">
                                 </a>
                             </figure>
@@ -117,7 +126,7 @@ function CreateMoviesNormal(Movies,Container){
     let view = `${Movies.map(item => `
                         <article class="cardDisponibles">
                             <figure class="poster">
-                                <a href="#Movie=${item.title}">
+                                <a href="#Movie=${item.title}-${item.id}">
                                     <img src="${PhotosMovies}${item.poster_path}" alt="a">
                                 </a>
                             </figure>
@@ -132,7 +141,7 @@ function CreateSeriesNormal(Movies,Container){
     let view = `${Movies.map(item => `
                         <article class="cardDisponibles">
                             <figure class="poster">
-                                <a href="#Movie=${item.title}">
+                                <a href="#Movie=${item.title}-${item.id}">
                                     <img src="${PhotosMovies}${item.poster_path}" alt="a">
                                 </a>
                             </figure>
@@ -142,7 +151,38 @@ function CreateSeriesNormal(Movies,Container){
                         </article>`).join("")}`;
 Container.innerHTML = view;
 }
-
+// function CreateMoviesNormal(Movies,Container){
+//     Container.innerHTML = "";
+//     let view = [];
+//     for(i = 0; i){
+    // }
+    // let view = `${Movies.map(item => `
+    //                     <article class="cardDisponibles">
+    //                         <figure class="poster">
+    //                             <a href="#Movie=${item.title}-${item.id}">
+    //                                 <img src="${PhotosMovies}${item.poster_path}" alt="a">
+    //                             </a>
+    //                         </figure>
+    //                         <div class="data">
+    //                             <h3 class="titlePeli">${item.title}</h3>
+    //                         </div>
+    //                     </article>`).join("")}`;
+// Container.innerHTML = view;
+// }
+function CargarPeliAndSerieINF(Movie){
+    titlePeliINF.innerText = Movie.title;
+    insertPosterPeli.src = `${PhotosMovies}${Movie.poster_path}`;
+    Extras.innerHTML = `<span>${Movie.release_date}</span><span>${Movie.spoken_languages[0].english_name}</span><span>${Movie.runtime} Min.</span>`;
+    let renges = `${Movie.genres.map(item => `<a href="#Category=${item.id}-${item.name}">${item.name}</a>`).join("")}`;
+    subGeneros.innerHTML = renges;
+    bienvenida.innerHTML = `<p>Estás por Ver ${Movie.title} Película Online ✅ Contamos con más Películas Gratis en Español</p>`;
+    lang.innerText = `${Movie.spoken_languages[0].name}`;
+    related.innerText = `RePelis24 » Estás viendo ${Movie.title} [Película Completa, Gratis], Película disponible en Audio Español, Latino o Subtitulada, también contamos con películas estrenadas del cine. película para ver online y descargar del Año 2023. ${Movie.title} en Calidad (CINE) Completa.`;
+    overview.innerText = Movie.overview;
+    title_original_name.innerText = Movie.original_title;
+    totalStarAverage.innerText = `🌟${Movie.vote_average}`;
+    totalCountVotosAverage.innerText = `Votos: ${Movie.vote_count}`;
+}
 function CreateCategories(categories, Container){
     let view = `${categories.map(item => `
     <li><a href="#Category=${item.id}-${item.name}">${item.name}</a></li>

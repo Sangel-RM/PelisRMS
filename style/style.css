@@ -446,13 +446,14 @@ body{
 }
 .cardDisponibles{
     width: 100%;
+    height: 100%;
     border-radius: 2px;
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
 }
 .cardDisponibles .data{
     background-color: var(--secondary-color);
     padding: 2px 0 0 2px;
-    height: 10%;
+    height: 15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -460,7 +461,7 @@ body{
 }
 .cardDisponibles .poster{
     width: 100%;
-    height: 90%;
+    height: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -539,11 +540,14 @@ footer{
 }
 @media (min-width: 320px){
     .cardDisponibles .data{
-        font-size: .9rem;
+        font-size: .7rem;
     }
     .SeriesDisponiblesTotals,
     .pelisDisponiblesTotals{
         grid-template-columns: 1fr 1fr 1fr;
+    }
+    .header-pelis .buttonsleft-right{
+        display: none;
     }
 }
 @media (min-width: 425px){
@@ -551,10 +555,29 @@ footer{
     .pelisDisponiblesTotals{
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-}
-@media (min-width: 750px){
     .cardDisponibles .data{
-        font-size: 1.1rem;
+        font-size: .8rem;
+    }
+}
+/* @media (min-width: 500px){
+    .cardDisponibles .data{
+        font-size: .9rem;
+        height: 10%;
+    }
+    .cardDisponibles .poster{
+        height: 90%;
+    }
+} */
+@media (min-width: 700px){
+    .cardDisponibles .data{
+        font-size: 1rem;
+    }
+    .cardDisponibles .data{
+        font-size: .9rem;
+        height: 10%;
+    }
+    .cardDisponibles .poster{
+        height: 90%;
     }
 }
 @media (min-width: 1024px){
@@ -580,6 +603,9 @@ footer{
     .SeriesDisponiblesTotals,
     .pelisDisponiblesTotals{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    .header-pelis .buttonsleft-right{
+        display: flex;
     }
 }
 @media (min-width: 1440px){

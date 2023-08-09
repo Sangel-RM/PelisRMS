@@ -76,10 +76,6 @@ close_menu.addEventListener("click", () => {
 // Tendencias
 const PelisTendencias = $Selector(".PelisTendencias");
 
-// botones Para mover las Pelis o Series
-const buttons_left_right = $SelectorAll(".buttonsleft-right");
-buttons_left_right.forEach(item => item.classList.add("none"));
-
 // categories Movies 
 const totalsCategories = $Selector(".totalsCategories");
 
@@ -171,11 +167,6 @@ botonesIzquierda.forEach((item, i)=> item.addEventListener("click", () => {
 // seccion scrollsButtons
 const nodo_scrollsButtons = $SelectorAll(".scrollersbuttons");
 
-// quitando la clase none para las vista de desktop
-if(screen.width >= 1024){
-    buttons_left_right.forEach(item => item.classList.remove("none"));
-}
-
 // seleccionando la sección cuando uno valla abrir una pelicula
 const pelisINFMOVIE = $Selector(".ContainerPeliINFMovie");
 const leta = pelisINFMOVIE.classList;
@@ -202,4 +193,20 @@ const SeccionCuadrillaPelis_Series_GenerosFilter = $Selector(".cuadrillaPelis");
 // Title
 const titleGeneroInsert = $Selector(".title-GENEROS-PELI-SERIE");
 const HeaderRecientementeTitle = $Selector(".Header-Recientemente");
+
+// cargar datos en la parte de inf de un video
+const titlePeliINF = $Selector(".TitleMOVIE");
+const insertPosterPeli = $Selector(".InsertPosterPeli");
+const Extras = $Selector(".extras");
+const subGeneros = $Selector(".subGeneros");
+const bienvenida = $Selector(".bienvenida");
+const lang = $Selector(".lang");
+
+const related = $Selector(".related");
+const overview = $Selector(".overview");
+const title_original_name = $Selector(".TitleMOVIE_ORIGINAL");
+
+const totalStarAverage = $Selector(".totalStarsAverage");
+const totalCountVotosAverage = $Selector(".totalCountVotosAverage");
+
 

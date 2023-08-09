@@ -8,7 +8,6 @@
 .shaders{
     background-color: var(--secondary-color);
     display: flex;
-    padding: 20px;
     border-bottom: 3px solid var(--borderColor);
 }
 .shaders figure{
@@ -26,18 +25,27 @@
 }
 .shaders .TitleMOVIE{
     font-size: 2.5rem;
+    padding-left: 10px;
+    border-left: 3px solid red;
 }
-.shaders .extras,
-.shaders .subGeneros{
+.shaders .subGeneros,
+.shaders .extras{
     padding: 5px 0;
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+}
+.shaders .subGeneros{
+    padding: 5px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.2rem;
 }
 .shaders .subGeneros a{
-    width: 80px;
-    height: 30px;
+    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,10 +167,15 @@
     justify-content: center;
     gap: 10px;
 }
+.TitleMOVIE_ORIGINAL{
+    background: var(--color-red);
+    padding: 5px;
+    border-radius: 2px;
+}
 .VoteAverage .ContainerTitle-Vote div .totalCalidadStars{
-    width: 50px;
     display: flex;
     height: 25px;
+    padding: 0 5px;
     background-color: var(--color-red);
     align-items: center;
     justify-content: center;
@@ -374,6 +387,9 @@
         max-width: 100px;
         max-height: 150px;
     }
+    .shaders{
+        padding: 10px;
+    }
     .containerGenerosAniosMASpelis{
         display: none;
     }
@@ -389,13 +405,32 @@
     .cardPELIS-SERIES-SEARCH .data{
         font-size: .8rem;
     }
+    .shaders .subGeneros{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .shaders .subGeneros,
+    .shaders .extras{
+        font-size: 1.4rem;
+    }
 }
-@media(min-width: 700px){
+@media(min-width: 500px){
     .cuadrillaPelis{
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+}
+@media(min-width: 700px){
     .cardPELIS-SERIES-SEARCH .data{
         font-size: .9rem;
+    }
+    .shaders{
+        padding: 20px;
+    }
+    .shaders .subGeneros{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .shaders .subGeneros,
+    .shaders .extras{
+        font-size: 1.5rem;
     }
 }
 @media(min-width: 760px){
@@ -421,9 +456,16 @@
     .cuadrillaPelis{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+    .shaders .subGeneros,
+    .shaders .extras{
+        font-size: 1.6rem;
+    }
 }
 @media(min-width: 1200px){
     .contenedorVideo{
         max-height: 550px;
+    }
+    .shaders .subGeneros{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
