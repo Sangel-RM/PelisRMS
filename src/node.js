@@ -47,7 +47,6 @@ closedInputHeader.addEventListener("click", () => {
         openInputHeader.classList.remove("none");
     }
     const formInputSearchPelis = document.querySelector(".form")
-    console.log("1");
     if(formInputSearchPelis){  
        formInputSearchPelis.classList.add("none");
     }
@@ -95,7 +94,7 @@ const seriesDispo = $Selector(".seriesDisponiblesCard");
 const seriesDisponiblestotals = $Selector(".SeriesDisponiblesTotals");
 
 // manupulación scroll 
-const pelisScrolls = $SelectorAll(".scroll");
+const pelisScrolls = $SelectorAll(".scroll1");
 const anchoCard = $Selector(".card").clientWidth;
 pelisScrolls.forEach(item => item.scroll(anchoCard, 0))
 
@@ -103,26 +102,17 @@ const botonesIzquierda = $SelectorAll(".fa-chevron-left");
 const botonesDerecha = $SelectorAll(".fa-chevron-right");
 
 console.log({pelisScrolls, anchoCard,botonesDerecha, botonesIzquierda});
-let indexintervarl = 0;
 setInterval(()=>{
-indexintervarl++;
     pelisScrolls.forEach((item, i)=> {
         if(screen.width <= 1440){
             if(item.scrollLeft < 4714){
                 item.scroll(item.scrollLeft + anchoCard, 0);
-                if (indexintervarl == 17) {
-                    indexintervarl = 0;
-                }
-                if(i == 0){
-                    // console.log(item.scrollLeft, indexintervarl);
-                }
             }else{
                 item.scroll(0, 0);
             }
         }else{
             if(item.scrollLeft < 3713){
                 item.scroll(item.scrollLeft + anchoCard, 0);
-                // console.log(item.scrollLeft);
             }else{
                 item.scroll(0, 0);
             }
@@ -209,4 +199,44 @@ const title_original_name = $Selector(".TitleMOVIE_ORIGINAL");
 const totalStarAverage = $Selector(".totalStarsAverage");
 const totalCountVotosAverage = $Selector(".totalCountVotosAverage");
 
-
+// insertando pelis TitulosSimilaresInsert
+const TitulosSimilaresInsert = $Selector(".TitulosSimilaresInsert");
+setInterval(()=>{
+    if(screen.width >= 1440){
+        if(TitulosSimilaresInsert.scrollLeft < 2163){
+            TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
+        }else{
+            TitulosSimilaresInsert.scroll(0,0);
+        }
+    }else if(screen.width >= 1024){
+        if(TitulosSimilaresInsert.scrollLeft < 2384){
+            TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
+        }else{
+            TitulosSimilaresInsert.scroll(0,0);
+        }
+    }else if(screen.width >= 768){
+        if(TitulosSimilaresInsert.scrollLeft < 2367){
+            TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
+        }else{
+            TitulosSimilaresInsert.scroll(0,0);
+        }
+    }else if(screen.width >= 425){
+        if(TitulosSimilaresInsert.scrollLeft < 2710){
+            TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
+        }else{
+            TitulosSimilaresInsert.scroll(0,0);
+        }
+    }else if(screen.width >= 375){
+        if(TitulosSimilaresInsert.scrollLeft < 2760){
+            TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
+        }else{
+            TitulosSimilaresInsert.scroll(0,0);
+        }
+    }else if(screen.width >= 320){
+        if(TitulosSimilaresInsert.scrollLeft < 2815){
+            TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
+        }else{
+            TitulosSimilaresInsert.scroll(0,0);
+        }
+    }
+},3000);

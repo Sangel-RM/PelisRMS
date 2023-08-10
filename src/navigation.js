@@ -11,7 +11,6 @@ searchInput.addEventListener("keyup", (event) => {
     }
 })
 function navigator() {
-    console.log({location});
     if(location.hash.startsWith("#Home")){
         HomePage();
     }else if(location.hash.startsWith("#Movie=")){
@@ -23,7 +22,6 @@ function navigator() {
     }
 }
 function HomePage() {
-    console.log("home!!");
             SeccionTendencias.classList.remove("none")
             SeccionBienvenida.classList.remove("none")
             SeccionEstrenosPelisDestacados.classList.remove("none")
@@ -36,7 +34,6 @@ function HomePage() {
             window.scroll(0,0);
 }
 function MoviesPage() {
-    console.log("Movie!!");
         SeccionBienvenida.classList.add("none");
         SeccionTendencias.classList.add("none");
         SeccionEstrenosPelisDestacados.classList.add("none");
@@ -52,10 +49,11 @@ function MoviesPage() {
         const [id_name, movie_id] = name_id_data.split("-");
 
         getMovieByID(movie_id);
-        // getPopularMoviesDestacadas()
+        getPopularMoviesDestacadas();
+        TitulosSimilaresInsert.scroll(0,0);
+        getMovieSimilarID(movie_id);
 }
 function CategoryPage() {
-    console.log("Categorias!!");
         SeccionBienvenida.classList.add("none");
         SeccionTendencias.classList.add("none");
         SeccionEstrenosPelisDestacados.classList.add("none");
@@ -78,7 +76,6 @@ function CategoryPage() {
         window.scroll(0,0);
 }
 function SearchPage() {
-        console.log("Search!!");
         SeccionBienvenida.classList.add("none");
             SeccionTendencias.classList.add("none");
             SeccionEstrenosPelisDestacados.classList.add("none");
@@ -97,7 +94,4 @@ function SearchPage() {
             // ['#search', 'buscador'];
             const [_, query] = location.hash.split("=");
         getMovieBySearch(query);
-}
-function TrendsePage() {
-    console.log("trendens!!");
 }

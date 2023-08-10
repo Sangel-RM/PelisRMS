@@ -10,7 +10,6 @@ const api = axios.create({
 async function getTrendingMovies (){
     const {data} = await api(`${MoviesTrending}`)
     const pelisTendencias = data.results;
-    // console.log("pelisTendencias", pelisTendencias);
     CreateMoviesWhitPrint(pelisTendencias, PelisTendencias);
 }
 getTrendingMovies();
@@ -22,7 +21,6 @@ async function listaMovies(){
 listaMovies();
 async function getPopularMovies(){
     const {data} = await api(`${popularMovies}`);
-    // console.log("popular" ,data);
     const pelisDestacadas = data.results;
     CreateMoviesWhitPrint(pelisDestacadas, estrenosDestacadosHD)
 }
@@ -30,7 +28,6 @@ getPopularMovies();
 async function getNowMovies(){
     const {data} = await api(`${nowPlayingMovies}`);
     const pelisDispo = data.results;
-    // console.log("pelisDispo", pelisDispo);
     CreateMoviesNormal(pelisDispo, pelisDisponiblesTotals);
 }
 getNowMovies();
@@ -62,7 +59,6 @@ async function getTrendingMoviesFilter(id){
         }
     })
     const pelisTendencias = data.results;
-    // console.log("pelisTendenciasfilter", pelisTendencias);
     CreateMoviesNormal(pelisTendencias,SeccionCuadrillaPelis_Series_GenerosFilter)
 }
 async function getMovieBySearch(query){
@@ -77,14 +73,17 @@ async function getMovieBySearch(query){
 async function getMovieByID(id){
     const { data: Movie} = await api(`${SearchMoviID}${id}`,{
     })
-    console.log(Movie);
     CargarPeliAndSerieINF(Movie);
+}
+async function getMovieSimilarID(id){
+    const {data} = await api(`movie/${id}/similar`);
+    const Movies = data.results;
+    CreateMoviesNormalSimilares(Movies, TitulosSimilaresInsert)
 }
 async function getPopularMoviesDestacadas(){
     const {data} = await api(`${popularMovies}`);
-    // console.log("popular" ,data);
     const pelisDestacadas = data.results;
-    CreateMoviesNormal(pelisDestacadas, PeliculasMasDestacadas)
+    CreateMoviesNormalMasDestacadas(pelisDestacadas, PeliculasMasDestacadas)
 }
 // Utils
 function CreateMoviesWhitPrint(Movies,Container){
@@ -136,6 +135,17 @@ function CreateMoviesNormal(Movies,Container){
                         </article>`).join("")}`;
 Container.innerHTML = view;
 }
+function CreateMoviesNormalSimilares(Movies,Container){
+    let view = `${Movies.map(item => `
+                        <article class="cardTitleSimilares">
+                            <figure class="poster">
+                                <a href="#Movie=${item.title}-${item.id}">
+                                    <img src="${PhotosMovies}${item.poster_path}" alt="a">
+                                </a>
+                            </figure>
+                    </article>`).join("")}`;
+Container.innerHTML = view;
+}
 function CreateSeriesNormal(Movies,Container){
     Container.innerHTML = "";
     let view = `${Movies.map(item => `
@@ -151,24 +161,18 @@ function CreateSeriesNormal(Movies,Container){
                         </article>`).join("")}`;
 Container.innerHTML = view;
 }
-// function CreateMoviesNormal(Movies,Container){
-//     Container.innerHTML = "";
-//     let view = [];
-//     for(i = 0; i){
-    // }
-    // let view = `${Movies.map(item => `
-    //                     <article class="cardDisponibles">
-    //                         <figure class="poster">
-    //                             <a href="#Movie=${item.title}-${item.id}">
-    //                                 <img src="${PhotosMovies}${item.poster_path}" alt="a">
-    //                             </a>
-    //                         </figure>
-    //                         <div class="data">
-    //                             <h3 class="titlePeli">${item.title}</h3>
-    //                         </div>
-    //                     </article>`).join("")}`;
-// Container.innerHTML = view;
-// }
+function CreateMoviesNormalMasDestacadas(Movies,Container){
+    Container.innerHTML = "";
+    let view = `${Movies.map(item => `
+                        <article class="cardDisponibles">
+                            <figure class="poster">
+                                <a href="#Movie=${item.title}-${item.id}">
+                                    <img src="${PhotosMovies}${item.poster_path}" alt="a">
+                                </a>
+                            </figure>
+                        </article>`).join("")}`;
+Container.innerHTML = view;
+}
 function CargarPeliAndSerieINF(Movie){
     titlePeliINF.innerText = Movie.title;
     insertPosterPeli.src = `${PhotosMovies}${Movie.poster_path}`;
