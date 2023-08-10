@@ -181,7 +181,7 @@ function CargarPeliAndSerieINF(Movie){
     subGeneros.innerHTML = renges;
     bienvenida.innerHTML = `<p>Estás por Ver ${Movie.title} Película Online ✅ Contamos con más Películas Gratis en Español</p>`;
     lang.innerText = `${Movie.spoken_languages[0].name}`;
-    related.innerText = `RePelis24 » Estás viendo ${Movie.title} [Película Completa, Gratis], Película disponible en Audio Español, Latino o Subtitulada, también contamos con películas estrenadas del cine. película para ver online y descargar del Año 2023. ${Movie.title} en Calidad (CINE) Completa.`;
+    related.innerText = `PELISRM» Estás viendo ${Movie.title} [Película Completa, Gratis], Película disponible en Audio Español, Latino o Subtitulada, también contamos con películas estrenadas del cine. película para ver online y descargar del Año 2023. ${Movie.title} en Calidad (CINE) Completa.`;
     overview.innerText = Movie.overview;
     title_original_name.innerText = Movie.original_title;
     totalStarAverage.innerText = `🌟${Movie.vote_average}`;
