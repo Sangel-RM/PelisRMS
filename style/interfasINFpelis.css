@@ -103,6 +103,10 @@
     background-color: #6d6e70;
     border-bottom: 3px solid var(--borderColor);
 }
+iframe{
+    width: 100%;
+    height: 100%;
+}
 .INF{
     height: 50px;
     display: flex;

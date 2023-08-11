@@ -240,3 +240,17 @@ setInterval(()=>{
         }
     }
 },3000);
+
+// insertando los anios a el contenedor Anios 
+const Anios = $SelectorAll(".Anios");
+
+// insertando el trailer en el contenedor 
+const ContainerVideoTriler = $Selector(".contenedorVideo");
+
+// Botones para abrir ver todo 
+const VerTodoTendencias = $Selector(".VerTodoTendencias");
+const VerTodoEstrenosDestacados = $Selector(".VerTodoEstrenosDestacados");
+const VerTodopelisDisponibles = $Selector(".verTodopelisDisponibles");
+const VerTodoSeriesDestacadas = $Selector(".VerTodoSeriesDestacadas");
+const VerTodoSeriesDisponibles = $Selector(".VerTodoSeriesDisponibles");
+const VerTodoSeriesTotal = $Selector(".VerTodoSeriesTotal");
