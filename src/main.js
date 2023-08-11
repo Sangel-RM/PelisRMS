@@ -102,6 +102,18 @@ function CreateMoviesNormalMasDestacadas(Movies,Container){
 Container.innerHTML = view;
 }
 function CargarPeliAndSerieINF(Movie){
+    titlePeliINF.innerText = "";
+    insertPosterPeli.src = "";
+    Extras.innerHTML = "";
+    subGeneros.innerHTML = "";
+    bienvenida.innerHTML = "";
+    lang.innerText = "";
+    related.innerText = "";
+    overview.innerText = "";
+    title_original_name.innerText = "";
+    totalStarAverage.innerText = "";
+    totalCountVotosAverage.innerText = "";
+
     titlePeliINF.innerText = Movie.title;
     insertPosterPeli.src = `${PhotosMovies}${Movie.poster_path}`;
     Extras.innerHTML = `<span>${Movie.release_date}</span><span>${Movie.spoken_languages[0].english_name}</span><span>${Movie.runtime} Min.</span>`;

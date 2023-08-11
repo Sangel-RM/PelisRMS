@@ -46,6 +46,8 @@ function navigator() {
     }
 }
 function HomePage() {
+            ContainerVideoTriler.innerHTML = "";
+            SeccionCuadrillaPelis_Series_GenerosFilter.innerHTML = "";
             SeccionTendencias.classList.remove("none")
             SeccionBienvenida.classList.remove("none")
             SeccionEstrenosPelisDestacados.classList.remove("none")
@@ -58,6 +60,8 @@ function HomePage() {
             window.scroll(0,0);
 }
 function MoviesPage() {
+        ContainerVideoTriler.innerHTML = "";
+        SeccionCuadrillaPelis_Series_GenerosFilter.innerHTML = "";
         const index = 0;
         SeccionBienvenida.classList.add("none");
         SeccionTendencias.classList.add("none");
@@ -81,6 +85,8 @@ function MoviesPage() {
         getMovieSimilarID(movie_id, TitulosSimilaresInsert);
 }
 function CategoryPage() {
+        SeccionCuadrillaPelis_Series_GenerosFilter.innerHTML = "";
+        ContainerVideoTriler.innerHTML = "";
         const index = 1;
         SeccionBienvenida.classList.add("none");
         SeccionTendencias.classList.add("none");
@@ -106,8 +112,10 @@ function CategoryPage() {
         window.scroll(0,0);
 }
 function SearchPage() {
-    const index = 1;
-        SeccionBienvenida.classList.add("none");
+            SeccionCuadrillaPelis_Series_GenerosFilter.innerHTML = "";
+            ContainerVideoTriler.innerHTML = "";
+            const index = 1;
+            SeccionBienvenida.classList.add("none");
             SeccionTendencias.classList.add("none");
             SeccionEstrenosPelisDestacados.classList.add("none");
             SeccionPelisDisponibles.classList.add("none");
@@ -129,6 +137,8 @@ function SearchPage() {
         getMovieBySearch(query, SeccionCuadrillaPelis_Series_GenerosFilter);
 }
 function SearchAnioPage(){
+    SeccionCuadrillaPelis_Series_GenerosFilter.innerHTML = "";
+    ContainerVideoTriler.innerHTML = "";
     const index = 1;
     SeccionBienvenida.classList.add("none");
     SeccionTendencias.classList.add("none");
@@ -152,6 +162,7 @@ function SearchAnioPage(){
 }
 function VerTodo(){
     SeccionCuadrillaPelis_Series_GenerosFilter.innerHTML = "";
+    ContainerVideoTriler.innerHTML = "";
     const index = 1;
     SeccionBienvenida.classList.add("none");
     SeccionTendencias.classList.add("none");
