@@ -33,7 +33,7 @@ VerTodoSeriesTotal.addEventListener("click", () => {
 function navigator() {
     if(location.hash.startsWith("#Home")){
         HomePage();
-    }else if(location.hash.startsWith("#Movie=")){
+    }else if(location.hash.startsWith("#Movie=") || location.hash.startsWith("#Series=")){
         MoviesPage();
     }else if(location.hash.startsWith("#Category=")){
         CategoryPage();
@@ -73,16 +73,22 @@ function MoviesPage() {
         PageGENEROS_PELIS_SERIES.classList.add("none");
         SeccionContainerPeliINFMovie.classList.remove("none");
         window.scroll(0,0);
+        TitulosSimilaresInsert.scroll(0,0);
 
         CreateAniosSearch(index);
 
         const [_, name_id_data] = location.hash.split("=");
         const [id_name, movie_id] = name_id_data.split("_");
+        if(location.hash.startsWith("#Movie=")){
+            getMovieByID(movie_id);
+            getPopularMoviesDestacadas(PeliculasMasDestacadas);
+            getMovieSimilarID(movie_id, TitulosSimilaresInsert, CreateMoviesNormalSimilares);
+        }else if(location.hash.startsWith("#Series=")){
+            getSerieByID(movie_id);
+            getPopularMoviesDestacadas(PeliculasMasDestacadas);
+            getSerieSimilarID(movie_id, TitulosSimilaresInsert, CreateSeriesNormalSimilares);
+        }
 
-        getMovieByID(movie_id);
-        getPopularMoviesDestacadas(PeliculasMasDestacadas);
-        TitulosSimilaresInsert.scroll(0,0);
-        getMovieSimilarID(movie_id, TitulosSimilaresInsert);
 }
 function CategoryPage() {
         SeccionCuadrillaPelis_Series_GenerosFilter.innerHTML = "";
