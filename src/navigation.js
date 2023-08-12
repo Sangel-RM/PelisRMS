@@ -106,8 +106,8 @@ function CategoryPage() {
         HeaderRecientementeTitle.innerText = "Añadido recientemente";
 
         CreateAniosSearch(index);
-
-        const [_, categoryData] = location.hash.split("=");
+        CreatePageNumber(paginacionInsert);
+        const [dataRuta, categoryData] = location.hash.split("=");
         const [id, idName] = categoryData.split("-");
 
         getTrendingMoviesFilter(id, SeccionCuadrillaPelis_Series_GenerosFilter);
@@ -137,6 +137,7 @@ function SearchPage() {
             window.scroll(0,0);
 
             CreateAniosSearch(index);
+            CreatePageNumber(paginacionInsert)
 
             // ['#search', 'buscador'];
             const [_, query] = location.hash.split("=");
@@ -162,6 +163,7 @@ function SearchAnioPage(){
     window.scroll(0,0);
 
     CreateAniosSearch(index);
+    CreatePageNumber(paginacionInsert)
 
     const [_, query] = location.hash.split("=");
     getMoviesFilterAnio(query);
@@ -181,32 +183,32 @@ function VerTodo(){
     PageGENEROS_PELIS_SERIES.classList.remove("none");
     HeaderRecientementeTitle.innerText = "Añadido recientemente";
     titleGeneroInsert.innerText = "";
-
     CreateAniosSearch(index);
+    CreatePageNumber(paginacionInsert);
 
     const [_, funcion] = location.hash.split("=");
     if(funcion == "Tendencias"){
         titleGeneroInsert.innerText = funcion;
-        getTrendingMovies(SeccionCuadrillaPelis_Series_GenerosFilter, CreateMoviesNormal);
+        getTrendingMovies(SeccionCuadrillaPelis_Series_GenerosFilter,CreateMoviesNormal, 2);
     }
     else if(funcion == "EstrenosDestacados"){
         titleGeneroInsert.innerText = funcion;
-        getPopularMovies(SeccionCuadrillaPelis_Series_GenerosFilter, CreateMoviesNormal);
+        getPopularMovies(SeccionCuadrillaPelis_Series_GenerosFilter, CreateMoviesNormal, 2);
     }
     else if(funcion == "PelisDisponibles"){
         titleGeneroInsert.innerText = funcion;
-        getNowMovies(SeccionCuadrillaPelis_Series_GenerosFilter, CreateMoviesNormal);
+        getNowMovies(SeccionCuadrillaPelis_Series_GenerosFilter, CreateMoviesNormal, 2);
     }
     else if(funcion == "SeriesDestacadas"){
         titleGeneroInsert.innerText = funcion;
-        getTvSeriesTendencias(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal);
+        getTvSeriesTendencias(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal, 2);
     }
     else if(funcion == "SeriesDisponibles"){
         titleGeneroInsert.innerText = funcion;
-        getTvSeriesDisponibles(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal);
+        getTvSeriesDisponibles(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal, 2);
     }
     else if(funcion == "SeriesTotal"){
         titleGeneroInsert.innerText = funcion;
-        getTvSeriesDisponiblesTotals(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal);
+        getTvSeriesDisponiblesTotals(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal, 2);
     }
 }

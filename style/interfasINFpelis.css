@@ -260,7 +260,7 @@ iframe{
 }
 .containerGenerosAniosMASpelis{
     padding: 5px;
-    width: 35%;
+    width: 25%;
     background-color: var(--secondary-color);
     font-size: 1.5rem;
     border-left: 3px solid var(--borderColor);
@@ -379,6 +379,30 @@ iframe{
     gap: 5px;
     margin: 20px 0 0 0;
 }
+.Paginacion{
+    display: flex;
+    padding: 10px 0 5px 0;
+    gap: 5px;
+    overflow-x: scroll;
+}
+.Paginacion::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+.Paginacion div .PageNumbers{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--borderColor);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.Paginacion div .PageNumbers:hover{
+    background-color: var(--color-red);
+}
 .cardPELIS-SERIES-SEARCH .data{
     font-size: .6rem;
 }
@@ -450,6 +474,9 @@ iframe{
     }
     .containerGenerosAniosMASpelis{
         display: block;
+    }
+    .totalPELIS-SERIES-GENEROS{
+        width: 75%;
     }
     .container{
         width: 75%;

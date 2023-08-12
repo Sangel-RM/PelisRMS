@@ -254,3 +254,13 @@ const VerTodopelisDisponibles = $Selector(".verTodopelisDisponibles");
 const VerTodoSeriesDestacadas = $Selector(".VerTodoSeriesDestacadas");
 const VerTodoSeriesDisponibles = $Selector(".VerTodoSeriesDisponibles");
 const VerTodoSeriesTotal = $Selector(".VerTodoSeriesTotal");
+
+// paginacion
+const paginacionInsert = $Selector(".Paginacion");
+function totalPageNumberALL(ruta) {
+    const totalPageNumber = $SelectorAll(".PageNumbers");
+    totalPageNumber.forEach((item, index) => item.addEventListener("click", () => {
+        console.log(index + 1);
+    }))
+    console.log({totalPageNumber});
+}

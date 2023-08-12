@@ -168,9 +168,22 @@ function CreateAniosSearch(index){
     }
     Anios[index].innerHTML = view.join("");
 }
+function CreatePageNumber(Container){
+    Container.innerHTML = "";
+    let view = [];
+    for(let i = 1; i <= 100; i++){
+        view.push(`<div><span class="PageNumbers">${i}</span></div>`);
+    }
+    Container.innerHTML = view.join("");
+}
 
-async function getTrendingMovies(Container, Creator_Movie_SerieCard){
-    const {data} = await api(`${MoviesTrending}`)
+
+async function getTrendingMovies(Container, Creator_Movie_SerieCard, pageNum){
+    const {data} = await api(`${MoviesTrending}`, {
+        params: {
+            page: pageNum,
+        }
+    })
     const pelisTendencias = data.results;
     Creator_Movie_SerieCard(pelisTendencias, Container);
 }
@@ -183,42 +196,63 @@ async function listaMovies(Container, CreatorItemsListaMovie){
 };
 listaMovies(categoryMenu, CreateCategories);
 
-async function getPopularMovies(Container, Creator_Movie_SerieCard){
-    const {data} = await api(`${popularMovies}`);
+async function getPopularMovies(Container, Creator_Movie_SerieCard, pageNum){
+    const {data} = await api(`${popularMovies}`,{
+        params: {
+            page: pageNum
+        }
+    });
     const pelisDestacadas = data.results;
     Creator_Movie_SerieCard(pelisDestacadas, Container);
 }
 getPopularMovies(estrenosDestacadosHD, CreateMoviesWhitPrint);
 
-async function getNowMovies(Container, Creator_Movie_SerieCard){
-    const {data} = await api(`${nowPlayingMovies}`);
+async function getNowMovies(Container, Creator_Movie_SerieCard, pageNum){
+    const {data} = await api(`${nowPlayingMovies}`, {
+        params: {
+            page: pageNum
+        }
+    });
     const pelisDispo = data.results;
     Creator_Movie_SerieCard(pelisDispo, Container);
 }
 getNowMovies(pelisDisponiblesTotals, CreateMoviesNormal);
 
-async function getTvSeriesTendencias(Container, Creator_Movie_SerieCard){
-    const {data} = await api(`${tvSeries}`);
+async function getTvSeriesTendencias(Container, Creator_Movie_SerieCard, pageNum){
+    const {data} = await api(`${tvSeries}`, {
+        params: {
+            page: pageNum
+        }
+    });
     const tvSeriesData = data.results;
     Creator_Movie_SerieCard(tvSeriesData, Container)
 }
 getTvSeriesTendencias(SeriesDestacadas, CreateSeriesWhitPrint);
 
-async function getTvSeriesDisponibles(Container, Creator_Movie_SerieCard){
-    const {data} = await api(`${tvSeriesPopulares}`);
-    // console.log(data);
+async function getTvSeriesDisponibles(Container, Creator_Movie_SerieCard, pageNum){
+    const {data} = await api(`${tvSeriesPopulares}`, {
+        params: {
+            page: pageNum
+        }
+    });
     const SeriesDestacadas = data.results;
-    // console.log("a" ,SeriesDestacadas);
     Creator_Movie_SerieCard(SeriesDestacadas, Container)
 }
 getTvSeriesDisponibles(seriesDispo, CreateSeriesWhitPrint);
 
-async function getTvSeriesDisponiblesTotals(Container, Creator_Movie_SerieCard){
-    const {data} = await api(tvSeriesTotals);
+async function getTvSeriesDisponiblesTotals(Container, Creator_Movie_SerieCard, pageNum){
+    const {data} = await api(tvSeriesTotals, {
+        params: {
+            page: pageNum
+        }
+    });
     const Series_data = data.results;
     Creator_Movie_SerieCard(Series_data, Container)
 }
 getTvSeriesDisponiblesTotals(seriesDisponiblestotals, CreateSeriesNormal);
+
+
+
 
 async function getTrendingMoviesFilter(id, Container){
     const {data} = await api(`${FilterMovieCategory}`,{
@@ -239,12 +273,12 @@ async function getMovieBySearch(query, Container){
     CreateMoviesNormal(Movies, Container)
 }
 async function getMovieSimilarID(id, Container, Creator_Movie_SerieCard){
-    const {data} = await api(`movie/${id}/similar`);
+    const {data} = await api(`${SearchMoviID}${id}/similar`);
     const Movies = data.results;
     Creator_Movie_SerieCard(Movies, Container)
 }
 async function getSerieSimilarID(id, Container, Creator_Movie_SerieCard){
-    const {data} = await api(`tv/${id}/similar`);
+    const {data} = await api(`${SearchSerieID}${id}/similar`);
     const Movies = data.results;
     Creator_Movie_SerieCard(Movies, Container)
 }
