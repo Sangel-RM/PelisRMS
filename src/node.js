@@ -18,7 +18,8 @@ const searchInput = $Selector(".search");
 const SearchMOVIELUPA = $Selector(".SearchMovie");
 
 // header Section Menu 
-const categoryMenu = $SelectorAll(".insertCategory");
+const categoryMenuMovie = $SelectorAll(".insertCategoryMovie");
+const categoryMenuSerie = $SelectorAll(".insertCategorySeries");
 const open_menu = $Selector(".open-menu");
 const close_menu = $Selector(".close-menu");
 const menu = $Selector(".Menu");
@@ -101,7 +102,6 @@ pelisScrolls.forEach(item => item.scroll(anchoCard, 0))
 const botonesIzquierda = $SelectorAll(".fa-chevron-left");
 const botonesDerecha = $SelectorAll(".fa-chevron-right");
 
-console.log({pelisScrolls, anchoCard,botonesDerecha, botonesIzquierda});
 setInterval(()=>{
     pelisScrolls.forEach((item, i)=> {
         if(screen.width <= 1440){
@@ -159,8 +159,6 @@ const nodo_scrollsButtons = $SelectorAll(".scrollersbuttons");
 
 // seleccionando la sección cuando uno valla abrir una pelicula
 const pelisINFMOVIE = $Selector(".ContainerPeliINFMovie");
-const leta = pelisINFMOVIE.classList;
-console.log(leta);
 
 // seleccionando las secciones
 
@@ -175,11 +173,47 @@ const SeccionContainerPeliINFMovie = $Selector(".ContainerPeliINFMovie");
 const PageGENEROS_PELIS_SERIES = $Selector(".totalPelis-Serie-generos-Search");
 
 // Las peliculas mas destacadas 
+const titleMasDestacadas = $Selector(".titleMasDestacadas");
 const PeliculasMasDestacadas = $Selector(".pelisDisponiblesMasDestacadas");
+
 // page total Generos search
 // seccion Cuadrilla Pelis Genres
 const SeccionCuadrillaPelis_Series_GenerosFilter = $Selector(".cuadrillaPelis");
+const SeccionCuadrillaSeries = $Selector(".cuadrillaSeries");
+const TitleSearchPelisOSeries = $SelectorAll(".TitleSearchPelisOSeries");
+const ContainerCuadrillaSeries = $Selector(".ContainerCuadrillaSeries");
+const ContainerCuadrillaPelis = $Selector(".ContainerCuadrilla");
 
+function CloseTitlesAndSeccionCuadrillaSeries(){
+        ContainerCuadrillaSeries.classList.add("none");
+        ContainerCuadrillaPelis.classList.add("none");
+}
+function OpenTitlesAndSeccionCuadrillaSeries(){
+    if(location.hash.startsWith("#CategoryMovie=")){
+        TitleSearchPelisOSeries[1].classList.add("none");
+        TitleSearchPelisOSeries[0].classList.remove("none");
+        ContainerCuadrillaSeries.classList.add("none");
+        ContainerCuadrillaPelis.classList.remove("none")
+    }else if(location.hash.startsWith("#CategorySerie=")){
+        TitleSearchPelisOSeries[0].classList.add("none");
+        TitleSearchPelisOSeries[1].classList.remove("none");
+        ContainerCuadrillaSeries.classList.remove("none");
+        ContainerCuadrillaPelis.classList.add("none");
+    }else if(location.hash.startsWith("#search=")){
+        TitleSearchPelisOSeries[0].classList.remove("none");
+        TitleSearchPelisOSeries[1].classList.remove("none");
+        ContainerCuadrillaSeries.classList.remove("none");
+        ContainerCuadrillaPelis.classList.remove("none");
+    }else if(location.hash.startsWith("#SearchAnio=")){
+        TitleSearchPelisOSeries[0].classList.remove("none");
+        TitleSearchPelisOSeries[1].classList.remove("none");
+        ContainerCuadrillaSeries.classList.remove("none");
+        ContainerCuadrillaPelis.classList.remove("none");
+    }else{
+        ContainerCuadrillaSeries.classList.add("none");
+        ContainerCuadrillaPelis.classList.remove("none");
+    }
+}
 // Title
 const titleGeneroInsert = $Selector(".title-GENEROS-PELI-SERIE");
 const HeaderRecientementeTitle = $Selector(".Header-Recientemente");
@@ -227,13 +261,13 @@ setInterval(()=>{
             TitulosSimilaresInsert.scroll(0,0);
         }
     }else if(screen.width >= 375){
-        if(TitulosSimilaresInsert.scrollLeft < 2760){
+        if(TitulosSimilaresInsert.scrollLeft < 2700){
             TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
         }else{
             TitulosSimilaresInsert.scroll(0,0);
         }
     }else if(screen.width >= 320){
-        if(TitulosSimilaresInsert.scrollLeft < 2815){
+        if(TitulosSimilaresInsert.scrollLeft < 2780){
             TitulosSimilaresInsert.scroll(TitulosSimilaresInsert.scrollLeft + anchoCard, 0);
         }else{
             TitulosSimilaresInsert.scroll(0,0);
@@ -257,10 +291,7 @@ const VerTodoSeriesTotal = $Selector(".VerTodoSeriesTotal");
 
 // paginacion
 const paginacionInsert = $Selector(".Paginacion");
-function totalPageNumberALL(ruta) {
+const totalPageNumberALL = () => {
     const totalPageNumber = $SelectorAll(".PageNumbers");
-    totalPageNumber.forEach((item, index) => item.addEventListener("click", () => {
-        console.log(index + 1);
-    }))
-    console.log({totalPageNumber});
+    return totalPageNumber
 }

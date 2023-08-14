@@ -136,7 +136,7 @@ body{
 }
 .Menu .moviesAndSeries ul li a,
 .Menu .ContainerCategory .CategoryMenu li a{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     width: 100%;
     padding: 10px;
     background-color: var(--primary-color);

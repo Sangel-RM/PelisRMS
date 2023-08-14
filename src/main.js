@@ -64,6 +64,7 @@ function CreateMoviesNormal(Movies,Container){
 Container.innerHTML = view;
 }
 function CreateMoviesNormalSimilares(Movies,Container){
+    Container.innerHTML = "";
     let view = `${Movies.map(item => `
                         <article class="cardTitleSimilares">
                             <figure class="poster">
@@ -75,6 +76,7 @@ function CreateMoviesNormalSimilares(Movies,Container){
 Container.innerHTML = view;
 }
 function CreateSeriesNormalSimilares(Movies,Container){
+    Container.innerHTML = "";
     let view = `${Movies.map(item => `
                         <article class="cardTitleSimilares">
                             <figure class="poster">
@@ -112,6 +114,18 @@ function CreateMoviesNormalMasDestacadas(Movies,Container){
                         </article>`).join("")}`;
 Container.innerHTML = view;
 }
+function CreateSeriesNormalMasDestacadas(Movies,Container){
+    Container.innerHTML = "";
+    let view = `${Movies.map(item => `
+                        <article class="cardDisponibles">
+                            <figure class="poster">
+                                <a href="#Series=${item.name}_${item.id}">
+                                    <img src="${PhotosMovies}${item.poster_path}" alt="a">
+                                </a>
+                            </figure>
+                        </article>`).join("")}`;
+Container.innerHTML = view;
+}
 function CargarPeliAndSerieINF(Movie){
         titlePeliINF.innerText = "";
         insertPosterPeli.src = "";
@@ -128,7 +142,7 @@ function CargarPeliAndSerieINF(Movie){
         titlePeliINF.innerText = Movie.title;
         insertPosterPeli.src = `${PhotosMovies}${Movie.poster_path}`;
         Extras.innerHTML = `<span>${Movie.release_date}</span><span>${Movie.spoken_languages[0].english_name}</span><span>${Movie.runtime} Min.</span>`;
-        let renges = `${Movie.genres.map(item => `<a href="#Category=${item.id}-${item.name}">${item.name}</a>`).join("")}`;
+        let renges = `${Movie.genres.map(item => `<div>${item.name}</div>`).join("")}`;
         subGeneros.innerHTML = renges;
         bienvenida.innerHTML = `<p>Estás por Ver ${Movie.title} Película Online ✅ Contamos con más Películas Gratis en Español</p>`;
         lang.innerText = `${Movie.spoken_languages[0].name}`;
@@ -141,7 +155,7 @@ function CargarPeliAndSerieINF(Movie){
         titlePeliINF.innerText = Movie.name;
         insertPosterPeli.src = `${PhotosMovies}${Movie.poster_path}`;
         Extras.innerHTML = `<span>${Movie.last_air_date}</span><span>${Movie.spoken_languages[0].english_name}</span><span>${Movie.episode_run_time} Min.</span>`;
-        let renges = `${Movie.genres.map(item => `<a href="#Category=${item.id}-${item.name}">${item.name}</a>`).join("")}`;
+        let renges = `${Movie.genres.map(item => `<div>${item.name}</div>`).join("")}`;
         subGeneros.innerHTML = renges;
         bienvenida.innerHTML = `<p>Estás por Ver ${Movie.name} Serie Online ✅ Contamos con más Serie Gratis en Español</p>`;
         lang.innerText = `${Movie.spoken_languages[0].name}`;
@@ -152,9 +166,17 @@ function CargarPeliAndSerieINF(Movie){
         totalCountVotosAverage.innerText = `Votos: ${Movie.vote_count}`;
     }
 }
-function CreateCategories(categories, Container){
+function CreateCategoriesMovies(categories, Container){
     let view = `${categories.map(item => `
-    <li><a href="#Category=${item.id}-${item.name}">${item.name}</a></li>
+    <li><a href="#CategoryMovie=${item.id}-${item.name}" class="CategoryMovie">${item.name}</a></li>
+    `).join("")}`;
+    Container.forEach(item => {
+        item.innerHTML = view;
+    });
+}
+function CreateCategoriesSeries(categories, Container){
+    let view = `${categories.map(item => `
+    <li><a href="#CategorySerie=${item.id}-${item.name}" class="CategorySerie">${item.name}</a></li>
     `).join("")}`;
     Container.forEach(item => {
         item.innerHTML = view;
@@ -177,7 +199,6 @@ function CreatePageNumber(Container){
     Container.innerHTML = view.join("");
 }
 
-
 async function getTrendingMovies(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(`${MoviesTrending}`, {
         params: {
@@ -185,16 +206,26 @@ async function getTrendingMovies(Container, Creator_Movie_SerieCard, pageNum){
         }
     })
     const pelisTendencias = data.results;
+    console.log(data);
     Creator_Movie_SerieCard(pelisTendencias, Container);
 }
 getTrendingMovies(PelisTendencias, CreateMoviesWhitPrint);
 
-async function listaMovies(Container, CreatorItemsListaMovie){
-    const {data} = await api(`${listaMoviesCategories}`)
+
+async function listaMovies(Container, CreatorItemsLista){
+    const {data} = await api(`${listaMoviesCategories}`);
     const generos = data.genres
-    CreatorItemsListaMovie(generos, Container);
+    CreatorItemsLista(generos, Container);
 };
-listaMovies(categoryMenu, CreateCategories);
+listaMovies(categoryMenuMovie, CreateCategoriesMovies);
+
+async function listaSeries(Container, CreatorItemsLista){
+    const {data} = await api(`${listaSeriesCategories}`);
+    console.log(data);
+    const generos = data.genres
+    CreatorItemsLista(generos, Container);
+};
+listaSeries(categoryMenuSerie, CreateCategoriesSeries);
 
 async function getPopularMovies(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(`${popularMovies}`,{
@@ -251,26 +282,26 @@ async function getTvSeriesDisponiblesTotals(Container, Creator_Movie_SerieCard, 
 }
 getTvSeriesDisponiblesTotals(seriesDisponiblestotals, CreateSeriesNormal);
 
-
-
-
-async function getTrendingMoviesFilter(id, Container){
+async function getTrendingSeriesFilter(id, Container, pageNum){
+    const {data} = await api(`${FilterSeriesCategory}`,{
+        params: {
+            with_genres: id,
+            page: pageNum,
+        }
+    })
+    const pelisTendencias = data.results;
+    console.log(" series", data);
+    CreateSeriesNormal(pelisTendencias, Container)
+}
+async function getTrendingMoviesFilter(id, Container, pageNum){
     const {data} = await api(`${FilterMovieCategory}`,{
         params: {
             with_genres: id,
+            page: pageNum,
         }
     })
     const pelisTendencias = data.results;
     CreateMoviesNormal(pelisTendencias, Container)
-}
-async function getMovieBySearch(query, Container){
-    const {data} = await api(`${SearchMovieQuery}`,{
-        params: {
-            query,
-        }
-    })
-    const Movies = data.results;
-    CreateMoviesNormal(Movies, Container)
 }
 async function getMovieSimilarID(id, Container, Creator_Movie_SerieCard){
     const {data} = await api(`${SearchMoviID}${id}/similar`);
@@ -282,19 +313,56 @@ async function getSerieSimilarID(id, Container, Creator_Movie_SerieCard){
     const Movies = data.results;
     Creator_Movie_SerieCard(Movies, Container)
 }
-async function getMoviesFilterAnio(query){
+async function getMoviesFilterAnio(query, Container, pageNum){
     const {data} = await api(`${FilterMovieCategory}`,{
         params: {
             year: `${query}`,
+            page: pageNum,
         }
     })
     const Movies = data.results;
-    CreateMoviesNormal(Movies, SeccionCuadrillaPelis_Series_GenerosFilter);
+    // console.log(data);
+    CreateMoviesNormal(Movies, Container);
+}
+async function getSeriesFilterAnio(query, Container, pageNum){
+    const {data} = await api(`${FilterSeriesCategory}`,{
+        params: {
+            first_air_date_year: `${query}`,
+            page: pageNum,
+        }
+    })
+    const Movies = data.results;
+    // console.log(data);
+    CreateSeriesNormal(Movies, Container);
 }
 async function getPopularMoviesDestacadas(Container){
     const {data} = await api(`${popularMovies}`);
     const pelisDestacadas = data.results;
     CreateMoviesNormalMasDestacadas(pelisDestacadas, Container)
+}
+async function getPopularSeriesDestacadas(Container){
+    const {data} = await api(`${popularSeries}`);
+    const SeriesDestacadas = data.results;
+    CreateSeriesNormalMasDestacadas(SeriesDestacadas, Container)
+}
+// Search Movies And Series Input
+async function getMovieBySearch(query, Container){
+    const {data} = await api(`${SearchMovieQuery}`,{
+        params: {
+            query,
+        }
+    })
+    const Movies = data.results;
+    CreateMoviesNormal(Movies, Container)
+}
+async function getSeriesBySearch(query, Container){
+    const {data} = await api(`${SearchTVQuery}`,{
+        params: {
+            query,
+        }
+    })
+    const Movies = data.results;
+    CreateSeriesNormal(Movies, Container)
 }
 
 // seleccionando una peli e insertando su trailer

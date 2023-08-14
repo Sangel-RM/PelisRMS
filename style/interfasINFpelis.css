@@ -44,7 +44,7 @@
     gap: 5px;
     font-size: 1.2rem;
 }
-.shaders .subGeneros a{
+.shaders .subGeneros div{
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -53,7 +53,7 @@
     background-color: var(--primary-color);
     font-weight: bold;
 }
-.shaders .subGeneros a:hover{
+.shaders .subGeneros div:hover{
     background-color: var(--white);
     color: var(--primary-color);
 }
@@ -148,10 +148,12 @@ iframe{
 .sinopsis .overview{
     border-bottom: 1px solid var(--borderColor);
 }
+.titleOriginal{
+    border-bottom: 1px solid var(--borderColor);
+}
 .VoteAverage,
 .titleOriginal{
     padding: 10px;
-    border-bottom: 1px solid var(--borderColor);
 }
 .VoteAverageTotalTMDB{
     border: none;
@@ -218,7 +220,8 @@ iframe{
     background-image: linear-gradient(to right bottom, #37052a, #58004e, #75007a, #8b00af, #9612eb);
 }
 .TitulosSimilares h1{
-    padding: 10px 0 0 10px;
+    padding: 20px 0 20px 10px;
+    font-size: 1.7rem;
 }
 .TitulosSimilares .scroll {
     display: flex;
@@ -259,14 +262,15 @@ iframe{
     text-align: center;
 }
 .containerGenerosAniosMASpelis{
-    padding: 5px;
+    padding: 0 5px 5px 5px;
     width: 25%;
     background-color: var(--secondary-color);
     font-size: 1.5rem;
     border-left: 3px solid var(--borderColor);
 }
 .containerGenerosAniosMASpelis h1{
-    padding: 0 0 10px 0;
+    padding: 10px 0;
+    text-align: center;
 }
 .cuadrilla{
     margin: 0 auto;
@@ -284,7 +288,7 @@ iframe{
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
 }
 .cuadrilla li a:hover{
@@ -322,7 +326,7 @@ iframe{
     background-color: var(--color-red);
 }
 .titleMasDestacadas{
-    margin: 20px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
 .pelisDisponiblesMasDestacadas{
     display: grid;
@@ -331,7 +335,7 @@ iframe{
     padding: 5px;
     background-color: var(--primary-color);
     overflow-y: scroll;
-    height: 526px;
+    height: 440px;
 }
 .pelisDisponiblesMasDestacadas .cardDisponibles .poster{
     height: 100%;
@@ -372,18 +376,31 @@ iframe{
 .totalPELIS-SERIES-GENEROS{
     width: 100%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
+.ContainerCuadrillaSeries{
+    margin: 20px 0 0 0;
+}
+.cuadrillaSeries,
 .cuadrillaPelis{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 5px;
     margin: 20px 0 0 0;
 }
+.TitleSearchPelisOSeries{
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 0 0 10px 0;
+    border-bottom: 3px solid var(--borderColor);
+}
 .Paginacion{
     display: flex;
     padding: 10px 0 5px 0;
     gap: 5px;
     overflow-x: scroll;
+    margin-top: auto;
 }
 .Paginacion::-webkit-scrollbar{
     width: 5px;
@@ -444,6 +461,7 @@ iframe{
     }
 }
 @media(min-width: 500px){
+    .cuadrillaSeries,
     .cuadrillaPelis{
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -489,6 +507,7 @@ iframe{
     .containerGenerosAniosMASpelis{
         display: block;
     }
+    .cuadrillaSeries,
     .cuadrillaPelis{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
