@@ -243,6 +243,16 @@ function VerTodo(){
         titleGeneroInsert.innerText = funcion;
         getTvSeriesDisponiblesTotals(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal, 1);
     }
+    else{
+        if(funcion == "Movies"){
+            titleGeneroInsert.innerText = funcion;
+            getTrendingMovies(SeccionCuadrillaPelis_Series_GenerosFilter,CreateMoviesNormal, 1)
+        }
+        else if(funcion == "Series" || funcion == "TV"){
+            titleGeneroInsert.innerText = funcion;
+            getTvSeriesDisponibles(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal, 1);
+        }
+    }
     totalPageNumber.forEach((item, index) => {
         item.addEventListener("click", () => {
             if(funcion == "Tendencias"){
@@ -274,6 +284,16 @@ function VerTodo(){
                 titleGeneroInsert.innerText = funcion;
                 getTvSeriesDisponiblesTotals(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal, (index + 1));
                     window.scroll(0,0);
+            }
+            else{
+                if(funcion == "Movies"){
+                    titleGeneroInsert.innerText = funcion;
+                    getTrendingMovies(SeccionCuadrillaPelis_Series_GenerosFilter,CreateMoviesNormal, (index + 1))
+                }
+                else if(funcion == "Series" || funcion == "TV"){
+                    titleGeneroInsert.innerText = funcion;
+                    getTvSeriesDisponibles(SeccionCuadrillaPelis_Series_GenerosFilter, CreateSeriesNormal, (index + 1));
+                }
             }
             console.log(index + 1);
         })

@@ -623,3 +623,6 @@ footer{
 #main .none{
     display: none;
 }
+.activePress{
+    background-color: var(--color-red);
+}

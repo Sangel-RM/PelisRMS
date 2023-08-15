@@ -203,6 +203,7 @@ async function getTrendingMovies(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(`${MoviesTrending}`, {
         params: {
             page: pageNum,
+            language: "es",
         }
     })
     const pelisTendencias = data.results;
@@ -213,14 +214,22 @@ getTrendingMovies(PelisTendencias, CreateMoviesWhitPrint);
 
 
 async function listaMovies(Container, CreatorItemsLista){
-    const {data} = await api(`${listaMoviesCategories}`);
+    const {data} = await api(`${listaMoviesCategories}`, {
+        params: {
+            language: "es",
+        }
+    });
     const generos = data.genres
     CreatorItemsLista(generos, Container);
 };
 listaMovies(categoryMenuMovie, CreateCategoriesMovies);
 
 async function listaSeries(Container, CreatorItemsLista){
-    const {data} = await api(`${listaSeriesCategories}`);
+    const {data} = await api(`${listaSeriesCategories}`, {
+        params: {
+            language: "es",
+        }
+    });
     console.log(data);
     const generos = data.genres
     CreatorItemsLista(generos, Container);
@@ -230,7 +239,8 @@ listaSeries(categoryMenuSerie, CreateCategoriesSeries);
 async function getPopularMovies(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(`${popularMovies}`,{
         params: {
-            page: pageNum
+            page: pageNum,
+            language: "es",
         }
     });
     const pelisDestacadas = data.results;
@@ -241,7 +251,8 @@ getPopularMovies(estrenosDestacadosHD, CreateMoviesWhitPrint);
 async function getNowMovies(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(`${nowPlayingMovies}`, {
         params: {
-            page: pageNum
+            page: pageNum,
+            language: "es",
         }
     });
     const pelisDispo = data.results;
@@ -252,7 +263,8 @@ getNowMovies(pelisDisponiblesTotals, CreateMoviesNormal);
 async function getTvSeriesTendencias(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(`${tvSeries}`, {
         params: {
-            page: pageNum
+            page: pageNum,
+            language: "es",
         }
     });
     const tvSeriesData = data.results;
@@ -263,7 +275,8 @@ getTvSeriesTendencias(SeriesDestacadas, CreateSeriesWhitPrint);
 async function getTvSeriesDisponibles(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(`${tvSeriesPopulares}`, {
         params: {
-            page: pageNum
+            page: pageNum,
+            language: "es",
         }
     });
     const SeriesDestacadas = data.results;
@@ -274,7 +287,8 @@ getTvSeriesDisponibles(seriesDispo, CreateSeriesWhitPrint);
 async function getTvSeriesDisponiblesTotals(Container, Creator_Movie_SerieCard, pageNum){
     const {data} = await api(tvSeriesTotals, {
         params: {
-            page: pageNum
+            page: pageNum,
+            language: "es",
         }
     });
     const Series_data = data.results;
@@ -287,6 +301,7 @@ async function getTrendingSeriesFilter(id, Container, pageNum){
         params: {
             with_genres: id,
             page: pageNum,
+            language: "es",
         }
     })
     const pelisTendencias = data.results;
@@ -298,18 +313,27 @@ async function getTrendingMoviesFilter(id, Container, pageNum){
         params: {
             with_genres: id,
             page: pageNum,
+            language: "es",
         }
     })
     const pelisTendencias = data.results;
     CreateMoviesNormal(pelisTendencias, Container)
 }
 async function getMovieSimilarID(id, Container, Creator_Movie_SerieCard){
-    const {data} = await api(`${SearchMoviID}${id}/similar`);
+    const {data} = await api(`${SearchMoviID}${id}/similar`, {
+        params: {
+            language: "es",
+        }
+    });
     const Movies = data.results;
     Creator_Movie_SerieCard(Movies, Container)
 }
 async function getSerieSimilarID(id, Container, Creator_Movie_SerieCard){
-    const {data} = await api(`${SearchSerieID}${id}/similar`);
+    const {data} = await api(`${SearchSerieID}${id}/similar`, {
+        params: {
+            language: "es",
+        }
+    });
     const Movies = data.results;
     Creator_Movie_SerieCard(Movies, Container)
 }
@@ -318,6 +342,7 @@ async function getMoviesFilterAnio(query, Container, pageNum){
         params: {
             year: `${query}`,
             page: pageNum,
+            language: "es",
         }
     })
     const Movies = data.results;
@@ -329,6 +354,7 @@ async function getSeriesFilterAnio(query, Container, pageNum){
         params: {
             first_air_date_year: `${query}`,
             page: pageNum,
+            language: "es",
         }
     })
     const Movies = data.results;
@@ -336,12 +362,20 @@ async function getSeriesFilterAnio(query, Container, pageNum){
     CreateSeriesNormal(Movies, Container);
 }
 async function getPopularMoviesDestacadas(Container){
-    const {data} = await api(`${popularMovies}`);
+    const {data} = await api(`${popularMovies}`, {
+        params: {
+            language: "es",
+        }
+    });
     const pelisDestacadas = data.results;
     CreateMoviesNormalMasDestacadas(pelisDestacadas, Container)
 }
 async function getPopularSeriesDestacadas(Container){
-    const {data} = await api(`${popularSeries}`);
+    const {data} = await api(`${popularSeries}`, {
+        params: {
+            language: "es",
+        }
+    });
     const SeriesDestacadas = data.results;
     CreateSeriesNormalMasDestacadas(SeriesDestacadas, Container)
 }
@@ -350,6 +384,7 @@ async function getMovieBySearch(query, Container){
     const {data} = await api(`${SearchMovieQuery}`,{
         params: {
             query,
+            language: "es",
         }
     })
     const Movies = data.results;
@@ -359,6 +394,7 @@ async function getSeriesBySearch(query, Container){
     const {data} = await api(`${SearchTVQuery}`,{
         params: {
             query,
+            language: "es",
         }
     })
     const Movies = data.results;
@@ -369,7 +405,8 @@ async function getSeriesBySearch(query, Container){
 async function getMovieByID(id){
     const { data: Movie} = await api(`${SearchMoviID}${id}`,{
         params:{
-            append_to_response: "videos"
+            append_to_response: "videos",
+            language: "es",
         }
     })
     console.log(Movie);
@@ -399,7 +436,8 @@ async function getMovieByID(id){
 async function getSerieByID(id){
     const {data: Movie} = await api(`${SearchSerieID}${id}`,{
         params:{
-            append_to_response: "videos"
+            append_to_response: "videos",
+            language: "es",
         }
     })
     console.log(Movie);
