@@ -337,6 +337,9 @@ iframe{
     overflow-y: scroll;
     height: 440px;
 }
+.pelisDisponiblesMasDestacadas .cardDisponibles{
+    min-height: 150px;
+}
 .pelisDisponiblesMasDestacadas .cardDisponibles .poster{
     height: 100%;
 }
@@ -353,14 +356,15 @@ iframe{
 }
 .ContenedorTitle{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0 0 10px 0;
 }
 .Page-PEliS-SERIES .title-GENEROS-PELI-SERIE{
     text-align: center;
     font-size: 3rem;
-    padding: 0 20px;
+    margin: 0 10px;
+    width: 100%;
 }
 .ContenedorTitle .raya{
     width: 100%;

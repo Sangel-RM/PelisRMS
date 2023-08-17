@@ -8,6 +8,7 @@
     --placehoulder: #7378c5;
     --color-red: rgb(247, 64, 64);
     --borderColor: #242424;
+    --colorCardLoading: #3b3c41;
 }
 *{
     margin: 0;
@@ -174,6 +175,12 @@ body{
 .Menu .Contact ul li a i:hover{
     color: var(--color-red);
 }
+.Menu .aniosSearch .Anios div a{
+    font-size: 1.3rem;
+}
+.Menu .aniosSearch .titleAnios{
+    font-size: 2rem;
+}
 .form{
     width: 100%;
     height: 40px;
@@ -247,6 +254,7 @@ body{
     scroll-snap-align: center;
     flex-direction: column;
     min-width: 290px;
+    height: 478px;
     justify-content: space-between;
     border-radius: 2px;
     margin: 0 0 10px 0;
@@ -254,33 +262,11 @@ body{
 }
 .card .poster {
     width: 100%;
-    height: 90%;
+    height: 430px;
 }
 .card .poster img{
     width: 100%;
     height: 100%;
-}
-.card .data{
-    display: grid;
-    gap: 3px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    font-size: 1.5rem;
-    color: var(--white);
-    background-color: var(--secondary-color);
-    padding: 0 0 0 5px;
-    overflow: hidden;
-} 
-.card .data .Extreno{
-    grid-area: 2/1;
-}
-.card .data .stars{
-    grid-area: 2/2;
-    text-align: end;
-}
-.card .data .categoryContainer{
-    display: flex;
-    justify-content: end;
 }
 .card .data .categoryContainer .category{
     background-color: red;
@@ -296,11 +282,13 @@ body{
     justify-content: space-between;
     background-color: var(--secondary-color);
     height: 20%;
+    max-height: 48px;
     padding: 5px 0 0 5px;
 }
 .card .dataEstrenos .titleSerie,
 .card .dataEstrenos .titlePeli{
     font-size: 1.3rem;
+    overflow: hidden;
 }
 .cardSeries .ContainerStar_Category,
 .card .dataEstrenos .ContainerStar_Category{
@@ -538,7 +526,46 @@ footer{
 .footerContainer .RedesSociales ul li a i:hover{
     color: var(--color-red);
 }
+.none {
+    display: none;
+}
+#main .none{
+    display: none;
+}
+.activePress{
+    background-color: var(--color-red);
+}
+.Movie-Container{
+    cursor: pointer;
+}
+.Movie-Container--Loading--Whit-Print{
+    background-color: var(--colorCardLoading);
+    display: flex;
+    scroll-snap-align: center;
+    flex-direction: column;
+    min-width: 290px;
+    height: 478px;
+    justify-content: space-between;
+    border-radius: 2px;
+    margin: 0 0 10px 0;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+    animation: LoadingSkeleton infinite 2s;
+}
+.Movie-Container--Loading{
+    width: 100%;
+    height: 170px;
+    background-color: var(--colorCardLoading);
+    display: flex;
+    scroll-snap-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 2px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+}
 @media (min-width: 320px){
+    .cardDisponibles{
+        min-height: 170px;
+    }
     .cardDisponibles .data{
         font-size: .7rem;
     }
@@ -550,6 +577,11 @@ footer{
         display: none;
     }
 }
+@media (min-width: 375px){
+    .cardDisponibles{
+        min-height: 180px;
+    }
+}
 @media (min-width: 425px){
     .SeriesDisponiblesTotals,
     .pelisDisponiblesTotals{
@@ -557,6 +589,10 @@ footer{
     }
     .cardDisponibles .data{
         font-size: .8rem;
+    }
+    .cardDisponibles,
+    .Movie-Container--Loading{
+        min-height: 175px;
     }
 }
 /* @media (min-width: 500px){
@@ -569,6 +605,10 @@ footer{
     }
 } */
 @media (min-width: 700px){
+    .cardDisponibles,
+    .Movie-Container--Loading{
+        min-height: 300px;
+    }
     .cardDisponibles .data{
         font-size: 1rem;
     }
@@ -607,6 +647,10 @@ footer{
     .header-pelis .buttonsleft-right{
         display: flex;
     }
+    .cardDisponibles,
+    .Movie-Container--Loading{
+        min-height: 250px;
+    }
 }
 @media (min-width: 1440px){
     .SeriesDisponiblesTotals,
@@ -616,13 +660,17 @@ footer{
     .generosMovies .scrollGeneros{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+    .cardDisponibles,
+    .Movie-Container--Loading{
+        min-height: 290px;
+    }
 }
-.none {
-    display: none;
-}
-#main .none{
-    display: none;
-}
-.activePress{
-    background-color: var(--color-red);
+
+@keyframes LoadingSkeleton {
+    0%, 100%{
+        opacity: 100%;
+    }
+    50%{
+        opacity: 80%;
+    }
 }
