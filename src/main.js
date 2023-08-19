@@ -531,11 +531,13 @@ async function getMovieBySearch
         const buttonCargarMenosPelis = $Selector(".CargarMenos")
         if(pageNum < data.total_pages){
             buttonCargarMasPelis.addEventListener("click", () => {
+                window.scroll(0,0);
                 getMovieBySearch({pageNum: (pageNum + 1), Container: Container, lazyLoad: lazyLoad, query: query});
             });
         }
         if(pageNum >= 1){
             buttonCargarMenosPelis.addEventListener("click", () =>{
+                window.scroll(0,0);
                 getMovieBySearch({pageNum: (pageNum - 1), Container: Container, lazyLoad: lazyLoad, query: query});
             })
         }
@@ -562,11 +564,13 @@ async function getSeriesBySearch
         const buttonCargarMenosSeries = $Selector(".CargarMenosMenos")
         if(pageNum < data.total_pages){
             buttonCargarMasSeries.addEventListener("click", () => {
+                window.scroll(0,1400);
                 getSeriesBySearch({pageNum: (pageNum + 1), Container: Container, lazyLoad: lazyLoad, query: query});
             });
         }
         if(pageNum >= 1){
             buttonCargarMenosSeries.addEventListener("click", () =>{
+                window.scroll(0,1400);
                 getSeriesBySearch({pageNum: (pageNum - 1), Container: Container, lazyLoad: lazyLoad, query: query});
             })
         }
