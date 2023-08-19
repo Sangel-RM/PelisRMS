@@ -29,7 +29,7 @@ function CreateMoviesWhitPrint
     let view = `${Movies.map(item => 
                     `<article class="card">
                             <figure class="poster">
-                                <a href="#Movie=${item.title}_${item.id}">
+                                <a href="#Movie/${item.title}_${item.id}">
                                     <img class="MoviesPrint" data-src="${PhotosMovies}${item.poster_path}" alt="${item.title}">
                                 </a>
                             </figure>
@@ -60,7 +60,7 @@ function CreateSeriesWhitPrint
     let view = `${Movies.map(item => `
                     <article class="card">
                             <figure class="poster">
-                                <a href="#Series=${item.name}_${item.id}">
+                                <a href="#Series/${item.name}_${item.id}">
                                     <img class="SeriesPrint" data-src="${PhotosMovies}${item.poster_path}" alt="${item.name}">
                                 </a>
                             </figure>
@@ -84,25 +84,44 @@ if(lazyLoad){
 function CreateMoviesNormal
 ({Movies,Container, lazyLoad = false}){
     Container.innerHTML = "";
-    let view = `${Movies.map(item => `
-                        <article class="cardDisponibles">
-                            <figure class="poster">
-                                <a href="#Movie=${item.title}_${item.id}">
-                                    <img class="MovieCardNormal" data-src="${PhotosMovies}${item.poster_path}" alt="${item.title}">
-                                </a>
-                            </figure>
-                            <div class="data">
-                                <h3 class="titlePeli">${item.title}</h3>
-                            </div>
-                        </article>`).join("")}`;
-Container.innerHTML = view;
 if(lazyLoad){
+    let view = `${Movies.map(item => `
+        <article class="cardDisponibles">
+            <figure class="poster">
+                <a href="#Movie/${item.title}_${item.id}">
+                    <img class="MovieCardNormal" data-src="${PhotosMovies}${item.poster_path}" alt="${item.title}">
+                </a>
+            </figure>
+            <div class="data">
+                <h3 class="titlePeli">${item.title}</h3>
+            </div>
+        </article>`).join("")}`;
+    Container.innerHTML = view;
     const images = $SelectorAll(".MovieCardNormal");
     images.forEach(item => {
         item.addEventListener("error", () => {
             item.setAttribute("src","https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg");
         });
         lazyLoader.observe(item);
+    });
+}else{
+    let view = `${Movies.map(item => `
+        <article class="cardDisponibles">
+            <figure class="poster">
+                <a href="#Movie/${item.title}_${item.id}">
+                    <img class="MovieCardNormal" src="${PhotosMovies}${item.poster_path}" alt="${item.title}">
+                </a>
+            </figure>
+            <div class="data">
+                <h3 class="titlePeli">${item.title}</h3>
+            </div>
+        </article>`).join("")}`;
+    Container.innerHTML = view;
+    const images = $SelectorAll(".MovieCardNormal");
+    images.forEach(item => {
+        item.addEventListener("error", () => {
+            item.setAttribute("src","https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg");
+        });
     });
 }
 }
@@ -112,7 +131,7 @@ function CreateMoviesNormalSimilares
     let view = `${Movies.map(item => `
                         <article class="cardTitleSimilares">
                             <figure class="poster">
-                                <a href="#Movie=${item.title}_${item.id}">
+                                <a href="#Movie/${item.title}_${item.id}">
                                     <img class="MoviesCardNormalSimilar" data-src="${PhotosMovies}${item.poster_path}" alt="${item.title}">
                                 </a>
                             </figure>
@@ -134,7 +153,7 @@ function CreateSeriesNormalSimilares
     let view = `${Movies.map(item => `
                         <article class="cardTitleSimilares">
                             <figure class="poster">
-                                <a href="#Series=${item.name}_${item.id}">
+                                <a href="#Series/${item.name}_${item.id}">
                                     <img class="SeriesCardNormalSimilar" data-src="${PhotosMovies}${item.poster_path}" alt="${item.name}">
                                 </a>
                             </figure>
@@ -153,10 +172,11 @@ if(lazyLoad){
 function CreateSeriesNormal
 ({Movies,Container, lazyLoad = false}){
     Container.innerHTML = "";
+if(lazyLoad){
     let view = `${Movies.map(item => `
                         <article class="cardDisponibles">
                             <figure class="poster">
-                                <a href="#Series=${item.name}_${item.id}">
+                                <a href="#Series/${item.name}_${item.id}">
                                     <img class="SeriesCardNormal" data-src="${PhotosMovies}${item.poster_path}" alt="${item.name}">
                                 </a>
                             </figure>
@@ -164,8 +184,7 @@ function CreateSeriesNormal
                                 <h3 class="titlePeli">${item.name}</h3>
                             </div>
                         </article>`).join("")}`;
-Container.innerHTML = view;
-if(lazyLoad){
+    Container.innerHTML = view;
     const images = $SelectorAll(".SeriesCardNormal");
     images.forEach(item => {
         item.addEventListener("error", () => {
@@ -173,6 +192,25 @@ if(lazyLoad){
         });
         lazyLoader.observe(item)
     });
+}else{
+    let view = `${Movies.map(item => `
+                        <article class="cardDisponibles">
+                            <figure class="poster">
+                                <a href="#Series/${item.name}_${item.id}">
+                                    <img class="SeriesCardNormal" src="${PhotosMovies}${item.poster_path}" alt="${item.name}">
+                                </a>
+                            </figure>
+                            <div class="data">
+                                <h3 class="titlePeli">${item.name}</h3>
+                            </div>
+                        </article>`).join("")}`;
+Container.innerHTML = view;
+const images = $SelectorAll(".SeriesCardNormal");
+images.forEach(item => {
+    item.addEventListener("error", () => {
+        item.setAttribute("src","https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg");
+    })}
+)
 }
 }
 function CreateMoviesNormalMasDestacadas
@@ -181,7 +219,7 @@ function CreateMoviesNormalMasDestacadas
     let view = `${Movies.map(item => `
                         <article class="cardDisponibles">
                             <figure class="poster">
-                                <a href="#Movie=${item.title}_${item.id}">
+                                <a href="#Movie/${item.title}_${item.id}">
                                     <img class="MoviesNormalDestacadas" data-src="${PhotosMovies}${item.poster_path}" alt="${item.title}">
                                 </a>
                             </figure>
@@ -203,7 +241,7 @@ function CreateSeriesNormalMasDestacadas
     let view = `${Movies.map(item => `
                         <article class="cardDisponibles">
                             <figure class="poster">
-                                <a href="#Series=${item.name}_${item.id}">
+                                <a href="#Series/${item.name}_${item.id}">
                                     <img class="SeriesNormalDestacadas" data-src="${PhotosMovies}${item.poster_path}" alt="${item.name}">
                                 </a>
                             </figure>
@@ -232,7 +270,7 @@ function CargarPeliAndSerieINF
         title_original_name.innerText = "";
         totalStarAverage.innerText = "";
         totalCountVotosAverage.innerText = "";
-    if(location.hash.startsWith("#Movie=")){
+    if(location.hash.startsWith("#Movie/")){
         titlePeliINF.innerText = Movie.title;
         insertPosterPeli.src = `${PhotosMovies}${Movie.poster_path}`;
         insertPosterPeli.setAttribute("alt",`${Movie.title}`);
@@ -249,7 +287,7 @@ function CargarPeliAndSerieINF
         title_original_name.innerText = Movie.original_title;
         totalStarAverage.innerText = `🌟${Movie.vote_average}`;
         totalCountVotosAverage.innerText = `Votos: ${Movie.vote_count}`;
-    }else if(location.hash.startsWith("#Series=")){
+    }else if(location.hash.startsWith("#Series/")){
         titlePeliINF.innerText = Movie.name;
         insertPosterPeli.src = `${PhotosMovies}${Movie.poster_path}`;
         insertPosterPeli.setAttribute("alt",`${Movie.name}`);
@@ -271,7 +309,7 @@ function CargarPeliAndSerieINF
 function CreateCategoriesMovies
 ({categories, Container}){
     let view = `${categories.map(item => `
-    <li><a href="#CategoryMovie=${item.id}-${item.name}" class="CategoryMovie">${item.name}</a></li>
+    <li><a href="#CategoryMovie/${item.id}-${item.name}" class="CategoryMovie">${item.name}</a></li>
     `).join("")}`;
     Container.forEach(item => {
         item.innerHTML = view;
@@ -280,7 +318,7 @@ function CreateCategoriesMovies
 function CreateCategoriesSeries
 ({categories, Container}){
     let view = `${categories.map(item => `
-    <li><a href="#CategorySerie=${item.id}-${item.name}" class="CategorySerie">${item.name}</a></li>
+    <li><a href="#CategorySerie/${item.id}-${item.name}" class="CategorySerie">${item.name}</a></li>
     `).join("")}`;
     Container.forEach(item => {
         item.innerHTML = view;
@@ -292,13 +330,13 @@ function CreateAniosSearch
     Anios.forEach(item => item.innerHTML = "")
     let view = [];
     for(let i = 1930; i <= 2023; i++){
-        view.push(`<div><a href="#SearchAnio=${i}">${i}</a></div>`);
+        view.push(`<div><a href="#SearchAnio/${i}">${i}</a></div>`);
     }
     Anios.forEach(item => item.innerHTML = view.join(""));
 }
 CreateAniosSearch();
 function CreatePageNumber
-({Container, hasta}){
+({Container}){
     Container.innerHTML = "";
     let view = [];
     for(let i = 1; i <= 100; i++){
@@ -308,15 +346,13 @@ function CreatePageNumber
 }
 
 async function getTrendingMovies
-({Container, Creator_Movie_SerieCard, pageNum, lazyLoad}){
+({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${MoviesTrending}`, {
         params: {
-            page: pageNum,
             language: "es",
         }
     })
     const pelisTendencias = data.results;
-    console.log(data);
     Creator_Movie_SerieCard({Movies: pelisTendencias, Container: Container, lazyLoad: lazyLoad});
 }
 getTrendingMovies({Container: PelisTendencias, Creator_Movie_SerieCard: CreateMoviesWhitPrint, lazyLoad: true});
@@ -348,10 +384,9 @@ async function listaSeries
 listaSeries({Container: categoryMenuSerie, CreatorItemsLista: CreateCategoriesSeries});
 
 async function getPopularMovies
-({Container, Creator_Movie_SerieCard, pageNum, lazyLoad}){
+({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${popularMovies}`,{
         params: {
-            page: pageNum,
             language: "es",
         }
     });
@@ -361,10 +396,9 @@ async function getPopularMovies
 getPopularMovies({Container: estrenosDestacadosHD, Creator_Movie_SerieCard: CreateMoviesWhitPrint, lazyLoad: true});
 
 async function getNowMovies
-({Container, Creator_Movie_SerieCard, pageNum, lazyLoad}){
+({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${nowPlayingMovies}`, {
         params: {
-            page: pageNum,
             language: "es",
         }
     });
@@ -374,10 +408,9 @@ async function getNowMovies
 getNowMovies({Container: pelisDisponiblesTotals, Creator_Movie_SerieCard: CreateMoviesNormal, lazyLoad: true});
 
 async function getTvSeriesTendencias
-({Container, Creator_Movie_SerieCard, pageNum, lazyLoad}){
+({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${tvSeries}`, {
         params: {
-            page: pageNum,
             language: "es",
         }
     });
@@ -387,10 +420,9 @@ async function getTvSeriesTendencias
 getTvSeriesTendencias({Container: SeriesDestacadas, Creator_Movie_SerieCard: CreateSeriesWhitPrint, lazyLoad: true});
 
 async function getTvSeriesDisponibles
-({Container, Creator_Movie_SerieCard, pageNum, lazyLoad}){
+({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${tvSeriesPopulares}`, {
         params: {
-            page: pageNum,
             language: "es",
         }
     });
@@ -400,10 +432,9 @@ async function getTvSeriesDisponibles
 getTvSeriesDisponibles({Container: seriesDispo, Creator_Movie_SerieCard: CreateSeriesWhitPrint, lazyLoad: true});
 
 async function getTvSeriesDisponiblesTotals
-({Container, Creator_Movie_SerieCard, pageNum, lazyLoad}){
+({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(tvSeriesTotals, {
         params: {
-            page: pageNum,
             language: "es",
         }
     });
@@ -412,31 +443,6 @@ async function getTvSeriesDisponiblesTotals
 }
 getTvSeriesDisponiblesTotals({Container: seriesDisponiblestotals, Creator_Movie_SerieCard: CreateSeriesNormal, lazyLoad: true});
 
-async function getTrendingSeriesFilter
-({id, Container, pageNum, lazyLoad}){
-    const {data} = await api(`${FilterSeriesCategory}`,{
-        params: {
-            with_genres: id,
-            page: pageNum,
-            language: "es",
-        }
-    })
-    const pelisTendencias = data.results;
-    console.log(" series", data);
-    CreateSeriesNormal({Movies: pelisTendencias, Container: Container, lazyLoad: lazyLoad})
-}
-async function getTrendingMoviesFilter
-({id, Container, pageNum, lazyLoad}){
-    const {data} = await api(`${FilterMovieCategory}`,{
-        params: {
-            with_genres: id,
-            page: pageNum,
-            language: "es",
-        }
-    })
-    const pelisTendencias = data.results;
-    CreateMoviesNormal({Movies: pelisTendencias, Container: Container, lazyLoad: lazyLoad})
-}
 async function getMovieSimilarID
 ({id, Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${SearchMoviID}${id}/similar`, {
@@ -467,7 +473,7 @@ async function getMoviesFilterAnio
         }
     })
     const Movies = data.results;
-    // console.log(data);
+    PageIs.innerText = `page: ${pageNum}`;
     CreateMoviesNormal({Movies: Movies, Container: Container, lazyLoad: lazyLoad});
 }
 async function getSeriesFilterAnio
@@ -480,7 +486,7 @@ async function getSeriesFilterAnio
         }
     })
     const Movies = data.results;
-    // console.log(data);
+    PageIs.innerText = `page: ${pageNum}`;
     CreateSeriesNormal({Movies: Movies, Container: Container, lazyLoad: lazyLoad});
 }
 async function getPopularMoviesDestacadas
@@ -505,26 +511,66 @@ async function getPopularSeriesDestacadas
 }
 // Search Movies And Series Input
 async function getMovieBySearch
-({query, Container, lazyLoad}){
+({query, Container, lazyLoad, pageNum}){
     const {data} = await api(`${SearchMovieQuery}`,{
         params: {
             query,
+            page: pageNum,
             language: "es",
         }
     })
     const Movies = data.results;
+    console.log("Movies",data);
     CreateMoviesNormal({Movies: Movies, Container: Container, lazyLoad: lazyLoad})
+    if(data.total_pages > pageNum){
+        const butonMas = `<button class="CargarMas"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>`;
+        const butonMenos = `<button class="CargarMenos"><i class="fa-sharp fa-solid fa-arrow-left"></i></button>`;
+        const botones = [butonMenos, butonMas]
+        ContainerCargarMasPelis.innerHTML = botones.join("");
+        const buttonCargarMasPelis = $Selector(".CargarMas");
+        const buttonCargarMenosPelis = $Selector(".CargarMenos")
+        if(pageNum < data.total_pages){
+            buttonCargarMasPelis.addEventListener("click", () => {
+                getMovieBySearch({pageNum: (pageNum + 1), Container: Container, lazyLoad: lazyLoad, query: query});
+            });
+        }
+        if(pageNum >= 1){
+            buttonCargarMenosPelis.addEventListener("click", () =>{
+                getMovieBySearch({pageNum: (pageNum - 1), Container: Container, lazyLoad: lazyLoad, query: query});
+            })
+        }
+    }
 }
 async function getSeriesBySearch
-({query, Container, lazyLoad}){
+({query, Container, lazyLoad ,pageNum}){
     const {data} = await api(`${SearchTVQuery}`,{
         params: {
             query,
+            page: pageNum,
             language: "es",
         }
     })
     const Movies = data.results;
-    CreateSeriesNormal({Movies: Movies, Container: Container, lazyLoad: lazyLoad})
+    console.log("Series",data);
+    CreateSeriesNormal({Movies: Movies, Container: Container, lazyLoad: lazyLoad});
+    if(data.total_pages > pageNum){
+        const butonMas = `<button class="CargarMasSeries"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>`;
+        const butonMenos = `<button class="CargarMenosSeries"><i class="fa-sharp fa-solid fa-arrow-left"></i></button>`;
+        const botones = [butonMenos, butonMas]
+        ContainerCargarMasSeries.innerHTML = botones.join("");
+        const buttonCargarMasSeries = $Selector(".CargarMasSeries");
+        const buttonCargarMenosSeries = $Selector(".CargarMenosMenos")
+        if(pageNum < data.total_pages){
+            buttonCargarMasSeries.addEventListener("click", () => {
+                getSeriesBySearch({pageNum: (pageNum + 1), Container: Container, lazyLoad: lazyLoad, query: query});
+            });
+        }
+        if(pageNum >= 1){
+            buttonCargarMenosSeries.addEventListener("click", () =>{
+                getSeriesBySearch({pageNum: (pageNum - 1), Container: Container, lazyLoad: lazyLoad, query: query});
+            })
+        }
+    }
 }
 
 // seleccionando una peli e insertando su trailer
@@ -591,4 +637,81 @@ async function getSerieByID
         console.log(trailer);
         ContainerVideoTriler.innerHTML = `<div class="NoExisteT"><p>No Existe algun Trailer 😥</p></div>`;
     }
+}
+// paginacion 
+
+async function getPaginacion({ruta, 
+                            pageNum, 
+                            Container,ContainerNumbersPage, 
+                            Creator_Movie_SerieCard, 
+                            lazyLoad, 
+                        }){
+        ContainerNumbersPage.innerHTML = "";
+        const {data} = await api(`${ruta}`,{
+            params: {
+                page: pageNum,
+            },
+        });
+        const Movies = data.results;
+        let totalPages = data.total_pages;
+        if(totalPages >= 250){
+            totalPages = 250
+        }
+        let view = [];
+        for(let i = 1; i <= totalPages; i++){
+            view.push(`<div><span class="PageNumbers">${i}</span></div>`);
+        };
+        ContainerNumbersPage.innerHTML = view.join("");
+        const pageNumbersAll = totalPageNumberALL();
+        pageNumbersAll.forEach((item, index)=>{
+            item.addEventListener("click", () =>{
+                getPaginacion({ruta: ruta, ContainerNumbersPage: ContainerNumbersPage, pageNum: (index + 1),Container: Container, Creator_Movie_SerieCard: Creator_Movie_SerieCard, lazyLoad: true})
+            })
+        })
+        PageIs.innerText = `page: ${pageNum}`;
+        Creator_Movie_SerieCard({Movies: Movies, Container: Container, lazyLoad: lazyLoad});
+        window.scroll(0,0);
+}
+async function getPaginacionGeneros
+({ruta, 
+    id, 
+    Container,
+    ContainerNumbersPage, 
+    Creator_Movie_SerieCard,
+    pageNum, 
+    lazyLoad,
+}){
+    const {data} = await api(`${ruta}`,{
+        params: {
+            with_genres: id,
+            page: pageNum,
+            language: "es",
+        }
+    })
+    const pelisTendencias = data.results;
+    let totalPages = data.total_pages;
+        if(totalPages >= 250){
+            totalPages = 250
+        }
+        let view = [];
+        for(let i = 1; i <= totalPages; i++){
+            view.push(`<div><span class="PageNumbers">${i}</span></div>`);
+        };
+        ContainerNumbersPage.innerHTML = view.join("");
+        const pageNumbersAll = totalPageNumberALL();
+        pageNumbersAll.forEach((item, index)=>{
+            item.addEventListener("click", () =>{
+                getPaginacionGeneros({ruta: ruta, 
+                    id: id, 
+                    Container: Container, 
+                    Creator_Movie_SerieCard: Creator_Movie_SerieCard,
+                    ContainerNumbersPage: ContainerNumbersPage, 
+                    pageNum: (index + 1), 
+                    lazyLoad: lazyLoad, 
+                });
+            })
+        });
+        PageIs.innerText = `page: ${pageNum}`;
+    Creator_Movie_SerieCard({Movies: pelisTendencias, Container: Container, lazyLoad: lazyLoad});
+    window.scroll(0,0);
 }

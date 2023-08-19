@@ -189,22 +189,22 @@ function CloseTitlesAndSeccionCuadrillaSeries(){
         ContainerCuadrillaPelis.classList.add("none");
 }
 function OpenTitlesAndSeccionCuadrillaSeries(){
-    if(location.hash.startsWith("#CategoryMovie=")){
+    if(location.hash.startsWith("#CategoryMovie/")){
         TitleSearchPelisOSeries[1].classList.add("none");
         TitleSearchPelisOSeries[0].classList.remove("none");
         ContainerCuadrillaSeries.classList.add("none");
         ContainerCuadrillaPelis.classList.remove("none")
-    }else if(location.hash.startsWith("#CategorySerie=")){
+    }else if(location.hash.startsWith("#CategorySerie/")){
         TitleSearchPelisOSeries[0].classList.add("none");
         TitleSearchPelisOSeries[1].classList.remove("none");
         ContainerCuadrillaSeries.classList.remove("none");
         ContainerCuadrillaPelis.classList.add("none");
-    }else if(location.hash.startsWith("#search=")){
+    }else if(location.hash.startsWith("#search/")){
         TitleSearchPelisOSeries[0].classList.remove("none");
         TitleSearchPelisOSeries[1].classList.remove("none");
         ContainerCuadrillaSeries.classList.remove("none");
         ContainerCuadrillaPelis.classList.remove("none");
-    }else if(location.hash.startsWith("#SearchAnio=")){
+    }else if(location.hash.startsWith("#SearchAnio/")){
         TitleSearchPelisOSeries[0].classList.remove("none");
         TitleSearchPelisOSeries[1].classList.remove("none");
         ContainerCuadrillaSeries.classList.remove("none");
@@ -295,3 +295,10 @@ const totalPageNumberALL = () => {
     const totalPageNumber = $SelectorAll(".PageNumbers");
     return totalPageNumber
 }
+// Mostrar que pagina estoy 
+const ContenerdorPageNumber = $Selector(".ContenerdorPageNumber");
+const PageIs = $Selector(".pageIS");
+
+// cargar Mas pelis cuando este en la parte de search page
+const ContainerCargarMasPelis = $Selector(".ContainerCargarMasPelis");
+const ContainerCargarMasSeries = $Selector(".ContainerCargarMasSeries");

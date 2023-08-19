@@ -2,45 +2,45 @@ window.addEventListener("DOMContentLoaded", navigator, false);
 window.addEventListener("hashchange", navigator, false);
 
 SearchMOVIELUPA.addEventListener("click", () => {
-    location.hash = `#search=${searchInput.value}`;
+    location.hash = `#search/${searchInput.value}`;
 });
 searchInput.addEventListener("keyup", (event) => {
     if(event.which === 13){
-        location.hash = `#search=${searchInput.value}`;
+        location.hash = `#search/${searchInput.value}`;
         searchInput.value = "";
     }
 });
 // secciones para buscar todas las secciones
 VerTodoTendencias.addEventListener("click", () => {
-    location.hash = "#VerTodo=Tendencias";
+    location.hash = "#VerTodo/Tendencias/page=1";
 });
 VerTodoEstrenosDestacados.addEventListener("click", () => {
-    location.hash = "#VerTodo=EstrenosDestacados";
+    location.hash = "#VerTodo/EstrenosDestacados/page=1";
 });
 VerTodopelisDisponibles.addEventListener("click", () => {
-    location.hash = "VerTodo=PelisDisponibles";
+    location.hash = "VerTodo/PelisDisponibles/page=1";
 });
 VerTodoSeriesDestacadas.addEventListener("click", () => {
-    location.hash = "VerTodo=SeriesDestacadas";
+    location.hash = "VerTodo/SeriesDestacadas/page=1";
 });
 VerTodoSeriesDisponibles.addEventListener("click", () => {
-    location.hash = "VerTodo=SeriesDisponibles";
+    location.hash = "VerTodo/SeriesDisponibles/page=1";
 });
 VerTodoSeriesTotal.addEventListener("click", () => {
-    location.hash = "VerTodo=SeriesTotal";
+    location.hash = "VerTodo/SeriesTotal/page=1";
 })
 function navigator() {
     if(location.hash.startsWith("#Home")){
         HomePage();
-    }else if(location.hash.startsWith("#Movie=") || location.hash.startsWith("#Series=")){
+    }else if(location.hash.startsWith("#Movie/") || location.hash.startsWith("#Series/")){
         MoviesPage();
-    }else if(location.hash.startsWith("#CategoryMovie=") || location.hash.startsWith("#CategorySerie=")){
+    }else if(location.hash.startsWith("#CategoryMovie/") || location.hash.startsWith("#CategorySerie/")){
         CategoryPage();
-    }else if(location.hash.startsWith("#search=")){
+    }else if(location.hash.startsWith("#search/")){
         SearchPage();
-    }else if(location.hash.startsWith("#SearchAnio=")){
+    }else if(location.hash.startsWith("#SearchAnio/")){
         SearchAnioPage();
-    }else if(location.hash.startsWith("#VerTodo=")){
+    }else if(location.hash.startsWith("#VerTodo/")){
         VerTodo();
     }
 }
@@ -73,18 +73,18 @@ function MoviesPage() {
         SeccionContainerPeliINFMovie.classList.remove("none");
         window.scroll(0,0);
         TitulosSimilaresInsert.scroll(0,0);
-        CloseTitlesAndSeccionCuadrillaSeries()
 
+        CloseTitlesAndSeccionCuadrillaSeries()
         CreateAniosSearch();
 
-        const [_, name_id_data] = location.hash.split("=");
+        const [_, name_id_data] = location.hash.split("/");
         const [id_name, movie_id] = name_id_data.split("_");
-        if(location.hash.startsWith("#Movie=")){
+        if(location.hash.startsWith("#Movie/")){
             titleMasDestacadas.innerText = "Movies Mas Destacados";
             getMovieByID({id: movie_id});
             getPopularMoviesDestacadas({Container: PeliculasMasDestacadas, lazyLoad: true});
             getMovieSimilarID({id: movie_id, Container: TitulosSimilaresInsert, Creator_Movie_SerieCard: CreateMoviesNormalSimilares, lazyLoad: true});
-        }else if(location.hash.startsWith("#Series=")){
+        }else if(location.hash.startsWith("#Series/")){
             titleMasDestacadas.innerText = "Series Mas Destacadas";
             getSerieByID({id: movie_id});
             getPopularSeriesDestacadas({Container: PeliculasMasDestacadas, lazyLoad: true});
@@ -106,30 +106,30 @@ function CategoryPage() {
         HeaderRecientementeTitle.innerText = "Añadido recientemente";
         titleGeneroInsert.innerText = "Generos";
         paginacionInsert.classList.remove("none");
+        ContenerdorPageNumber.classList.remove("none");
+        ContainerCargarMasPelis.classList.add("none");
+        ContainerCargarMasSeries.classList.add("none");
         CreateAniosSearch();
-        CreatePageNumber({Container: paginacionInsert});
         OpenTitlesAndSeccionCuadrillaSeries();
-        const [dataRuta, categoryData] = location.hash.split("=");
+        const [dataRuta, categoryData] = location.hash.split("/");
         const [id, idName] = categoryData.split("-");
-
-        const totalPageNumber = totalPageNumberALL();
-        if(location.hash.startsWith("#CategoryMovie=")){
-            getTrendingMoviesFilter({id: id, Container: SeccionCuadrillaPelis_Series_GenerosFilter, lazyLoad: true});
-            totalPageNumber.forEach((item, index) => {
-                item.addEventListener("click", () => {
-                    window.scroll(0,0)
-                    getTrendingMoviesFilter({id: id, Container: SeccionCuadrillaPelis_Series_GenerosFilter, pageNum: (index + 1), lazyLoad: true});
-                    console.log(index + 1);
-                });
+        if(dataRuta == "#CategoryMovie"){
+            getPaginacionGeneros({ruta: FilterMovieCategory, 
+                ContainerNumbersPage: paginacionInsert, 
+                Creator_Movie_SerieCard: CreateMoviesNormal, 
+                id: id, 
+                pageNum: 1,
+                Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+                lazyLoad: true,
             });
-        }else if(location.hash.startsWith("#CategorySerie=")){
-            getTrendingSeriesFilter({id: id, Container: SeccionCuadrillaSeries, lazyLoad: true});
-            totalPageNumber.forEach((item, index) => {
-                item.addEventListener("click", () => {
-                    window.scroll(0,0)
-                    getTrendingSeriesFilter({id: id, Container: SeccionCuadrillaSeries, pageNum: (index + 1), lazyLoad: true});
-                    console.log(index + 1);
-                })
+        }else if(dataRuta == "#CategorySerie"){
+            getPaginacionGeneros({ruta: FilterSeriesCategory, 
+                ContainerNumbersPage: paginacionInsert, 
+                Creator_Movie_SerieCard: CreateSeriesNormal, 
+                id: id, 
+                Container: SeccionCuadrillaSeries, 
+                lazyLoad: true,
+                pageNum: 1,
             });
         };
         window.scroll(0,0);
@@ -150,16 +150,18 @@ function SearchPage() {
             titleGeneroInsert.innerText = "";
             titleGeneroInsert.innerText = "Resultados";
             paginacionInsert.classList.add("none");
+            ContenerdorPageNumber.classList.add("none");
+            ContainerCargarMasPelis.classList.remove("none");
+            ContainerCargarMasSeries.classList.remove("none");
             window.scroll(0,0);
 
             CreateAniosSearch();
-            CreatePageNumber({Container: paginacionInsert});
             OpenTitlesAndSeccionCuadrillaSeries();
 
             // ['#search', 'buscador'];
-            const [_, query] = location.hash.split("=");
-            getMovieBySearch({query: query, Container: SeccionCuadrillaPelis_Series_GenerosFilter, lazyLoad: true});
-            getSeriesBySearch({query: query, Container: SeccionCuadrillaSeries, lazyLoad: true});
+            const [_, query] = location.hash.split("/");
+            getMovieBySearch({query: query, Container: SeccionCuadrillaPelis_Series_GenerosFilter, pageNum: 1, lazyLoad: false});
+            getSeriesBySearch({query: query, Container: SeccionCuadrillaSeries, lazyLoad: false, pageNum: 1});
 }
 function SearchAnioPage(){
     ContainerVideoTriler.innerHTML = "";
@@ -177,24 +179,26 @@ function SearchAnioPage(){
     titleGeneroInsert.innerText = "";
     titleGeneroInsert.innerText = "Resultados";
     paginacionInsert.classList.remove("none");
+    ContenerdorPageNumber.classList.remove("none");
+    ContainerCargarMasPelis.classList.add("none");
+    ContainerCargarMasSeries.classList.add("none");
     window.scroll(0,0);
 
     CreateAniosSearch();
     CreatePageNumber({Container: paginacionInsert});
-    const totalPageNumber = totalPageNumberALL();
     OpenTitlesAndSeccionCuadrillaSeries();
 
-    const [_, query] = location.hash.split("=");
-    getMoviesFilterAnio({query: query, Container: SeccionCuadrillaPelis_Series_GenerosFilter, lazyLoad: true});
-    getSeriesFilterAnio({query: query, Container: SeccionCuadrillaSeries, lazyLoad: true});   
-    totalPageNumber.forEach((item, index) => {
-        item.addEventListener("click", () => {
-            window.scroll(0,0)
-            getMoviesFilterAnio({query: query, Container: SeccionCuadrillaPelis_Series_GenerosFilter, pageNum: (index + 1), lazyLoad: true});
-            getSeriesFilterAnio({query: query, Container: SeccionCuadrillaSeries, pageNum: (index + 1), lazyLoad: true});
-            console.log(index + 1);
+    const [_, query, pageData] = location.hash.split("/");
+    const pageNumbersAll = totalPageNumberALL();
+    pageNumbersAll.forEach((item, index) => {
+        item.addEventListener("click", () =>{
+            window.scroll(0,0);
+            getMoviesFilterAnio({query: query, pageNum: (index + 1),Container: SeccionCuadrillaPelis_Series_GenerosFilter, lazyLoad: true});
+            getSeriesFilterAnio({query: query, pageNum: (index + 1),Container: SeccionCuadrillaSeries, lazyLoad: true});
         })
     })
+    getMoviesFilterAnio({query: query, Container: SeccionCuadrillaPelis_Series_GenerosFilter, lazyLoad: true, pageNum: 1});
+    getSeriesFilterAnio({query: query, Container: SeccionCuadrillaSeries, lazyLoad: true, pageNum: 1});
 }
 function VerTodo(){
     ContainerVideoTriler.innerHTML = "";
@@ -210,90 +214,94 @@ function VerTodo(){
     HeaderRecientementeTitle.innerText = "Añadido recientemente";
     titleGeneroInsert.innerText = "";
     paginacionInsert.classList.remove("none");
+    ContenerdorPageNumber.classList.remove("none");
+    ContainerCargarMasPelis.classList.add("none");
+    ContainerCargarMasSeries.classList.add("none");
     window.scroll(0,0);
     CreateAniosSearch();
-    CreatePageNumber({Container: paginacionInsert});
     OpenTitlesAndSeccionCuadrillaSeries();
-    const totalPageNumber = totalPageNumberALL();
 
-    const [Seccion, funcion] = location.hash.split("=");
+    const [Seccion, funcion, pageData] = location.hash.split("/");
     if(funcion == "Tendencias"){
         titleGeneroInsert.innerText = "Tendencias";
-        getTrendingMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: 1, lazyLoad: true});
+        getPaginacion({ruta: MoviesTrending, 
+            ContainerNumbersPage: paginacionInsert, 
+            Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+            Creator_Movie_SerieCard: CreateMoviesNormal, 
+            lazyLoad: true,
+            pageNum: 1 
+        });
     }
     else if(funcion == "EstrenosDestacados"){
         titleGeneroInsert.innerText = "Estrenos Destacados";
-        getPopularMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: 1, lazyLoad: true});
+        getPaginacion({ruta: popularMovies, 
+            ContainerNumbersPage: paginacionInsert, 
+            Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+            Creator_Movie_SerieCard: CreateMoviesNormal, 
+            lazyLoad: true,
+            pageNum: 1
+        });
     }
     else if(funcion == "PelisDisponibles"){
         titleGeneroInsert.innerText = "Pelis Disponibles";
-        getNowMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: 1, lazyLoad: true});
+        getPaginacion({ruta: nowPlayingMovies, 
+            ContainerNumbersPage: paginacionInsert, 
+            Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+            Creator_Movie_SerieCard: CreateMoviesNormal, 
+            lazyLoad: true,
+            pageNum: 1 
+        });
     }
     else if(funcion == "SeriesDestacadas"){
         titleGeneroInsert.innerText = "Series Destacadas";
-        getTvSeriesTendencias({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: 1, lazyLoad: true});
+        getPaginacion({ruta: tvSeries, 
+            ContainerNumbersPage: paginacionInsert, 
+            Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+            Creator_Movie_SerieCard: CreateSeriesNormal, 
+            lazyLoad: true,
+            pageNum: 1 
+        });
     }
     else if(funcion == "SeriesDisponibles"){
         titleGeneroInsert.innerText = "Series Disponibles";
-        getTvSeriesDisponibles({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: 1, lazyLoad: true});
+        getPaginacion({ruta: tvSeriesPopulares, 
+            ContainerNumbersPage: paginacionInsert, 
+            Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+            Creator_Movie_SerieCard: CreateSeriesNormal, 
+            lazyLoad: true,
+            pageNum: 1 
+        });
     }
     else if(funcion == "SeriesTotal"){
         titleGeneroInsert.innerText = "Series Total";
-        getTvSeriesDisponiblesTotals({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: 1, lazyLoad: true});
+        getPaginacion({ruta: tvSeriesTotals, 
+            ContainerNumbersPage: paginacionInsert, 
+            Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+            Creator_Movie_SerieCard: CreateSeriesNormal, 
+            lazyLoad: true,
+            pageNum: 1 
+        });
     }
     else{
         if(funcion == "Movies"){
             titleGeneroInsert.innerText = funcion;
-            getTrendingMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: 1, lazyLoad: true})
+            getPaginacion({ruta: MoviesTrending, 
+                ContainerNumbersPage: paginacionInsert, 
+                Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+                Creator_Movie_SerieCard: CreateMoviesNormal, 
+                lazyLoad: true,
+                pageNum: 1 
+            });
         }
         else if(funcion == "Series" || funcion == "TV"){
             titleGeneroInsert.innerText = funcion;
-            getTvSeriesDisponibles({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: 1, lazyLoad: true});
+            getPaginacion({ruta: tvSeries, 
+                ContainerNumbersPage: paginacionInsert, 
+                Container: SeccionCuadrillaPelis_Series_GenerosFilter, 
+                Creator_Movie_SerieCard: CreateSeriesNormal, 
+                lazyLoad: true,
+                pageNum: 1 
+            });
         }
     }
-    totalPageNumber.forEach((item, index) => {
-        item.addEventListener("click", () => {
-            if(funcion == "Tendencias"){
-                titleGeneroInsert.innerText = funcion;
-                getTrendingMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: (index + 1), lazyLoad: true});
-                    window.scroll(0,0);
-            }
-            else if(funcion == "EstrenosDestacados"){
-                titleGeneroInsert.innerText = funcion;
-                getPopularMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: (index + 1), lazyLoad: true});
-                    window.scroll(0,0);
-            }
-            else if(funcion == "PelisDisponibles"){
-                titleGeneroInsert.innerText = funcion;
-                getNowMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: (index + 1), lazyLoad: true});
-                    window.scroll(0,0);
-            }
-            else if(funcion == "SeriesDestacadas"){
-                titleGeneroInsert.innerText = funcion;
-                getTvSeriesTendencias({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: (index + 1), lazyLoad: true});
-                    window.scroll(0,0);
-            }
-            else if(funcion == "SeriesDisponibles"){
-                titleGeneroInsert.innerText = funcion;
-                getTvSeriesDisponibles({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: (index + 1), lazyLoad: true});
-                    window.scroll(0,0);
-            }
-            else if(funcion == "SeriesTotal"){
-                titleGeneroInsert.innerText = funcion;
-                getTvSeriesDisponiblesTotals({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: (index + 1), lazyLoad: true});
-                    window.scroll(0,0);
-            }
-            else{
-                if(funcion == "Movies"){
-                    titleGeneroInsert.innerText = funcion;
-                    getTrendingMovies({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateMoviesNormal, pageNum: (index + 1), lazyLoad: true})
-                }
-                else if(funcion == "Series" || funcion == "TV"){
-                    titleGeneroInsert.innerText = funcion;
-                    getTvSeriesDisponibles({Container: SeccionCuadrillaPelis_Series_GenerosFilter, Creator_Movie_SerieCard: CreateSeriesNormal, pageNum: (index + 1), lazyLoad: true});
-                }
-            }
-            console.log(index + 1);
-        })
-    })
 }

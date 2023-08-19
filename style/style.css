@@ -561,6 +561,7 @@ footer{
     justify-content: space-between;
     border-radius: 2px;
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+    animation: LoadingSkeleton infinite 2.5s;
 }
 @media (min-width: 320px){
     .cardDisponibles{
@@ -607,7 +608,7 @@ footer{
 @media (min-width: 700px){
     .cardDisponibles,
     .Movie-Container--Loading{
-        min-height: 300px;
+        max-height: 300px;
     }
     .cardDisponibles .data{
         font-size: 1rem;
@@ -671,6 +672,6 @@ footer{
         opacity: 100%;
     }
     50%{
-        opacity: 80%;
+        opacity: 50%;
     }
 }

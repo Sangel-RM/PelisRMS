@@ -54,9 +54,9 @@
                 <div class="moviesAndSeries">
                     <h1>Series, Movies, TV</h1>
                     <ul>
-                        <li><a href="#VerTodo=Movies">Movies</a></li>
-                        <li><a href="#VerTodo=Series">Series</a></li>
-                        <li><a href="#VerTodo=TV">TV</a></li>
+                        <li><a href="#VerTodo/Movies">Movies</a></li>
+                        <li><a href="#VerTodo/Series">Series</a></li>
+                        <li><a href="#VerTodo/TV">TV</a></li>
                     </ul>
                 </div>
                 <div class="aniosSearch">
@@ -488,7 +488,12 @@
         <section class="totalPelis-Serie-generos-Search Page-PEliS-SERIES none">
             <section class="totalPELIS-SERIES-GENEROS">
                 <div class="ContenedorTitle"><div class="raya"></div><h1 class="title-GENEROS-PELI-SERIE"></h1><div class="raya"></div></div>
-                <h3 class="Header-Recientemente">Añadido recientemente</h3>
+                <div class="addRecientemente_page">
+                    <h3 class="Header-Recientemente">Añadido recientemente</h3>
+                    <div class="ContenerdorPageNumber">
+                        <span class="pageIS">Page: 0</span>
+                    </div>
+                </div>
                 <section class="ContainerCuadrilla">
                     <h1 class="TitleSearchPelisOSeries none">Pelis Search</h1>
                     <section class="cuadrillaPelis">
@@ -533,6 +538,7 @@
                         <article class="LoadingCardSkeleton Movie-Container Movie-Container--Loading">
                         </article>
                     </section>
+                    <div class="ContainerCargarMasPelis"></div>
                 </section>
                 <section class="ContainerCuadrillaSeries none">
                     <h1 class="TitleSearchPelisOSeries none">Series Search</h1>
@@ -578,6 +584,7 @@
                             <article class="LoadingCardSkeleton Movie-Container Movie-Container--Loading">
                             </article>
                         </section>
+                        <div class="ContainerCargarMasSeries"></div>
                 </section>
                 <section class="Paginacion">
                 </section>
