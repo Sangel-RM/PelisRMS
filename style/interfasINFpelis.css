@@ -21,6 +21,7 @@
 .shaders .INFpelis{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 0 0 0 20px;
 }
 .shaders .TitleMOVIE{

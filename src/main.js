@@ -329,7 +329,7 @@ function CreateAniosSearch
 (){
     Anios.forEach(item => item.innerHTML = "")
     let view = [];
-    for(let i = 1930; i <= 2023; i++){
+    for(let i = 1960; i <= 2023; i++){
         view.push(`<div><a href="#SearchAnio/${i}">${i}</a></div>`);
     }
     Anios.forEach(item => item.innerHTML = view.join(""));
@@ -349,7 +349,7 @@ async function getTrendingMovies
 ({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${MoviesTrending}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     const pelisTendencias = data.results;
@@ -362,10 +362,11 @@ async function listaMovies
 ({Container, CreatorItemsLista}){
     const {data} = await api(`${listaMoviesCategories}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const generos = data.genres
+    console.log(data);
     CreatorItemsLista({categories: generos, Container: Container});
 };
 listaMovies({Container: categoryMenuMovie,  CreatorItemsLista: CreateCategoriesMovies});
@@ -374,7 +375,7 @@ async function listaSeries
 ({Container, CreatorItemsLista}){
     const {data} = await api(`${listaSeriesCategories}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     console.log(data);
@@ -387,7 +388,7 @@ async function getPopularMovies
 ({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${popularMovies}`,{
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const pelisDestacadas = data.results;
@@ -399,7 +400,7 @@ async function getNowMovies
 ({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${nowPlayingMovies}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const pelisDispo = data.results;
@@ -411,7 +412,7 @@ async function getTvSeriesTendencias
 ({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${tvSeries}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const tvSeriesData = data.results;
@@ -423,7 +424,7 @@ async function getTvSeriesDisponibles
 ({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${tvSeriesPopulares}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const SeriesDestacadas = data.results;
@@ -435,7 +436,7 @@ async function getTvSeriesDisponiblesTotals
 ({Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(tvSeriesTotals, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const Series_data = data.results;
@@ -447,7 +448,7 @@ async function getMovieSimilarID
 ({id, Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${SearchMoviID}${id}/similar`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const Movies = data.results;
@@ -457,7 +458,7 @@ async function getSerieSimilarID
 ({id, Container, Creator_Movie_SerieCard, lazyLoad}){
     const {data} = await api(`${SearchSerieID}${id}/similar`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const Movies = data.results;
@@ -469,7 +470,7 @@ async function getMoviesFilterAnio
         params: {
             year: `${query}`,
             page: pageNum,
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     const Movies = data.results;
@@ -482,7 +483,7 @@ async function getSeriesFilterAnio
         params: {
             first_air_date_year: `${query}`,
             page: pageNum,
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     const Movies = data.results;
@@ -493,7 +494,7 @@ async function getPopularMoviesDestacadas
 ({Container, lazyLoad}){
     const {data} = await api(`${popularMovies}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const pelisDestacadas = data.results;
@@ -503,7 +504,7 @@ async function getPopularSeriesDestacadas
 ({Container, lazyLoad}){
     const {data} = await api(`${popularSeries}`, {
         params: {
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     });
     const SeriesDestacadas = data.results;
@@ -516,7 +517,7 @@ async function getMovieBySearch
         params: {
             query,
             page: pageNum,
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     const Movies = data.results;
@@ -549,7 +550,7 @@ async function getSeriesBySearch
         params: {
             query,
             page: pageNum,
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     const Movies = data.results;
@@ -583,7 +584,7 @@ async function getMovieByID
     const { data: Movie} = await api(`${SearchMoviID}${id}`,{
         params:{
             append_to_response: "videos",
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     console.log(Movie);
@@ -615,7 +616,7 @@ async function getSerieByID
     const {data: Movie} = await api(`${SearchSerieID}${id}`,{
         params:{
             append_to_response: "videos",
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     console.log(Movie);
@@ -654,6 +655,7 @@ async function getPaginacion({ruta,
         const {data} = await api(`${ruta}`,{
             params: {
                 page: pageNum,
+                language: navigator.language || "es-ES",
             },
         });
         const Movies = data.results;
@@ -689,7 +691,7 @@ async function getPaginacionGeneros
         params: {
             with_genres: id,
             page: pageNum,
-            language: "es",
+            language: navigator.language || "es-ES",
         }
     })
     const pelisTendencias = data.results;

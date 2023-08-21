@@ -12,22 +12,22 @@ searchInput.addEventListener("keyup", (event) => {
 });
 // secciones para buscar todas las secciones
 VerTodoTendencias.addEventListener("click", () => {
-    location.hash = "#VerTodo/Tendencias/page=1";
+    location.hash = "#VerTodo/Tendencias";
 });
 VerTodoEstrenosDestacados.addEventListener("click", () => {
-    location.hash = "#VerTodo/EstrenosDestacados/page=1";
+    location.hash = "#VerTodo/EstrenosDestacados";
 });
 VerTodopelisDisponibles.addEventListener("click", () => {
-    location.hash = "VerTodo/PelisDisponibles/page=1";
+    location.hash = "VerTodo/PelisDisponibles";
 });
 VerTodoSeriesDestacadas.addEventListener("click", () => {
-    location.hash = "VerTodo/SeriesDestacadas/page=1";
+    location.hash = "VerTodo/SeriesDestacadas";
 });
 VerTodoSeriesDisponibles.addEventListener("click", () => {
-    location.hash = "VerTodo/SeriesDisponibles/page=1";
+    location.hash = "VerTodo/SeriesDisponibles";
 });
 VerTodoSeriesTotal.addEventListener("click", () => {
-    location.hash = "VerTodo/SeriesTotal/page=1";
+    location.hash = "VerTodo/SeriesTotal";
 })
 function navigator() {
     if(location.hash.startsWith("#Home")){

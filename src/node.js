@@ -219,6 +219,7 @@ const titleGeneroInsert = $Selector(".title-GENEROS-PELI-SERIE");
 const HeaderRecientementeTitle = $Selector(".Header-Recientemente");
 
 // cargar datos en la parte de inf de un video
+// y cargar container para insertar el boton de like
 const titlePeliINF = $Selector(".TitleMOVIE");
 const insertPosterPeli = $Selector(".InsertPosterPeli");
 const Extras = $Selector(".extras");
