@@ -311,19 +311,19 @@ iframe{
 .Anios::-webkit-scrollbar{
     width: 5px;
 }
-.Anios div{
+.Anios li{
     background-color: var(--primary-color);
     height: 35px;
     border-radius: 2px;
 }
-.Anios div a{
+.Anios li a{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
 }
-.Anios div a:hover{
+.Anios li a:hover{
     background-color: var(--color-red);
 }
 .titleMasDestacadas{

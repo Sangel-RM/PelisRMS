@@ -14,8 +14,8 @@ const closedInputHeader = $Selector(".closed-search");
 
 // Buscador pelis Lupa
 const formInputSearchPelis = $Selector(".form");
-const searchInput = $Selector(".search");
-const SearchMOVIELUPA = $Selector(".SearchMovie");
+const searchInput = $SelectorAll(".search");
+const SearchMOVIELUPA = $SelectorAll(".SearchMovie");
 
 // header Section Menu 
 const categoryMenuMovie = $SelectorAll(".insertCategoryMovie");
@@ -277,7 +277,7 @@ setInterval(()=>{
 },3000);
 
 // insertando los anios a el contenedor Anios 
-const Anios = $SelectorAll(".Anios");
+const Anios = $SelectorAll(".anios");
 
 // insertando el trailer en el contenedor 
 const ContainerVideoTriler = $Selector(".contenedorVideo");

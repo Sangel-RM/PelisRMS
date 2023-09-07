@@ -326,15 +326,15 @@ function CreateCategoriesSeries
 }
 // funcion para añadir los años de busqueda 
 function CreateAniosSearch
-(){
+({Anios}){
     Anios.forEach(item => item.innerHTML = "")
     let view = [];
     for(let i = 1960; i <= 2023; i++){
-        view.push(`<div><a href="#SearchAnio/${i}">${i}</a></div>`);
+        view.push(`<li><a href="#SearchAnio/${i}">${i}</a></li>`);
     }
     Anios.forEach(item => item.innerHTML = view.join(""));
 }
-CreateAniosSearch();
+CreateAniosSearch({Anios: Anios});
 function CreatePageNumber
 ({Container}){
     Container.innerHTML = "";
@@ -562,7 +562,7 @@ async function getSeriesBySearch
         const botones = [butonMenos, butonMas]
         ContainerCargarMasSeries.innerHTML = botones.join("");
         const buttonCargarMasSeries = $Selector(".CargarMasSeries");
-        const buttonCargarMenosSeries = $Selector(".CargarMenosMenos")
+        const buttonCargarMenosSeries = $Selector(".CargarMenosSeries")
         if(pageNum < data.total_pages){
             buttonCargarMasSeries.addEventListener("click", () => {
                 window.scroll(0,1400);

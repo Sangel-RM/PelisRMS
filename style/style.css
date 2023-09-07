@@ -53,7 +53,7 @@ img {
     background-color: var(--colorCardLoading);
 }
 .HeaderContainer{
-    height: 60px;
+    height: 45px;
 }
 /* header Mobile */
 .headerMobile{
@@ -88,10 +88,12 @@ img {
     flex-direction: column;
     color: var(--white);
 }
+.logoDesktop a h1,
 .logo a h1{
     text-transform: uppercase;
     color: var(--white);
 }
+.logoDesktop a h1,
 .logo a h1 span{
     color: red;
 }
@@ -122,6 +124,7 @@ img {
     max-width: 400px;
     position: absolute;
     border-radius: 0 0 5px 0;
+    top: 45px;
 }
 .Menu .Contact h1,
 .Menu .moviesAndSeries h1,
@@ -192,6 +195,7 @@ img {
     display: flex;
     flex-direction: column;
     position: absolute;
+    top: 45px;
 }
 .form1{
     display: none;
@@ -217,6 +221,131 @@ img {
     font-size: 20px;
     top: 10px;
     left: 10px;
+}
+/* headerDesktop */
+.headerDesktop{
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,1);
+    background-color: var(--secondary-color);
+    display: flex;
+    position: relative;
+}
+.headerDesktop nav{
+    width: 100%;
+    height: 100%;
+}
+.menu-horizontal{
+	display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.LogoRM {
+    height: 100%;
+}
+.LogoRM a{
+    width: 200px;
+    height: 100%;
+    background-color: var(--borderColor);
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.LogoRM a span{
+    color: red;
+}
+.LogoRM a:hover{
+    background-color: var(--black);
+}
+.SearchAnios,
+.genres{
+    width: 150px;
+    height: 100%;
+    font-size: 1.5rem;
+}
+.menu-horizontal > li > a{
+	display: flex;
+	color: white;
+	text-decoration: none;
+}
+.menu-vertical{
+	position: absolute;
+	display: none;
+    overflow-y: scroll;
+    height: 390px;
+    z-index: 1000;
+	list-style: none;
+	width: 150px;
+    background-color: var(--borderColor);
+}
+.menu-vertical::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+.menu-vertical::-webkit-scrollbar-track {
+    border: none;
+}
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+}
+.menu-vertical li:hover{
+	background-color: black;
+}
+.menu-vertical li {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    z-index: 10000;
+}
+.menu-vertical li a{
+	display: flex;
+	color: white;
+	text-decoration: none;
+	width: 100%;
+    height: 100%;
+    align-items: center;
+    padding: 0 0 0 5px;
+}
+.SearchAnios .SearchAniosHover,
+.genres .GenerosSeries,
+.genres .GenerosPelis{
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 5px;
+}
+.SearchAnios .SearchAniosHover:hover,
+.genres .GenerosSeries:hover,
+.genres .GenerosPelis:hover{
+    background-color: var(--color-red);
+}
+/* inputDesktop */
+.containerSearchBox{
+    width: 200px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+}
+.containerSearchBox .fa2{
+    width: 0;
+    top: 6px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.searchPelisAndSeries{
+    position: absolute;
+    padding: 10px 10px 10px 40px;
+    height: 100%;
+    width: 100%;
+    color: var(--black);
+    background-color: var(--white);
+    border-radius: 5px;
 }
 .tendencias {
     width: 100%;
@@ -589,6 +718,12 @@ footer{
     color: var(--color-red);
 }
 @media (min-width: 320px){
+    .headerMobile{
+        display: flex;
+    }
+    .headerDesktop{
+        display: none;
+    }
     .cardDisponibles{
         min-height: 170px;
     }
@@ -647,12 +782,15 @@ footer{
     }
 }
 @media (min-width: 1024px){
+    .headerMobile{
+        display: none;
+    }
+    .headerDesktop{
+        display: flex;
+    }
     #main{
         width: 90%;
         margin: 0 auto;
-    }
-    .scroll::-webkit-scrollbar{
-        display: block;
     }
     .form{
         width: 20%;

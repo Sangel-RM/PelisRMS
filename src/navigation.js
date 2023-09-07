@@ -1,15 +1,16 @@
 window.addEventListener("DOMContentLoaded", navigator, false);
 window.addEventListener("hashchange", navigator, false);
 
-SearchMOVIELUPA.addEventListener("click", () => {
-    location.hash = `#search/${searchInput.value}`;
-});
-searchInput.addEventListener("keyup", (event) => {
+SearchMOVIELUPA.forEach((item, index) => item.addEventListener("click",() => {
+    location.hash = `#search/${searchInput[index].value}`;
+    searchInput[index].value = "";
+}))
+searchInput.forEach((item, index) => item.addEventListener("keyup", (event) => {
     if(event.which === 13){
-        location.hash = `#search/${searchInput.value}`;
-        searchInput.value = "";
+        location.hash = `#search/${searchInput[index].value}`;
+        searchInput[index].value = "";
     }
-});
+}));
 // secciones para buscar todas las secciones
 VerTodoTendencias.addEventListener("click", () => {
     location.hash = "#VerTodo/Tendencias";
@@ -75,7 +76,7 @@ function MoviesPage() {
         TitulosSimilaresInsert.scroll(0,0);
 
         CloseTitlesAndSeccionCuadrillaSeries()
-        CreateAniosSearch();
+        CreateAniosSearch({Anios: Anios});
 
         const [_, name_id_data] = location.hash.split("/");
         const [id_name, movie_id] = name_id_data.split("_");
@@ -109,7 +110,7 @@ function CategoryPage() {
         ContenerdorPageNumber.classList.remove("none");
         ContainerCargarMasPelis.classList.add("none");
         ContainerCargarMasSeries.classList.add("none");
-        CreateAniosSearch();
+        CreateAniosSearch({Anios: Anios});
         OpenTitlesAndSeccionCuadrillaSeries();
         const [dataRuta, categoryData] = location.hash.split("/");
         const [id, idName] = categoryData.split("-");
@@ -155,7 +156,7 @@ function SearchPage() {
             ContainerCargarMasSeries.classList.remove("none");
             window.scroll(0,0);
 
-            CreateAniosSearch();
+            CreateAniosSearch({Anios: Anios});
             OpenTitlesAndSeccionCuadrillaSeries();
 
             // ['#search', 'buscador'];
@@ -184,7 +185,7 @@ function SearchAnioPage(){
     ContainerCargarMasSeries.classList.add("none");
     window.scroll(0,0);
 
-    CreateAniosSearch();
+    CreateAniosSearch({Anios: Anios});
     CreatePageNumber({Container: paginacionInsert});
     OpenTitlesAndSeccionCuadrillaSeries();
 
@@ -218,7 +219,7 @@ function VerTodo(){
     ContainerCargarMasPelis.classList.add("none");
     ContainerCargarMasSeries.classList.add("none");
     window.scroll(0,0);
-    CreateAniosSearch();
+    CreateAniosSearch({Anios: Anios});
     OpenTitlesAndSeccionCuadrillaSeries();
 
     const [Seccion, funcion, pageData] = location.hash.split("/");
