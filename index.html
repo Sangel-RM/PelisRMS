@@ -15,92 +15,91 @@
     <title>Movies RM</title>
 </head>
 <body>
-    <header class="HeaderContainer">
+    <header class="header header_Container">
         <div class="headerMobile">
-            <div class="containerHeader">
-                <div class="menu">
-                    <i class="fa-sharp fa-solid fa-bars open-menu"></i>
-                    <i class="fa-sharp fa-solid fa-chevron-up close-menu none"></i>
-                </div>
-                    <div class="logo">
-                        <a href="#Home">
-                            <h1>Pelis<span>RM</span></h1>
-                        </a>
+            <nav class="nav Mobile">
+                <div class="headerSearch">
+                    <div class="barGenres">
+                        <i class="fa-sharp fa-solid fa-bars open-menu"></i>
+                        <i class="fa-sharp fa-solid fa-chevron-up close-menu none"></i>
                     </div>
-                <div class="seacrhContainer">
-                    <i class="fa-sharp fa-solid fa-magnifying-glass fa1 open-search"></i>
-                    <i class="fa-sharp fa-solid fa-xmark closed-search none"></i>
-                </div>
-            </div>
-            <div class="form none">
-                <div class="ContainerInput">
-                    <input type="search" name="search" id="search" class="search" placeholder="Search Movie">
-                    <i class="fa-sharp fa-solid fa-magnifying-glass fa2 SearchMovie"></i>
-                </div>
-            </div>
-            <section class="Menu none">
-                <div class="ContainerCategory">
-                    <h1>Category Movie</h1>
-                    <ul class="CategoryMenu insertCategoryMovie">
-                        <li><a href="#">a</a></li>
-                        <li><a href="#">a</a></li>
-                    </ul>
-                    <h1>Category Series</h1>
-                    <ul class="CategoryMenu insertCategorySeries">
-                        <li><a href="#">a</a></li>
-                        <li><a href="#">a</a></li>
-                    </ul>
-                </div>
-                <div class="moviesAndSeries">
-                    <h1>Series, Movies, TV</h1>
-                    <ul>
-                        <li><a href="#VerTodo/Movies">Movies</a></li>
-                        <li><a href="#VerTodo/Series">Series</a></li>
-                        <li><a href="#VerTodo/TV">TV</a></li>
-                    </ul>
-                </div>
-                <div class="aniosSearch">
-                    <h1 class="titleAnios">Años de Lanzamientos <span><i class="fa-sharp fa-solid fa-caret-down"></i></span></h1>
-                    <div class="Anios anios">
-                        <div><a href="#">1999</a></div>
+                    <div class="LinkHome">
+                        <a href="#Home" class="LinkLogo">PELIS<span class="RM">RM</span></a>
+                    </div>
+                    <div class="barSearch">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass open-search"></i>
+                        <i class="fa-sharp fa-solid fa-xmark closed-search none"></i>
                     </div>
                 </div>
-                <div class="Contact">
-                    <div class="containerContact">
-                        <h1>Creator BY:<span>Sangel RM</span></h1>
-                    <ul>
-                        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-google"></i></a></li>
-                        <li><a href="https://github.com/Sangel-RM" target="_blank"><i class="fa-brands fa-github"></i></a></li>
-                    </ul>
+                <div class="Menu none">
+                    <div class="Categories">
+                        <div class="ContainerGenres">
+                            <span>Movies Genres</span>
+                            <ul class="GenresMovies insertCategoryMovie">
+                            </ul>
+                        </div>
+                        <div class="ContainerGenres">
+                            <span>Series Genres</span>
+                            <ul class="GenresSeries insertCategorySeries">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="FormSearchAnios">
+                    <span class="TitleFilter">Filter</span>
+                        <form action="#" class="ContainerFilter">
+                            <div class="ContentBarFilter">
+                                <label class="BarsFilter" for="AniosSearch">Anios</label>
+                                <input class="input_barFilter" id="AniosSearch" type="number">
+                            </div>
+                            <div class="ContentBarFilter">
+                                <label class="BarsFilter" for="GenresInput">Genres</label>
+                                <input class="input_barFilter" id="GenresInput" type="text" placeholder="Action" list="DataGenresInput">
+                                <datalist id="DataGenresInput">
+                                </datalist>
+                            </div>
+                            <div class="ContentBarFilter">
+                                <label class="BarsFilter" for="isAdult">Adult ?</label>
+                                <input class="input_barFilter" id="isAdult" type="text" placeholder="OFF" list="IsAdultList">
+                                <datalist id="IsAdultList">
+                                    
+                                </datalist>
+                            </div>
+                            <div class="GenresSelection">
+                                <ul class="ListGenresSelect">
+    
+                                </ul>
+                            </div>
+                            <input class="submitFilter" id="submitFilter" type="button" value="Search">
+                        </form>
+                    </div>
+                    <div class="AniosSearchContainer">
+                        <span class="TitleAniosSearch">Anios</span>
+                        <ul class="ListSelectAnios anios">
+                        </ul>
                     </div>
                 </div>
-            </section>
+                <div class="form none">
+                    <div class="ContainerInput">
+                        <input type="search" name="search" id="search" class="search" placeholder="Search Movie">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass fa2 SearchMovie"></i>
+                    </div>
+                </div>
+            </nav>
         </div>
-        <div class="headerDesktop">
+        <div class="headerDesktop none">
             <nav>
                 <ul class="menu-horizontal">
                     <li class="LogoRM"><a href="#Home">PELIS<span>RM</span></a></li>
                     <li class="genres">
                         <a class="GenerosPelis">Generos Pelis <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
-                        <ul class="menu-vertical insertGenerosPelis insertCategoryMovie">
-                            <li><a href="#">Accion</a></li>
-                            <li><a href="#">Guerra</a></li>
-                            <li><a href="#">Animación</a></li>
-                        </ul>
+                        <ul class="menu-vertical insertGenerosPelis insertCategoryMovie"></ul>
                     </li>
                     <li class="genres">
                         <a class="GenerosSeries">Generos Series <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
-                        <ul class="menu-vertical insertGenerosSeries insertCategorySeries">
-                            <li><a href="#">Anual</a></li>
-                            <li><a href="#">Mensual</a></li>
-                        </ul>
+                        <ul class="menu-vertical insertGenerosSeries insertCategorySeries"></ul>
                     </li>
                     <li class="SearchAnios"><a class="SearchAniosHover">Busqueda Año <i class="fa-sharp fa-solid fa-chevron-down"></i></a>
-                        <ul class="menu-vertical insertAniosSearch anios">
-                            <li><a href="#">1999</a></li>
-                            <li><a href="#">1999</a></li>
-                        </ul>
+                        <ul class="menu-vertical insertAniosSearch anios"></ul>
                     </li>
                     <li class="containerSearchBox">
                         <input type="search" name="search" id="searchPelisAndSeries" class="searchPelisAndSeries search" placeholder="Search Movie">
@@ -492,29 +491,36 @@
             </div>
             </section>
             <section class="containerGenerosAniosMASpelis">
-                <h1>Géneros Disponibles Movies</h1>
-                <div class="cuadrilla insertCategoryMovie">
+                <div class="ContenedorGenresAniosAndPelis">
+                    <h1>Géneros Disponibles Movies</h1>
+                    <ul class="GenresMovies insertCategoryMovie">
+                    </ul>
                 </div>
-                <h1>Géneros Disponibles Series</h1>
-                <div class="cuadrilla insertCategorySeries">
+                <div class="ContenedorGenresAniosAndPelis">
+                    <h1>Géneros Disponibles Series</h1>
+                    <ul class="GenresSeries insertCategorySeries">
+                    </ul>
                 </div>
-                <h1 class="titleAnios">Años de Lanzamientos <span><i class="fa-sharp fa-solid fa-caret-down"></i></span></h1>
-                <div class="Anios anios">
-                    <div><a href="#">1999</a></div>
+                <div class="ContenedorGenresAniosAndPelis">
+                    <h1 class="titleAnios">Años de Lanzamientos <span><i class="fa-sharp fa-solid fa-caret-down"></i></span></h1>
+                    <ul class="anios ListSelectAnios">
+                    </ul>
                 </div>
-                <h1 class="titleMasDestacadas">Mas Destacados</h1>
-                <section class="pelisDisponiblesMasDestacadas">
-                    <article class="cardDisponibles">
-                        <figure class="poster">
-                            <a href="#">
-                                <img src="#" alt="a">
-                            </a>
-                        </figure>
-                        <div class="data">
-                            <h3 class="titlePeliMasDestacadas">mision Imposible</h3>
-                        </div>
-                    </article>
-                </section>
+                <div>
+                    <h1 class="titleMasDestacadas">Mas Destacados</h1>
+                    <section class="pelisDisponiblesMasDestacadas">
+                        <article class="cardDisponibles">
+                            <figure class="poster">
+                                <a href="#">
+                                    <img src="#" alt="a">
+                                </a>
+                            </figure>
+                            <div class="data">
+                                <h3 class="titlePeliMasDestacadas">mision Imposible</h3>
+                            </div>
+                        </article>
+                    </section>
+                </div>
             </section>
         </section>
         <section class="totalPelis-Serie-generos-Search Page-PEliS-SERIES none">
@@ -622,15 +628,20 @@
                 </section>
             </section>
             <section class="containerGenerosAniosMASpelis">
-                <h1>Géneros Disponibles Movies</h1>
-                <div class="cuadrilla insertCategoryMovie">
+                <div class="ContenedorGenresAniosAndPelis">
+                    <h1>Géneros Disponibles Movies</h1>
+                    <ul class="GenresMovies insertCategoryMovie">
+                    </ul>
                 </div>
-                <h1>Géneros Disponibles Series</h1>
-                <div class="cuadrilla insertCategorySeries">
+                <div class="ContenedorGenresAniosAndPelis">
+                    <h1>Géneros Disponibles Series</h1>
+                    <ul class="GenresSeries insertCategorySeries">
+                    </ul>
                 </div>
-                <h1 class="titleAnios">Años de Lanzamientos <span><i class="fa-sharp fa-solid fa-caret-down"></i></span></h1>
-                <div class="Anios anios">
-                    <div><a href="#">1999</a></div>
+                <div class="ContenedorGenresAniosAndPelis">
+                    <h1 class="titleAnios">Años de Lanzamientos <span><i class="fa-sharp fa-solid fa-caret-down"></i></span></h1>
+                    <ul class="anios ListSelectAnios">
+                    </ul>
                 </div>
             </section>
         </section>

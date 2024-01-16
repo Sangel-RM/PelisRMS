@@ -24,6 +24,26 @@ const open_menu = $Selector(".open-menu");
 const close_menu = $Selector(".close-menu");
 const menu = $Selector(".Menu");
 
+// header section Menu parte del filtro
+const dataRengesFilter = $Selector("#DataGenresInput");
+const ON_OFF_isAdult = $Selector("#IsAdultList");
+const aniosFilterInput = $Selector("#AniosSearch");
+const genresPelisSeriesInput = $Selector("#GenresInput");
+const IsAdultInput = $Selector("#isAdult");
+const submitFilter = $Selector("#submitFilter");
+
+// validando que sea el año actual
+const today = new Date();
+const year = today.getFullYear();
+aniosFilterInput.placeholder = year;
+aniosFilterInput.min = 1;
+aniosFilterInput.max = year;
+aniosFilterInput.addEventListener("input", () => {
+    if(aniosFilterInput.value.length > 4){
+        aniosFilterInput.value = aniosFilterInput.value.slice(0,4);
+    }
+})
+
 openInputHeader.addEventListener("click", () => {
     // cerrando la lupa y abriendo la X
     if(openInputHeader){

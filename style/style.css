@@ -5,11 +5,26 @@
     --white: #fff;
     --black: #000;
     --whiteAndGray: rgba(141, 141, 141, 0.886);
-    --placehoulder: #7378c5;
+    --placehoulder: #6c6d77;
     --color-red: rgb(247, 64, 64);
     --borderColor: #242424;
     --colorCardLoading: #3b3c41;
     --colorPurple: #2817d7;
+    --BlackColor: #0f0f0f;
+    --BlackColor2: #191919;
+    --white: #fff;
+    --black: #000;
+    --GrayDashe: rgba(141, 141, 141, 0.886);
+    --ColorInput: #7378c5;
+    --Red: rgb(247, 64, 64);
+    --ColorBorder: #242424;
+    --CardLoading: #3b3c41;
+    --DasheLigth: #b7b7b7;
+    --Min-Size-1: 11px;
+    --Min-Size-2: 12px;
+    --Medium-Size: 14px;
+    --Long-Size: 16px;
+    --Ultimate-Size: 18px;
 }
 *{
     margin: 0;
@@ -19,10 +34,9 @@
     border: none;
     text-decoration: none;
     text-transform: capitalize;
-    transition: .2s linear;
+    transition: .3s;
     color: var(--white);
     object-fit: cover;
-    list-style: none;
 }
 *::-webkit-scrollbar {
     width: 8px;
@@ -52,150 +66,294 @@ body{
 img {
     background-color: var(--colorCardLoading);
 }
-.HeaderContainer{
-    height: 50px;
+.header{
+    background-color: var(--BlackColor2);
+    box-shadow: rgb(0, 0, 0) 0px 0px 6px 1px;
 }
-/* header Mobile */
-.headerMobile{
-    height: 100%;
+.headerSearch{
+    display: flex;
+    height: 35px;
+    border-bottom: 2px solid var(--ColorBorder);
 }
-.containerHeader{
+.barGenres,
+.barSearch{
+    width: 30%;
+}
+.barGenres i,
+.barSearch i{
+    padding: 12.5px;
+    text-align: center;
+    font-size: var(--Medium-Size);
     width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    background-color: var(--secondary-color);
-    border-bottom: 2px solid var(--black);
-}
-.menu{
-    width: 20%;
-    height: 100%;
-    border-right: 1px solid var(--whiteAndGray);
-}
-.logo{
-    width: 60%;
-    height: 100%;
-}
-.seacrhContainer{
-    width: 20%;
-    height: 100%;
-    border-left: 1px solid var(--whiteAndGray);
-}
-.menu ,.logo, .seacrhContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: var(--white);
-}
-.logoDesktop a h1,
-.logo a h1{
-    text-transform: uppercase;
-    color: var(--white);
-}
-.logoDesktop a h1,
-.logo a h1 span{
-    color: red;
-}
-.close-menu,
-.fa-bars, .fa1,
-.fa-xmark{
-    font-size: 20px;
     cursor: pointer;
-    width: 100%;
-    height: 100%;
+}
+.LinkHome{
+    width: 70%;
+}
+.barGenres,
+.barSearch,
+.LinkHome{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.fa-xmark{
-    color: red;
+.LinkHome a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: var(--Long-Size);
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid var(--ColorBorder);
+    border-right: 2px solid var(--ColorBorder);
+}
+ .LinkHome a:hover{
+    background-color: var(--black);
+}
+.LinkHome a .RM{
+    color: var(--Red);
 }
 .Menu{
-    background-color: var(--secondary-color);
-    border: 1px solid var(--black);
-    border-top: 0;
     width: 100%;
-    padding: 10px;
+    max-width: 425px;
     display: flex;
     flex-direction: column;
-    z-index: 1000;
-    gap: 20px;
-    max-width: 400px;
     position: absolute;
-    border-radius: 0 0 5px 0;
-    top: 45px;
+    z-index: 100;
+    background-color: var(--BlackColor2);
+    padding: 5px;
+    border-bottom: 2px solid var(--ColorBorder);
+    border-right: 2px solid var(--ColorBorder);
+    border-radius: 0 0 2px 0;
 }
-.Menu .Contact h1,
-.Menu .moviesAndSeries h1,
-.Menu .ContainerCategory h1{
-    padding: 10px 0;
-    font-size: 2rem;
+.Menu .Categories{
+    display: flex;
+    border-bottom: 2px solid var(--ColorBorder);
+    gap: 10px;
+    padding: 0 0 5px 0;
 }
-.Menu .moviesAndSeries ul,
-.Menu .ContainerCategory ul{
+.Menu .ContainerGenres{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0 0 5px 0;
+}
+.Menu .ContainerGenres span{
+    font-size: var(--Medium-Size);
+    color: var(--white);
+}
+.GenresMovies,
+.GenresSeries{
     display: grid;
-    justify-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    padding: 0 0 0 20px;
+}
+.GenresMovies li,
+.GenresSeries li{
+    height: 14px;
+} 
+.GenresMovies li::marker,
+.GenresSeries li::marker{
+    font-size: 8px;
+}
+.GenresMovies li a,
+.GenresSeries li a{
+    font-size: var(--Min-Size-2);
+    color: var(--DasheLigth);
+    display: flex; 
+    height: 100%;
+    align-items: center;
+}
+.GenresMovies li a:hover,
+.GenresSeries li a:hover{
+    text-decoration: underline;
+    background-color: var(--BlackColor);
+    color: var(--Red);
+}
+.Menu .FormSearchAnios{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 2px solid var(--ColorBorder);
+}
+.Menu .FormSearchAnios .ContainerFilter {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 5px;
+    border-radius: 2px;
+    justify-content: space-between;
+    background-color: var(--BlackColor);
+}
+.Menu .FormSearchAnios .ContainerFilter ul{
+    list-style: none;
+}
+.Menu .FormSearchAnios .TitleFilter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--Medium-Size);
+}
+.menu-horizontal > li > a{
+	display: flex;
+	color: white;
+	text-decoration: none;
+}
+.menu-vertical{
+	position: absolute;
+	display: none;
+    overflow-y: scroll;
+    height: 390px;
+    z-index: 1000;
+	list-style: none;
+	width: 63px;
+    background-color: var(--borderColor);
+}
+.menu-vertical::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+.menu-vertical::-webkit-scrollbar-track {
+    border: none;
+}
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+}
+.menu-vertical li {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    z-index: 10000;
+}
+.menu-vertical li a{
+	display: flex;
+	color: white;
+	text-decoration: none;
+	width: 100%;
+    height: 100%;
+    align-items: center;
+    padding: 0 0 0 5px;
+}
+.MenuAniosBar{
+    background-color: var(--ColorBorder);
+    overflow-y: scroll;
+    height: 90px;
+}
+.MenuAniosBar li a{
+    font-size: var(--Min-Size);
+}
+.MenuAniosBar li a:hover{
+    background-color: var(--Red);
+    text-decoration: underline;
+}
+.ContentBarFilter{
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     gap: 5px;
 }
-.Menu .moviesAndSeries ul li,
-.Menu .ContainerCategory ul li{
-    width: 100%;
+.BarsFilter{
+    width: 54px;
+    padding: 5px 0;
+    border-radius: 2px;
+    font-size: var(--Min-Size-2);
+    background-color: var(--Red);
+    text-align: center;
+    cursor: pointer;
 }
-.Menu .moviesAndSeries ul li a,
-.Menu .ContainerCategory .CategoryMenu li a{
-    font-size: 1.3rem;
-    width: 100%;
-    padding: 10px;
-    background-color: var(--primary-color);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.Menu .moviesAndSeries ul li a:hover,
-.Menu .ContainerCategory .CategoryMenu li a:hover{
-    background-color: var(--white);
+.input_barFilter{
+    width: 54px;
+    font-size: var(--Min-Size-2);
+    padding: 5px 2px;
     color: var(--black);
 }
-.Menu .Contact{
-    height: 100%;
+.Menu .GenresSelection{
+    border-radius: 2px;
+    width: 70px;
 }
-.Menu .Contact .containerContact{
-    width: 100%;
+.Menu .ListGenresSelect{
+    overflow-y: scroll;
+    height: 60px;
+    background-color: var(--BlackColor2);
     display: flex;
     flex-direction: column;
+}
+.Menu .ListGenresSelect::-webkit-scrollbar{
+    display: none;
+}
+.Menu .ListGenresSelect li{
+    font-size: var(--Min-Size-2);
+    padding: 5px;
+}
+.Menu .ListGenresSelect li span {
+    padding:  0 0 0 5px;
+    font-size: var(--Min-Size-2);
+    color: var(--Red);
+}
+.Menu .ListGenresSelect li:hover{
+    background-color: var(--BlackColor);
+    opacity: .9;
+    color: var(--white);
+}
+.submitFilter{
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    color: var(--black);
+    padding: 0 5px;
+}
+.submitFilter:hover{
+    background-color: var(--Red);
+    color: var(--white);
+    text-decoration: underline;
+}
+.ListSelectAnios{
+    display: grid;
+    list-style: none;
+    text-align: center;
+    background-color: var(--BlackColor);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    overflow-y: scroll;
+    border: 1px solid var(--ColorBorder);
+    border-radius: 2px;
+    height: 168px;
+}
+.ListSelectAnios li{
+    font-size: var(--Min-Size-2);
+}
+.ListSelectAnios li a{
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.Menu .Contact .containerContact h1{
-    font-size: 1.5rem;
+.ListSelectAnios li:hover{
+    background-color: var(--Red);
+    cursor: pointer;
+    text-decoration: underline;
 }
-.Menu .Contact ul{
+.TitleAniosSearch{
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    margin: 5px 0;
+    font-size: var(--Medium-Size);
 }
-.Menu .Contact ul li a i{
-    font-size: 25px;
+.closed{
+    color: var(--Red);
 }
-.Menu .Contact ul li a i:hover{
-    color: var(--color-red);
-}
-.Menu .aniosSearch .Anios div a{
-    font-size: 1.3rem;
-}
-.Menu .aniosSearch .titleAnios{
-    font-size: 2rem;
-}
-.form{
+.form {
     width: 100%;
     height: 40px;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 45px;
 }
 .form1{
     display: none;
@@ -206,7 +364,7 @@ img {
 }
 .search{
     position: absolute;
-    padding: 10px 10px 10px 40px;
+    padding: 10px 10px 10px 30px;
     height: 100%;
     width: 100%;
     color: var(--black);
@@ -218,9 +376,12 @@ img {
 .fa2{
     position: relative;
     color: var(--black);
-    font-size: 20px;
+    font-size: var(--Ultimate-Size);
     top: 10px;
-    left: 10px;
+    left: 5px;
+}
+.fa-xmark{
+    color: var(--Red);
 }
 /* headerDesktop */
 .headerDesktop{
@@ -240,6 +401,7 @@ img {
     align-items: center;
     width: 100%;
     height: 100%;
+    list-style: none;
 }
 .LogoRM {
     height: 100%;
@@ -506,12 +668,12 @@ img {
 }
 /* estrenos */
 .estrenosDestacados{
-    border-bottom: 1px solid var(--whiteAndGray);
+    border-bottom: 1px solid var(--ColorBorder);
     padding: 0 0 20px 0;
 }
 /* section pelis Disponibles */
 .pelisDisponibles{
-    border-bottom: 1px solid var(--whiteAndGray);
+    border-bottom: 1px solid var(--ColorBorder);
 }
 .header-pelis{
     padding: 10px 10px 10px 10px;
@@ -520,7 +682,7 @@ img {
 }
 .header-pelis h1{
     border-left: 3px solid red;
-    padding: 0 0 0 10px;
+    padding: 5px 0 5px 10px;
     font-size: 2rem;
 }
 .header-pelis .buttonsleft-right{
@@ -553,7 +715,6 @@ img {
 .header-pelis .buttonsleft-right span .fa-chevron-left:active{
     background-color: red;
 }
-
 .header-pelis .totalPelis{
     display: flex;
     gap: 5px;
@@ -603,7 +764,7 @@ img {
 }
 .seriesDisponibles,
 .seriesDestacadas{
-    border-bottom: 1px solid var(--whiteAndGray);
+    border-bottom: 1px solid var(--ColorBorder);
     padding: 0 0 20px 0;
 }
 .seriesDestacadas .header-pelis h1{
@@ -654,6 +815,7 @@ footer{
 .footerContainer .RedesSociales ul{
     display: flex;
     gap: 10px;
+    list-style: none;
 }
 .footerContainer .RedesSociales ul li a i{
     font-size: 20px;
@@ -718,12 +880,6 @@ footer{
     color: var(--color-red);
 }
 @media (min-width: 320px){
-    .headerMobile{
-        display: flex;
-    }
-    .headerDesktop{
-        display: none;
-    }
     .cardDisponibles{
         min-height: 170px;
     }
@@ -742,6 +898,11 @@ footer{
     .cardDisponibles{
         min-height: 180px;
     }
+    .ContentBarFilter, 
+    .BarsFilter,
+    .ContentBarFilter .input_barFilter{
+        width: 70px;
+    }
 }
 @media (min-width: 425px){
     .SeriesDisponiblesTotals,
@@ -754,6 +915,14 @@ footer{
     .cardDisponibles,
     .Movie-Container--Loading{
         min-height: 175px;
+    }
+    .ContentBarFilter, 
+    .BarsFilter,
+    .ContentBarFilter .input_barFilter{
+        width: 80px;
+    }
+    .submitFilter{
+        width: 75px;
     }
 }
 /* @media (min-width: 500px){
@@ -787,6 +956,7 @@ footer{
     }
     .headerDesktop{
         display: flex;
+        height: 40px;
     }
     #main{
         width: 90%;
@@ -794,11 +964,11 @@ footer{
     }
     .form{
         width: 20%;
-        height: 50px;
+        height: 30px;
         right: 0;
     }
     .form .fa2{
-        top: 15px;
+        top: 5px;
         cursor: pointer;
     }
     .generosMovies .scrollGeneros{

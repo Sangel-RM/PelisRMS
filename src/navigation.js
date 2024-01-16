@@ -19,16 +19,16 @@ VerTodoEstrenosDestacados.addEventListener("click", () => {
     location.hash = "#VerTodo/EstrenosDestacados";
 });
 VerTodopelisDisponibles.addEventListener("click", () => {
-    location.hash = "VerTodo/PelisDisponibles";
+    location.hash = "#VerTodo/PelisDisponibles";
 });
 VerTodoSeriesDestacadas.addEventListener("click", () => {
-    location.hash = "VerTodo/SeriesDestacadas";
+    location.hash = "#VerTodo/SeriesDestacadas";
 });
 VerTodoSeriesDisponibles.addEventListener("click", () => {
-    location.hash = "VerTodo/SeriesDisponibles";
+    location.hash = "#VerTodo/SeriesDisponibles";
 });
 VerTodoSeriesTotal.addEventListener("click", () => {
-    location.hash = "VerTodo/SeriesTotal";
+    location.hash = "#VerTodo/SeriesTotal";
 })
 function navigator() {
     if(location.hash.startsWith("#Home")){

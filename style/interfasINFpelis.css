@@ -8,7 +8,7 @@
 .shaders{
     background-color: var(--secondary-color);
     display: flex;
-    border-bottom: 3px solid var(--borderColor);
+    border-bottom: 2px solid var(--borderColor);
 }
 .shaders figure{
     width: 300px;
@@ -89,6 +89,7 @@
     gap: 20px;
     align-items: center;
     padding: 0 0 0 10px;
+    list-style: none;
 }
 .ContenedorVideoINF ul li span{
     display: flex;
@@ -102,7 +103,7 @@
     justify-content: center;
     align-items: center;
     background-color: #6d6e70;
-    border-bottom: 3px solid var(--borderColor);
+    border-bottom: 2px solid var(--ColorBorder);
 }
 iframe{
     width: 100%;
@@ -112,7 +113,7 @@ iframe{
     height: 50px;
     display: flex;
     align-items: center;
-    border-bottom: 3px solid var(--borderColor);
+    border-bottom: 2px solid var(--ColorBorder);
     font-size: 1.3rem;
     padding: 0 10px;
 }
@@ -137,24 +138,27 @@ iframe{
 .sinopsis{
     font-size: 1.5rem;
     padding: 10px 10px 0 10px;
-    border-bottom: 3px solid var(--borderColor);
+    border-bottom: 2px solid var(--ColorBorder);
 }
 .sinopsis h1{
     padding: 0 0 10px 0;
+    font-size: var(--Long-Size);
 }
 .sinopsis .overview,
-.sinopsis .related{
+.sinopsis .related{ 
     padding: 0 0 10px 0;
+    font-size: var(--Medium-Size);
 }
 .sinopsis .overview{
     border-bottom: 1px solid var(--borderColor);
 }
 .titleOriginal{
-    border-bottom: 1px solid var(--borderColor);
+    border-bottom: 1px solid var(--ColorBorder);
 }
 .VoteAverage,
 .titleOriginal{
     padding: 10px;
+    font-size: var(--Medium-Size);
 }
 .VoteAverageTotalTMDB{
     border: none;
@@ -193,8 +197,8 @@ iframe{
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.2rem;
-    border-bottom: 3px solid var(--borderColor);
+    font-size: var(--Min-Size-1);
+    border-bottom: 2px solid var(--ColorBorder);
 }
 .SocialWeb span:first-child{
     padding: 0 10px 0 0;
@@ -221,8 +225,8 @@ iframe{
     background-image: linear-gradient(to right bottom, #37052a, #58004e, #75007a, #8b00af, #9612eb);
 }
 .TitulosSimilares h1{
-    padding: 20px 0 20px 10px;
-    font-size: 1.7rem;
+    padding: 10px 0 10px 10px;
+    font-size: var(--Long-Size);
 }
 .TitulosSimilares .scroll {
     display: flex;
@@ -267,64 +271,14 @@ iframe{
     width: 25%;
     background-color: var(--secondary-color);
     font-size: 1.5rem;
-    border-left: 3px solid var(--borderColor);
+    border: 2px solid var(--borderColor);
 }
 .containerGenerosAniosMASpelis h1{
-    padding: 10px 0;
-    text-align: center;
-}
-.cuadrilla{
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
-}
-.cuadrilla li{
-    border-bottom: 2px solid var(--borderColor);
-    background-color: var(--primary-color);
-    font-weight: bold;
-}
-.cuadrilla li a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
     padding: 5px 0;
+    font-size: var(--Medium-Size);
     text-align: center;
-}
-.cuadrilla li a:hover{
-    color: black;
-    background-color: var(--white);
-}
-.titleAnios{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-}
-.Anios{
-    height: 276px;
-    display: grid;
-    gap: 5px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    overflow-y: scroll;
-}
-.Anios::-webkit-scrollbar{
-    width: 5px;
-}
-.Anios li{
-    background-color: var(--primary-color);
-    height: 35px;
-    border-radius: 2px;
-}
-.Anios li a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
-.Anios li a:hover{
-    background-color: var(--color-red);
+    width: 70%;
+    margin: 0 auto;
 }
 .titleMasDestacadas{
     margin: 10px 0 10px 0;
@@ -336,7 +290,7 @@ iframe{
     padding: 5px;
     background-color: var(--primary-color);
     overflow-y: scroll;
-    height: 440px;
+    height: 470px;
 }
 .pelisDisponiblesMasDestacadas .cardDisponibles{
     min-height: 150px;
@@ -354,6 +308,9 @@ iframe{
 .Page-PEliS-SERIES{
     display: flex;
     height: 100%;
+}
+.Page-PEliS-SERIES .ContenedorGenresAniosAndPelis:nth-child(3){
+    border: none;
 }
 .ContenedorTitle{
     display: flex;
@@ -471,6 +428,15 @@ iframe{
 .ContainerCargarMasPelis button:hover{
     background-color: var(--color-red);
 }
+.containerGenerosAniosMASpelis .GenresMovies li a,
+.containerGenerosAniosMASpelis .GenresSeries li a{
+    display: flex;
+    width: 100%;
+}
+.ContenedorGenresAniosAndPelis{
+    border-bottom: 1px solid var(--ColorBorder);
+    padding: 0 0 10px 0;
+}
 @media(min-width: 320px){
     .contenedorVideo{
         max-height: 250px;
@@ -538,14 +504,11 @@ iframe{
     .contenedorVideo{
         max-height: 450px;
     }
-    .containerGenerosAniosMASpelis{
-        display: block;
-    }
     .totalPELIS-SERIES-GENEROS{
-        width: 75%;
+        width: 100%;
     }
     .container{
-        width: 75%;
+        width: 100%;
     }
 }
 @media(min-width: 1000px){
@@ -562,6 +525,17 @@ iframe{
     .shaders .subGeneros,
     .shaders .extras{
         font-size: 1.6rem;
+    }
+}
+@media(min-width: 1024px){
+    .containerGenerosAniosMASpelis{
+        display: block;
+    }
+    .totalPELIS-SERIES-GENEROS{
+        width: 75%;
+    }
+    .container{
+        width: 75%;
     }
 }
 @media(min-width: 1200px){

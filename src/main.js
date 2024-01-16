@@ -15,6 +15,13 @@ const lazyLoader = new IntersectionObserver((entries) => {
         }
     });
 });
+
+// Permitir o no permitir Al filtro de Contenido adulto
+function IsAdult ({Container}){
+    let view = `<option value="ON">ON</option><option value="OFF">OFF</option>`;
+    Container.innerHTML = view;
+}
+IsAdult({Container: ON_OFF_isAdult})
 // Utils
 function CargarTrailer
 ({name, key}){
@@ -324,12 +331,20 @@ function CreateCategoriesSeries
         item.innerHTML = view;
     });
 }
+function CreateCategoriesOptions
+({categories, Container}){
+    let view = `${categories.map(item => `
+    <option value="${item.name}">${item.name}</option>
+    `).join("")}`;
+    Container.innerHTML = view;
+}
 // funcion para añadir los años de busqueda 
 function CreateAniosSearch
 ({Anios}){
     Anios.forEach(item => item.innerHTML = "")
+    const anioActualy = new Date().getFullYear();
     let view = [];
-    for(let i = 2023; i >= 1960; i--){
+    for(let i = anioActualy; i >= 1960; i--){
         view.push(`<li><a href="#SearchAnio/${i}">${i}</a></li>`);
     }
     Anios.forEach(item => item.innerHTML = view.join(""));
@@ -370,6 +385,7 @@ async function listaMovies
     CreatorItemsLista({categories: generos, Container: Container});
 };
 listaMovies({Container: categoryMenuMovie,  CreatorItemsLista: CreateCategoriesMovies});
+listaMovies({Container: dataRengesFilter,  CreatorItemsLista: CreateCategoriesOptions});
 
 async function listaSeries
 ({Container, CreatorItemsLista}){
@@ -521,7 +537,6 @@ async function getMovieBySearch
         }
     })
     const Movies = data.results;
-    console.log("Movies",data);
     CreateMoviesNormal({Movies: Movies, Container: Container, lazyLoad: lazyLoad})
     if(data.total_pages > pageNum){
         const butonMas = `<button class="CargarMas"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>`;
@@ -554,7 +569,6 @@ async function getSeriesBySearch
         }
     })
     const Movies = data.results;
-    console.log("Series",data);
     CreateSeriesNormal({Movies: Movies, Container: Container, lazyLoad: lazyLoad});
     if(data.total_pages > pageNum){
         const butonMas = `<button class="CargarMasSeries"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>`;
