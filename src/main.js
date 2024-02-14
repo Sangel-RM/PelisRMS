@@ -368,6 +368,7 @@ async function getTrendingMovies
         }
     })
     const pelisTendencias = data.results;
+    console.log(data.results);
     Creator_Movie_SerieCard({Movies: pelisTendencias, Container: Container, lazyLoad: lazyLoad});
 }
 getTrendingMovies({Container: PelisTendencias, Creator_Movie_SerieCard: CreateMoviesWhitPrint, lazyLoad: true});

@@ -143,14 +143,14 @@ botonesDerecha.forEach((item, i)=> item.addEventListener("click", () => {
     if(screen.width <= 1440){
         if(pelisScrolls[i].scrollLeft < 4714){
             pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft + anchoCard, 0);
-            // console.log(pelisScrolls[i].scrollLeft);
+            console.log(pelisScrolls[i].scrollLeft);
         }else{
             pelisScrolls[i].scroll(0, 0)
         }
     }else{
         if(pelisScrolls[i].scrollLeft < 3713){
             pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft + anchoCard, 0);
-            // console.log(pelisScrolls[i].scrollLeft);
+            console.log(pelisScrolls[i].scrollLeft);
         }else{
             pelisScrolls[i].scroll(0, 0)
         }
@@ -160,7 +160,7 @@ botonesIzquierda.forEach((item, i)=> item.addEventListener("click", () => {
     if(screen.width <= 1440){
         if(pelisScrolls[i].scrollLeft > 0){
             pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft - anchoCard, 0);
-            // console.log(pelisScrolls[i].scrollLeft);
+            console.log(pelisScrolls[i].scrollLeft);
         }else{
             pelisScrolls[i].scroll(4714, 0)
         }
