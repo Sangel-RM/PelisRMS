@@ -124,53 +124,25 @@ const botonesDerecha = $SelectorAll(".fa-chevron-right");
 
 setInterval(()=>{
     pelisScrolls.forEach((item, i)=> {
-        if(screen.width <= 1440){
-            if(item.scrollLeft < 4714){
-                item.scroll(item.scrollLeft + anchoCard, 0);
-            }else{
-                item.scroll(0, 0);
-            }
-        }else{
-            if(item.scrollLeft < 3713){
-                item.scroll(item.scrollLeft + anchoCard, 0);
-            }else{
-                item.scroll(0, 0);
-            }
-        }
+       if(item.scrollLeft + item.clientWidth === item.scrollWidth){
+        item.scroll(0,0);
+       }else{ 
+        item.scroll(item.scrollLeft + anchoCard, 0)
+       }
     })
 },5000);
 botonesDerecha.forEach((item, i)=> item.addEventListener("click", () => {
-    if(screen.width <= 1440){
-        if(pelisScrolls[i].scrollLeft < 4714){
-            pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft + anchoCard, 0);
-            console.log(pelisScrolls[i].scrollLeft);
-        }else{
-            pelisScrolls[i].scroll(0, 0)
-        }
-    }else{
-        if(pelisScrolls[i].scrollLeft < 3713){
-            pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft + anchoCard, 0);
-            console.log(pelisScrolls[i].scrollLeft);
-        }else{
-            pelisScrolls[i].scroll(0, 0)
-        }
+    if(pelisScrolls[i].scrollLeft + pelisScrolls[i].clientWidth === pelisScrolls[i].scrollWidth){ 
+        pelisScrolls[i].scroll(0,0)
+    }else{ 
+        pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft + anchoCard, 0)
     }
 }));
 botonesIzquierda.forEach((item, i)=> item.addEventListener("click", () => {
-    if(screen.width <= 1440){
-        if(pelisScrolls[i].scrollLeft > 0){
-            pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft - anchoCard, 0);
-            console.log(pelisScrolls[i].scrollLeft);
-        }else{
-            pelisScrolls[i].scroll(4714, 0)
-        }
-    }else{
-        if(pelisScrolls[i].scrollLeft > 0){
-            pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft - anchoCard, 0);
-            console.log(pelisScrolls[i].scrollLeft);
-        }else{
-            pelisScrolls[i].scroll(3713, 0)
-        }
+    if(pelisScrolls[i].scrollLeft <= 0){ 
+        pelisScrolls[i].scroll(pelisScrolls[i].scrollWidth,0)
+    }else{ 
+        pelisScrolls[i].scroll(pelisScrolls[i].scrollLeft - anchoCard, 0)
     }
 }));
 
