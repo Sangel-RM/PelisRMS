@@ -2,12 +2,12 @@ window.addEventListener("DOMContentLoaded", navigator, false);
 window.addEventListener("hashchange", navigator, false);
 
 SearchMOVIELUPA.forEach((item, index) => item.addEventListener("click",() => {
-    location.hash = `#search/${searchInput[index].value}`;
+    location.hash = `Search/${searchInput[index].value}`;
     searchInput[index].value = "";
 }))
 searchInput.forEach((item, index) => item.addEventListener("keyup", (event) => {
     if(event.which === 13){
-        location.hash = `#search/${searchInput[index].value}`;
+        location.hash = `Search/${searchInput[index].value}`;
         searchInput[index].value = "";
     }
 }));
@@ -37,7 +37,7 @@ function navigator() {
         MoviesPage();
     }else if(location.hash.startsWith("#CategoryMovie/") || location.hash.startsWith("#CategorySerie/")){
         CategoryPage();
-    }else if(location.hash.startsWith("#search/")){
+    }else if(location.hash.startsWith("#Search/")){
         SearchPage();
     }else if(location.hash.startsWith("#SearchAnio/")){
         SearchAnioPage();

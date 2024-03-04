@@ -95,7 +95,7 @@ if(lazyLoad){
     let view = `${Movies.map(item => `
         <article class="cardDisponibles">
             <figure class="poster">
-                <a href="#Movie/${item.title}_${item.id}">
+                <a href=#Movie/${item.title}_${item.id}">
                     <img class="MovieCardNormal" data-src="${PhotosMovies}${item.poster_path}" alt="${item.title}">
                 </a>
             </figure>

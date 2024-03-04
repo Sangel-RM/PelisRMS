@@ -480,6 +480,11 @@ img {
     height: 100%;
     gap: 5px;
 }
+.SearchAnios .SearchAniosHover i,
+.genres .GenerosSeries i,
+.genres .GenerosPelis i {
+    font-size: 8px;
+}
 .SearchAnios .SearchAniosHover:hover,
 .genres .GenerosSeries:hover,
 .genres .GenerosPelis:hover{
@@ -521,10 +526,11 @@ img {
     background-color: var(--secondary-color);
 }
 .ver_todo{
-    width: 80px;
+    width: 60px;
     height: 20px;
     border-radius: 2px;
     margin: 2px 0 0 0;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -682,7 +688,8 @@ img {
 }
 .header-pelis h1{
     border-left: 3px solid red;
-    padding: 5px 0 5px 10px;
+    margin: 5px 0;
+    padding: 0 0 0 10px;
     font-size: 2rem;
 }
 .header-pelis .buttonsleft-right{
@@ -702,7 +709,7 @@ img {
 }
 .header-pelis .buttonsleft-right span .fa-chevron-right, 
 .header-pelis .buttonsleft-right span .fa-chevron-left{
-    font-size: 15px;
+    font-size: 10px;
     cursor: pointer;
     background-color: var(--secondary-color);
     width: 30px;
